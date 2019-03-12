@@ -1,0 +1,102 @@
+.container
+  .header
+    .header__container
+      .header__container__search
+        = image_tag "logo.svg", class: "logo__search"
+        = form_with local: true, class: "header__container__search__form" do |f|
+          = f.text_field :keyword, class: "header__container__search__form__input", type: "search", name: "keyword", placeholder: "キーワードから探す"
+      .header__container__navigation.navigation
+        .navigation__left
+          = link_to "カテゴリーから探す"
+          = link_to "ブランドから探す"
+        .navigation__right
+          = link_to "マイページ"
+          = link_to "お知らせ"
+          = link_to "やることリスト"
+  .banner-top
+    = image_tag "banner_top_tmp.jpg", class: "main__banner__image banner"
+  .main
+    %h2 ピックアップカテゴリー
+    .pickup-box  
+      %h3
+        = link_to "レディース新着アイテム"
+      .pickup-box__items
+        = render "item"
+        = render "item"
+        = render "item"
+        = render "item"
+      .pickup-box__view-all
+        = link_to "全ての商品を見る"
+    .pickup-box  
+      %h3
+        = link_to "レディース新着アイテム"
+      .pickup-box__items
+        = render "item"
+        = render "item"
+        = render "item"
+        = render "item"
+        .pickup-box__view-all
+          = link_to "全ての商品を見る"
+    .pickup-box  
+      %h3
+        = link_to "レディース新着アイテム"
+      .pickup-box__items
+        = render "item"
+        = render "item"
+        = render "item"
+        = render "item"
+        .pickup-box__view-all
+          = link_to "全ての商品を見る"
+  .aside
+    .aside__banner
+      = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
+  .footer
+    %ul.footer__navigation
+      %li.footer__navigation__item
+        %h2 メルカリについて
+        %ul
+          %li
+            = link_to "会社概要（運営会社）"
+          %li
+            = link_to "プライバシーポリシー"
+          %li
+            = link_to "メルカリ利用規約"
+          %li
+            = link_to "有償ポイントに関する特約"
+          %li
+            = link_to "あんしんスマホサポート制度に関する利用特約"
+          %li
+            = link_to "コンプライアンスポリシー"
+          %li
+            = link_to "個人データの安全管理に係る基本方針"
+          %li
+            = link_to "特定商取引に関する表記"
+          %li
+            = link_to "資金決済法に基づく表示"
+          %li
+            = link_to "法令遵守と犯罪防止のために"
+          %li
+            = link_to "採用情報"
+      %li.footer__navigation__item
+        %h2
+        %ul
+          %li
+            = link_to ""
+          %li
+            = link_to ""
+      %li.footer__navigation__item
+        %h2
+          %ul
+            %li
+              = link_to ""
+            %li
+              = link_to ""
+      %li.footer__navigation__item
+        %h2
+          %ul
+            %li
+              = link_to ""
+            %li
+              = link_to ""
+
+
