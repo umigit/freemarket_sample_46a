@@ -1,24 +1,10 @@
-# README
+# データベース設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table1
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|name|string|       |
 
-* Ruby version
+### Assosiations
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
