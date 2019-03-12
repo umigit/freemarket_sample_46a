@@ -4,34 +4,40 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|last_name|str|null: false|
-|first_name|str|null: false|
-|last_name_kana|str|null: false|
-|first_name_kana|str|null: false|
 |phone||int|null: false, unique: true|
-|paying-way|int|null: false|
-|birth_y|int|null: false|
-|birth_m|int|null: false|
-|birth_d|int|null: false|
+|paying_way|int|null: false|
 |mail|str|null: false, unique: true|
 |password|str|null: false, unique: true|
-|nickname|str|null: false, unique: true|
 |comment|text|null: true|
-|avatar|text|null: true|
+
 
 ### Association
 - has_many :addresses, dependent: :destroy
 - has_many :order_status
 - has_many :items
 - has_many :comments
-- has_many :favorite-items, dependent: :destroy
+- has_many :favorite_items, dependent: :destroy
 - has_many :point_records
 - has_many :money_records
 - has_many :user-evaluations
 
 ### Option
 
-- "paying-wayカラムはenumで管理"
+- "paying_wayカラムはenumで管理"
+
+## user_profile
+
+|Column|Type|Options|
+|------|----|-------|
+|last_name|str|null: false|
+|first_name|str|null: false|
+|last_name_kana|str|null: false|
+|first_name_kana|str|null: false|
+|birth_y|int|null: false|
+|birth_m|int|null: false|
+|birth_d|int|null: false|
+|nickname|str|null: false, unique: true|
+|avatar|text|null: true|
 
 
 ## address
@@ -58,7 +64,7 @@
 ### Association
 - has_many :addresses
 
-## point-transaction-record
+## point_transaction-record
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ref|null: false, foregin_key: true|
@@ -69,7 +75,7 @@
 - belongs_to :user
 - belongs_to :order-status
 
-## money-transaction-record
+## money_transaction_record
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ref|null: false, foregin_key: true|
@@ -80,7 +86,7 @@
 - belongs_to :user
 - belongs_to :order-status
 
-## user-evaluation
+## user_evaluation
 |Column|Type|Options|
 |------|----|-------|
 |high_count|int|null: true|
@@ -93,7 +99,7 @@
 ### Association
 - belongs_to :user
 
-## favorite-item
+## favorite_item
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ref|null: false, foregin_key: true|
@@ -103,7 +109,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## order-status
+## order_status
 |Column|Type|Options|
 |------|----|-------|
 |purchaser_id|int|null: false, add_index/add_foreign_key|
@@ -148,17 +154,17 @@
 |closed|bln|null: false, default: false|
 
 ### Association
-- has_many :item-photos
+- has_many :item_photos
 - has_many :comments
-- has_many :order-statuses
+- has_many :order_statuses
 - belongs_to :user
 - belongs_to :category
 
 ### Option
 - "conditionカラムはenumで管理"
-- "days-to-shipカラムはenumで管理"
+- "days_to_shipカラムはenumで管理"
 
-## item-photo
+## item_photo
 |Column|Type|Options|
 |------|----|-------|
 |image|str|null: false|
