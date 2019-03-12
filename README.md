@@ -1,6 +1,6 @@
 # Mercari DB
 
-## user
+## users
 
 |Column|Type|Options|
 |------|----|-------|
@@ -8,7 +8,7 @@
 |paying_way|int|null: false|
 |mail|str|null: false, unique: true|
 |password|str|null: false, unique: true|
-|comment|text|null: true|
+
 
 
 ### Association
@@ -25,7 +25,7 @@
 
 - "paying_wayカラムはenumで管理"
 
-## user_profile
+## user_profiles
 
 |Column|Type|Options|
 |------|----|-------|
@@ -38,9 +38,10 @@
 |birth_d|int|null: false|
 |nickname|str|null: false, unique: true|
 |avatar|text|null: true|
+|comment|text|null: true|
 
 
-## address
+## addresses
 
 |Column|Type|Options|
 |------|----|-------|
@@ -55,7 +56,7 @@
 - belongs_to :user
 - belongs_to :region
 
-## region
+## regions
 |Column|Type|Options|
 |------|----|-------|
 |name|str|null: false, unique: true|
@@ -64,7 +65,7 @@
 ### Association
 - has_many :addresses
 
-## point_transaction-record
+## point_transaction-records
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ref|null: false, foregin_key: true|
@@ -75,7 +76,7 @@
 - belongs_to :user
 - belongs_to :order-status
 
-## money_transaction_record
+## money_transaction_records
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ref|null: false, foregin_key: true|
@@ -86,7 +87,7 @@
 - belongs_to :user
 - belongs_to :order-status
 
-## user_evaluation
+## user_evaluations
 |Column|Type|Options|
 |------|----|-------|
 |high_count|int|null: true|
@@ -99,7 +100,7 @@
 ### Association
 - belongs_to :user
 
-## favorite_item
+## favorite_items
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ref|null: false, foregin_key: true|
@@ -109,7 +110,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## order_status
+## order_statuses
 |Column|Type|Options|
 |------|----|-------|
 |purchaser_id|int|null: false, add_index/add_foreign_key|
@@ -127,7 +128,7 @@
 
 - "statusカラムはenumで管理 （例：1→orderd等)"
 
-## comment
+## comments
 |Column|Type|Options|
 |------|----|-------|
 |content|text|null: false|
@@ -138,7 +139,7 @@
 - belongs_to :item
 - belongs_to :user
 
-## item
+## items
 |Column|Type|Options|
 |------|----|-------|
 |name|str|null: true|
@@ -151,10 +152,13 @@
 |price|int|null: false|
 |condition|int|null: false|
 |user_id|ref|null: false, foregin_key: true|
-|closed|bln|null: false, default: false|
+|sales_condition|bln|null: false, default: false|
+
+### Option
+- "sales_conditionカラムはenumで管理"
 
 ### Association
-- has_many :item_photos
+- has_many :item_images
 - has_many :comments
 - has_many :order_statuses
 - belongs_to :user
@@ -164,7 +168,7 @@
 - "conditionカラムはenumで管理"
 - "days_to_shipカラムはenumで管理"
 
-## item_photo
+## item_images
 |Column|Type|Options|
 |------|----|-------|
 |image|str|null: false|
@@ -174,7 +178,7 @@
 - belongs_to :item
 
 
-## category
+## categorys
 |Column|Type|Options|
 |------|----|-------|
 |name|str|null: false|
@@ -183,7 +187,7 @@
 ### Association
 - has_many :items
 
-## brand
+## brands
 |Column|Type|Options|
 |------|----|-------|
 |name|str|null: false|
