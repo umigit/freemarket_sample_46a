@@ -23,7 +23,7 @@
 
 ### Option
 
-- "paying_wayカラムはenumで管理"
+- "paying_wayはenumで管理"
 
 ## user_profiles
 
