@@ -1,18 +1,5 @@
 .container
-  .header
-    .header__container
-      .header__container__search
-        = image_tag "logo.svg", class: "logo__search"
-        = form_with local: true, class: "header__container__search__form" do |f|
-          = f.text_field :keyword, class: "header__container__search__form__input", type: "search", name: "keyword", placeholder: "キーワードから探す"
-      .header__container__navigation.navigation
-        .navigation__left
-          = link_to "カテゴリーから探す"
-          = link_to "ブランドから探す"
-        .navigation__right
-          = link_to "マイページ"
-          = link_to "お知らせ"
-          = link_to "やることリスト"
+  = render "layouts/header"
   .banner-top
     = image_tag "banner_top_tmp.jpg", class: "main__banner__image banner"
   .main
@@ -35,8 +22,8 @@
         = render "item"
         = render "item"
         = render "item"
-        .pickup-box__view-all
-          = link_to "全ての商品を見る"
+      .pickup-box__view-all
+        = link_to "すべての商品を見る"
     .pickup-box  
       %h3
         = link_to "レディース新着アイテム"
@@ -45,8 +32,8 @@
         = render "item"
         = render "item"
         = render "item"
-        .pickup-box__view-all
-          = link_to "全ての商品を見る"
+      .pickup-box__view-all
+        = link_to "全ての商品を見る"
   .aside
     .aside__banner
       = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
@@ -78,25 +65,58 @@
           %li
             = link_to "採用情報"
       %li.footer__navigation__item
-        %h2
+        %h2 メルカリを見る
         %ul
           %li
-            = link_to ""
+            = link_to "カテゴリー一覧"
           %li
-            = link_to ""
+            = link_to "ブランド一覧"
+          %li
+            = link_to "出品地域一覧"
+          %li
+            = link_to "公式ブログ"  
+          %li
+            = link_to "公式Twitter"
+          %li
+            = link_to "公式Face" 
       %li.footer__navigation__item
-        %h2
-          %ul
-            %li
-              = link_to ""
-            %li
-              = link_to ""
+        %h2 ヘルプ&ガイド
+        %ul
+          %li
+            = link_to "メルカリガイド"
+          %li
+            = link_to "メルカリロゴ利用ガイドライン"
+          %li
+            = link_to "お知らせ"
+          %li
+            = link_to "らくらくメルカリ便とは" 
+          %li
+            = link_to "ゆうゆうメルカリ便とは"
+          %li
+            = link_to "大型らくらくメルカリ便とは" 
+          %li
+            = link_to "車体取引ガイド"
+          %li
+            = link_to "返品・返金ポリシー"
+          %li
+            = link_to "メルカリあんしん・あんぜん宣言！"
+          %li
+            = link_to "偽ブランド撲滅への取り組み"               
+          %li
+            = link_to "メルカリボックス"   
       %li.footer__navigation__item
-        %h2
-          %ul
-            %li
-              = link_to ""
-            %li
-              = link_to ""
+        %h2 国
+        %ul
+          %li
+            = link_to "United States"
+          %li
+            = link_to "United Kingdom"
+          %li
+            = link_to "日本"
+    .footer__logo
+      = image_tag "logo-white.svg"
+    .footer__copyright
+      %p © 2019 Mercari
+          
 
 
