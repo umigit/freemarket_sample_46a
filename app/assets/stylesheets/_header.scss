@@ -6,7 +6,7 @@
     margin: 0 auto;
     padding-top: 8px;
     position: relative;
-    
+
     &__search {
       height: 36px;
       display: flex;
@@ -53,5 +53,16 @@
     box-sizing: border-box;
     border: 0 solid white;
     display: block;
+  }
+}
+
+.single-header {
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    box-sizing: border-box;
+    height: 49px;
   }
 }
