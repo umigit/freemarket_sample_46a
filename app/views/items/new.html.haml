@@ -1,2 +1,41 @@
-.single-header
-  = image_tag "logo.svg"
+.container.new-item
+  .new-item__header
+    = image_tag "logo.svg"
+  .new-item__main
+    .new-item__main__container
+      .new-item__main__container__head
+        %h2 商品の情報を入力
+      = form_with local: true , class: "new-item__main__container__form sell-form" do |f|
+        .sell-form__image.form-box
+          %h3
+            出品画像
+            %span 必須
+          %p 最大10枚までアップロードできます
+          = f.file_field :images , class: "sell-form__image__input"
+          .sell-form__image__dropbox
+            %h5 ドラッグアンドドロップ
+            %h5 またはクリックしてファイルをアップロード
+        .sell-form__summary.form-box
+          %h5
+            商品名
+            %span 必須
+          = f.text_field :name, class: "sell-form__summary__name", placeholder: "商品名（必須 40文字まで)"
+          %h5
+            商品の説明
+            %span 必須
+          = f.text_area :comment, class: "sell-form__summary__comment" , rows: "5", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .sell-form__detail.form-box.flex-split
+          %h6 商品の詳細
+          .sell-form__detail__select-box.select-box
+            %h5
+              カテゴリー
+              %span 必須
+            .select-wrap
+              = f.select :category_id, ["---", "レディース", "メンズ", "ベビー・キッズ"], size: "1"
+              %i.fa.fa-angle-down
+            .select-wrap
+              = f.select :category_id, ["---", "トップス", "ジャケット/アウター", "パンツ"], size: "1"
+              %i.fa.fa-angle-down
+            .select-wrap
+              = f.select :category_id, ["---", "シャツ", "ポロシャツ", "タンクトップ"], size: "1"
+              %i.fa.fa-angle-down
