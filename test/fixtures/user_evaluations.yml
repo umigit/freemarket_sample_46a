@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  high_count: 1
+  medium_count: 1
+  low_count: 1
+  evaluating_id: 1
+  evaluated_id: 1
+  comment: MyText
+
+two:
+  high_count: 1
+  medium_count: 1
+  low_count: 1
+  evaluating_id: 1
+  evaluated_id: 1
+  comment: MyText
