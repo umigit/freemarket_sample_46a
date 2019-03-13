@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_094131) do
+ActiveRecord::Schema.define(version: 2019_03_13_104238) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
     t.string "city", null: false
     t.string "block", null: false
     t.string "building"
+    t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "region_id", null: false
     t.bigint "user_id", null: false
     t.index ["region_id"], name: "index_addresses_on_region_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
@@ -103,8 +103,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_094131) do
     t.datetime "updated_at", null: false
     t.bigint "item_id", null: false
     t.index ["item_id"], name: "index_order_statuses_on_item_id"
-    t.index ["purchaser_id"], name: "index_order_statuses_on_purchaser_id"
-    t.index ["seller_id"], name: "index_order_statuses_on_seller_id"
   end
 
   create_table "point_transaction_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
