@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purchaser_id: 1
+  seller_id: 1
+  status: 1
+  item_id: 
+
+two:
+  purchaser_id: 1
+  seller_id: 1
+  status: 1
+  item_id: 
