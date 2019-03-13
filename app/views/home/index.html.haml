@@ -1,0 +1,41 @@
+.container
+  = render "layouts/header"
+  .banner-top
+    = image_tag "banner_top_tmp.jpg", class: "main__banner__image banner"
+  .main
+    %h2 ピックアップカテゴリー
+    .pickup-box  
+      %h3
+        = link_to "レディース新着アイテム"
+      .pickup-box__items
+        = render "item"
+        = render "item"
+        = render "item"
+        = render "item"
+      .pickup-box__view-all
+        = link_to "全ての商品を見る"
+    .pickup-box  
+      %h3
+        = link_to "レディース新着アイテム"
+      .pickup-box__items
+        = render "item"
+        = render "item"
+        = render "item"
+        = render "item"
+      .pickup-box__view-all
+        = link_to "すべての商品を見る"
+    .pickup-box  
+      %h3
+        = link_to "レディース新着アイテム"
+      .pickup-box__items
+        = render "item"
+        = render "item"
+        = render "item"
+        = render "item"
+      .pickup-box__view-all
+        = link_to "全ての商品を見る"
+  .aside
+    .aside__banner
+      = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
+  = render "layouts/footer"
+  = render "layouts/sell-button"

@@ -1,0 +1,57 @@
+.header {
+  &__container {
+    box-sizing: border-box;
+    height: $header-heght;
+    width: 700px;
+    margin: 0 auto;
+    padding-top: 8px;
+    position: relative;
+    
+    &__search {
+      height: 36px;
+      display: flex;
+
+      &__form {
+        width: 100%;
+        padding-left: 16px;
+      }
+    }
+
+    &__navigation {
+      height: 38px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
+.navigation {
+
+  &__left {
+    float: left;
+    display: flex;
+    justify-content: left;
+
+    a {
+      padding-right: 16px;
+    }
+  }
+
+  &__right {
+    float: right;
+    display: flex;
+    justify-content: right;
+
+    a {
+      padding-left: 16px;
+    }
+  }
+
+  a {
+    line-height: 38px;
+    box-sizing: border-box;
+    border: 0 solid white;
+    display: block;
+  }
+}

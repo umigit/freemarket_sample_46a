@@ -1,0 +1,21 @@
+.sell-button {
+  width: 160px;
+  height: 160px;
+  background-color: red;
+  border-radius: 50%;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  text-align: center;
+
+  h3 {
+    font-size: 24px;
+    color: white;
+    margin-top: 24px;
+  }
+
+  i {
+    font-size: 60px;
+    color: white;
+  }
+}

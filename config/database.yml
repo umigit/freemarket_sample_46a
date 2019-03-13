@@ -10,7 +10,7 @@ default: &default
   username: root
   password:
   pool: 5
-  host: localhosts
+  host: localhost
 
 development:
   <<: *default
