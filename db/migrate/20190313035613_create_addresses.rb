@@ -5,7 +5,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :block
       t.string :building
-      t.reference :region
+      t.references :region
 
       t.timestamps
     end
