@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phone: 1
+  paying_way: 1
+  mail: MyString
+  password: MyString
+
+two:
+  phone: 1
+  paying_way: 1
+  mail: MyString
+  password: MyString

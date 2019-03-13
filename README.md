@@ -65,16 +65,16 @@
 ### Association
 - has_many :addresses
 
-## point_transaction-records
+## point_transaction_records
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ref|null: false, foregin_key: true|
 |point|int|null: false|
-|order_status_id|ref|null: false, foregin_key: true|
+|order_state_id|ref|null: false, foregin_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :order-status
+- belongs_to :order_status
 
 ## money_transaction_records
 |Column|Type|Options|
@@ -110,7 +110,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## order_statuses
+## order_status
 |Column|Type|Options|
 |------|----|-------|
 |purchaser_id|int|null: false, add_index/add_foreign_key|
