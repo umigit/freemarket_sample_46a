@@ -10,7 +10,11 @@ default: &default
   username: root
   password:
   pool: 5
+<<<<<<< HEAD
   # host: localhosts
+=======
+  host: localhost
+>>>>>>> umigit/master
 
 development:
   <<: *default
