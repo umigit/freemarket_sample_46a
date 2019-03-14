@@ -55,13 +55,19 @@ span {
   padding: 2px 6px 1px 4px;
 }
 
+small {
+  font-size: 12px;
+}
+
 .btn {
   border-radius: 0;
   background-color: $red;
   height: 48px;
   width: auto;
-  color: whire !important;
+  color: white;
   padding: 0;
+  display: block;
+  line-height: 48px;
 
   &:visited {
     color: white;
