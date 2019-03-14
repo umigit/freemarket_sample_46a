@@ -40,6 +40,12 @@
               = f.select :category_id, ["---", "シャツ", "ポロシャツ", "タンクトップ"], size: "1"
               %i.fa.fa-angle-down
             %h5.mt-40
+              ブランド
+              %span 任意
+            .select-wrap
+              = f.text_field :brand_id, placeholder: "例）シャネル"
+              %i.fa.fa-angle-down
+            %h5.mt-40
               商品の状態
               %span 必須
             .select-wrap
