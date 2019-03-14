@@ -40,6 +40,10 @@
 .form-box {
   padding: 40px;
   border-bottom: 1px solid #f5f5f5;
+
+  p {
+    font-size: 14px;
+  }
 }
 
 .select-box {
@@ -59,8 +63,37 @@
     position: absolute;
     right: 15px;
     top: 14px;
-    bottom: 0s;
+    bottom: 0;
   }
+}
+
+.price-wrap {
+  line-height: 48px;
+  padding-bottom: 24px;
+  &__right {
+    display: flex;
+    text-align: right;
+    p {
+
+      margin-right: 5px;
+    }
+  }
+}
+
+.charge-wrap {
+  padding: 24px 0 24px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.profit-wrap {
+  padding: 24px 0 24px;
+}
+
+#price-field{
+  width: 160px;
+  padding: 9px;
+  text-align: right;
 }
 
 .sell-form {
@@ -93,15 +126,20 @@
   &__summary {
 
     &__name {
-      margin: 8px 0 40px;
+      margin: 8px 0 0 0;
     }
 
     &__comment {
       margin-top: 8px;
     }
-
-  &__detail {
-
   }
+
+  &__submit {
+
+    &__back {
+      box-sizing: border-box;
+      width: 277px;
+      margin: 24px auto 0;
+    }
   }
 }

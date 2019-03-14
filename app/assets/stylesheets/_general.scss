@@ -31,6 +31,7 @@ ul, li {
 
 input, textarea, select {
   box-sizing: border-box;
+  background: white;
   width: 100%;
   padding: 9px 32px 9px 8px;
   border-radius: 4px;
@@ -54,9 +55,32 @@ span {
   padding: 2px 6px 1px 4px;
 }
 
+.btn {
+  border-radius: 0;
+  background-color: $red;
+  height: 48px;
+  width: auto;
+  color: whire !important;
+  padding: 0;
+
+  &:visited {
+    color: white;
+  }
+    &-gray {
+      background-color: #aaa;
+    }
+
+    &-large {
+      width: 100%;
+    }
+}
 .flex-split {
   display: flex;
   justify-content: space-between;
+}
+
+.mt-40 {
+  margin-top: 40px;
 }
 
 .logo {
