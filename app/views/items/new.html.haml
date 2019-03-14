@@ -1,11 +1,11 @@
 .container.new-item
   .new-item__header
-    = image_tag "logo.svg"
+    = link_to image_tag("logo.svg"), "/"
   .new-item__main
     .new-item__main__container
       .new-item__main__container__head
         %h2 商品の情報を入力
-      = form_with local: true , class: "new-item__main__container__form sell-form" do |f|
+      = form_with model: Item.new, local: true , class: "new-item__main__container__form sell-form" do |f|
         .sell-form__image.form-box
           %h3
             出品画像
@@ -20,7 +20,7 @@
             商品名
             %span 必須
           = f.text_field :name, class: "sell-form__summary__name", placeholder: "商品名（必須 40文字まで)"
-          %h5
+          %h5.mt-40
             商品の説明
             %span 必須
           = f.text_area :comment, class: "sell-form__summary__comment" , rows: "5", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
@@ -39,3 +39,72 @@
             .select-wrap
               = f.select :category_id, ["---", "シャツ", "ポロシャツ", "タンクトップ"], size: "1"
               %i.fa.fa-angle-down
+            %h5.mt-40
+              商品の状態
+              %span 必須
+            .select-wrap
+              = f.select :condition, ["---", "新品、未使用", "未使用に近い", "目立った傷や汚れなし"], size: "1"
+              %i.fa.fa-angle-down
+        .sell-form__shipping.form-box.flex-split
+          %h6
+            配送について
+            = link_to "?", "/", class: "question"
+          .sell-form__shipping__select-box.select-box
+            %h5
+              配送料の負担
+              %span 必須
+            .select-wrap
+              = f.select :shipping_fee, ["---", "送料込み（出品者負担）", "着払い（購入者負担）"], size: "1"
+              %i.fa.fa-angle-down
+            %h5.mt-40
+              発送元の地域
+              %span 必須
+            .select-wrap
+              = f.select :region_id, ["---", "北海道", "青森"], size: "1"
+              %i.fa.fa-angle-down
+            %h5.mt-40
+              配送料の負担
+              %span 必須
+            .select-wrap
+              = f.select :days_to_ship, ["---", "1~2日で発送", "2~3日で発送", "4~7日で発送"], size: "1"
+              %i.fa.fa-angle-down
+        .sell-form__price.form-box.flex-split
+          %h6
+            販売価格(300〜9,999,999)
+            = link_to "?", "/", class: "question"
+          .sell-form__price__select-box.select-box
+            .price-wrap.flex-split
+              .price-wrap__left
+                %h5
+                  価格
+                  %span 必須
+              .price-wrap__right
+                %p ¥
+                = f.text_field :price, id: "price-field", placeholder: "例）300"
+            .charge-wrap.flex-split
+              .charge-wrap__left
+                %p 販売手数料(10%)
+              .charge-wrap__right
+                %p#charge-field -
+            .profit-wrap.flex-split
+              .charge-wrap__left
+                %h3 販売利益
+              .charge-wrap__right
+                %h3#profit-field -
+        .sell-form__submit.form-box
+          %p 禁止されている出品、行為を必ずご確認ください。
+          %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+          %p また、出品をもちまして加盟店規約に同意したことになります。
+          = f.submit "出品する", id: "sell-submit-button", class: "btn btn-large mt-40"
+          = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
+.new-item__footer
+  %ul
+    %li
+      = link_to "プライバシーポリシー", "/"
+    %li
+      = link_to "メルカリ利用規約", "/"
+    %li
+      = link_to "特定商取引に関する表記", "/"
+  = link_to image_tag("logo-gray.svg"), "/", class: "new-item__footer__logo"
+  %p
+    %small ©︎2019 Mercari
