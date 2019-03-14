@@ -64,57 +64,40 @@
   }
 }
 
-.form-box {
-  padding: 40px;
-  border-bottom: 1px solid #f5f5f5;
-
-  p {
-    font-size: 14px;
-  }
+@mixin split {
+  display: flex;
+  justify-content: space-between;
 }
 
-.select-box {
-  width: 400px;
+@mixin formSelectBox {
+  @include split();
 
-  select {
-    margin-top: 8px;
-  }
-}
+  &__select-box{
+    width: 400px;
 
-.select-wrap {
-  position: relative;
-  font-family: "font-awesome";
-  font-size: 32px;
-  color: #666;
-  i {
-    position: absolute;
-    right: 15px;
-    top: 14px;
-    bottom: 0;
-  }
-}
+    select {
+      margin-top: 8px;
+    }
 
-.price-wrap {
-  line-height: 48px;
-  padding-bottom: 24px;
-  &__right {
-    display: flex;
-    text-align: right;
-    p {
+    &__wrap {
+      position: relative;
+      font-family: "font-awesome";
+      font-size: 32px;
+      color: #666;
 
-      margin-right: 5px;
+      i {
+        position: absolute;
+        right: 15px;
+        top: 14px;
+        bottom: 0;
+      }
     }
   }
 }
 
-.charge-wrap {
-  padding: 24px 0 24px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-}
-
-.profit-wrap {
-  padding: 24px 0 24px;
+@mixin formBox {
+  padding: 40px;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 #price-field{
@@ -125,7 +108,7 @@
 
 .sell-form {
   &__image {
-
+    @include formBox();
     h3 {
       font-size: 16px;
       text-align: left;
@@ -151,7 +134,7 @@
   }
 
   &__summary {
-
+    @include formBox();
     &__name {
       margin: 8px 0 0 0;
     }
@@ -161,8 +144,54 @@
     }
   }
 
-  &__submit {
+  &__detail {
+    @include formBox();
+    @include formSelectBox();
+  }
 
+  &__shipping {
+    @include formBox();
+    @include formSelectBox();
+  }
+
+  &__price {
+    @include formBox();
+    @include split();
+
+    &__select-box {
+      width: 400px;
+
+      &__price-wrap {
+        @include split();
+        line-height: 48px;
+        padding-bottom: 24px;
+
+        &__right {
+          display: flex;
+          text-align: right;
+          p {
+
+            margin-right: 5px;
+          }
+        }
+      }
+
+      &__charge-wrap {
+        @include split();
+        padding: 24px 0 24px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+
+      &__profit-wrap {
+        @include split();
+        padding: 24px 0 24px;
+      }
+    }
+  }
+
+  &__submit {
+    @include formBox();
     &__back {
       box-sizing: border-box;
       height: 48px;
@@ -171,3 +200,18 @@
     }
   }
 }
+
+.question {
+  background-color: #0099e8;
+  font-size: 12px;
+  color: white;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &:visited {
+    color: white;
+  }
+}
+
