@@ -32,25 +32,25 @@
               %span 必須
             .select-wrap
               = f.select :category_id, ["---", "レディース", "メンズ", "ベビー・キッズ"], size: "1"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
             .select-wrap
               = f.select :category_id, ["---", "トップス", "ジャケット/アウター", "パンツ"], size: "1"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
             .select-wrap
               = f.select :category_id, ["---", "シャツ", "ポロシャツ", "タンクトップ"], size: "1"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
             %h5.mt-40
               ブランド
               %span 任意
             .select-wrap
               = f.text_field :brand_id, placeholder: "例）シャネル"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
             %h5.mt-40
               商品の状態
               %span 必須
             .select-wrap
               = f.select :condition, ["---", "新品、未使用", "未使用に近い", "目立った傷や汚れなし"], size: "1"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
         .sell-form__shipping.form-box.flex-split
           %h6
             配送について
@@ -61,19 +61,19 @@
               %span 必須
             .select-wrap
               = f.select :shipping_fee, ["---", "送料込み（出品者負担）", "着払い（購入者負担）"], size: "1"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
             %h5.mt-40
               発送元の地域
               %span 必須
             .select-wrap
               = f.select :region_id, ["---", "北海道", "青森"], size: "1"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
             %h5.mt-40
               配送料の負担
               %span 必須
             .select-wrap
               = f.select :days_to_ship, ["---", "1~2日で発送", "2~3日で発送", "4~7日で発送"], size: "1"
-              %i.fa.fa-angle-down
+              = fa_icon "angle-down"
         .sell-form__price.form-box.flex-split
           %h6
             販売価格(300〜9,999,999)
