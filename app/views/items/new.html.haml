@@ -11,10 +11,12 @@
             出品画像
             %span 必須
           %p 最大10枚までアップロードできます
-          = f.file_field :images , class: "sell-form__image__input"
-          .sell-form__image__dropbox
-            %h5 ドラッグアンドドロップ
-            %h5 またはクリックしてファイルをアップロード
+          = f.file_field :images , class: "sell-form__image__input", id: "sell-form-upload", multiple: true
+          .sell-form__image__dropbox#uploadField
+            .sell-form__image__dropbox__inner#dropbox
+              %pre
+                ドラッグアンドドロップ
+                またはクリックしてファイルをアップロード
         .sell-form__summary
           %h5
             商品名

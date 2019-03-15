@@ -123,13 +123,35 @@
     }
 
     &__dropbox {
-      box-sizing: border-box;
-      background-color: #f5f5f5;
-      border: 1px dashed #ccc;
-      width: 620px;
-      margin-top: 16px;
-      padding: 50px 100px;
-      text-align: center;
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: space-between;
+
+      &__inner {
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+        border: 1px dashed #ccc;
+        max-width: 100%;
+        min-width: 112px;
+        height: 160px;
+        padding: 40px;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        flex: 1;
+        position: relative;
+        pre {
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          margin: 0;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: calc(50% - 24px);
+
+        }
+      }
     }
   }
 
@@ -197,6 +219,52 @@
       height: 48px;
       width: 277px;
       margin: 24px auto 0;
+    }
+  }
+}
+
+.upload-item {
+  background: #f5f5f5;
+  width: 112px;
+  height: 160px;
+  margin: 0 5px 10px;
+
+  border: 1px solid #eee;
+
+  figure {
+    height: 114px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  &__image {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &__button {
+    height: 44px;
+    line-height: 44px;
+    display: flex;
+
+
+    &__edit {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 50%;
+      height: 44px;
+      margin: 0;
+      color: $blue;
+    }
+
+    &__delete {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 50%;
+      height: 44px;
+      margin: 0;
+      border-left: 1px solid #eee;
+      color: $blue;
     }
   }
 }
