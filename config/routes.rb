@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root "home#index"
   resources :items, only: [:new, :create]
-  resources :users, only: [:index]
+  resources :users  do
+    collection do
+      get :logout
+    end
+  end
 end
