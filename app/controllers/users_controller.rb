@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
 
-  def logout
+  def index
   end
 end
