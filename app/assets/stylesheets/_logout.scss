@@ -1,0 +1,28 @@
+.logout{
+  margin: 40px auto 0px auto;
+  padding-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(245, 245, 245);
+  &__content{
+    width: 700px;
+    height: 179px;
+    margin: 40px auto;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__btn{
+      width: 40%;
+      background-color: #ea352d;
+      border: 1px solid #ea352d;
+      color: white;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      display: block;
+    }
+  }
+}
