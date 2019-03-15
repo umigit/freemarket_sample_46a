@@ -31,13 +31,13 @@
               カテゴリー
               %span 必須
             .sell-form__detail__select-box__wrap
-              = f.select :category_id, ["---", "レディース", "メンズ", "ベビー・キッズ"], size: "1"
+              = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---"
               = fa_icon "angle-down"
             .sell-form__detail__select-box__wrap
-              = f.select :category_id, ["---", "トップス", "ジャケット/アウター", "パンツ"], size: "1"
+              %select#item_sub_category_id{name: ""}
               = fa_icon "angle-down"
             .sell-form__detail__select-box__wrap
-              = f.select :category_id, ["---", "シャツ", "ポロシャツ", "タンクトップ"], size: "1"
+              %select#item_sub_sub_category_id{name: ""}
               = fa_icon "angle-down"
             %h5.mt-40
               サイズ
