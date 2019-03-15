@@ -6,6 +6,11 @@
   &__bar{
     width: 280px;
     margin-right: 40px;
+    .mypage-navigation {
+      color: #333;
+      font-size: 14px;
+      text-decoration: none;
+    }
     .mypage-nav {
       &__list li {
         border-top: 1px solid;
@@ -19,7 +24,7 @@
           display: flex;
           align-items: center;
         }
-        .fa-chevron-right {
+        #chevron {
           position: absolute;
           top: 43%;
           right: 16px;
@@ -33,11 +38,6 @@
   }
 }
 
-.mypage-navigation {
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
-}
 
 #first__list {
   border: 0;
