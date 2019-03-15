@@ -10,7 +10,7 @@ default: &default
   username: root
   password:
   pool: 5
-  host: localhost
+  # host: localhost
 
 development:
   <<: *default
@@ -26,3 +26,6 @@ test:
 production:
   <<: *default
   database: db/freemarket_sample_46a_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

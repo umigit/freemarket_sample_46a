@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  background-color: rgb(245, 245, 245);
 }
 
 html, body, h1, h2, h3, h4, h5, p, a {
@@ -28,14 +29,68 @@ ul, li {
   list-style: none;
 }
 
-input {
-  height: 36px;
+input, textarea, select {
+  box-sizing: border-box;
+  background: white;
   width: 100%;
   padding: 9px 32px 9px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
   line-height: 1.5;
   font-size: 16px;
+}
+
+select {
+  -webkit-appearance: none;
+	-moz-appearance: none;
+  appearance: none;
+}
+
+span {
+  color: white;
+  background-color: red;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-left: 8px;
+  padding: 2px 6px 1px 4px;
+}
+
+small {
+  font-size: 12px;
+}
+
+.btn {
+  border-radius: 0;
+  background-color: $red;
+  height: 48px;
+  width: auto;
+  color: white;
+  padding: 0;
+  display: block;
+  line-height: 48px;
+
+  &:visited {
+    color: white;
+  }
+    &-gray {
+      background-color: #aaa;
+    }
+
+    &-large {
+      width: 100%;
+    }
+}
+.flex-split {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gray {
+  background-color: #ccc;
+}
+
+.mt-40 {
+  margin-top: 40px;
 }
 
 .logo {

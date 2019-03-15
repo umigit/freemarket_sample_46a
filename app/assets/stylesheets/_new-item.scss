@@ -1,0 +1,217 @@
+.new-item {
+  h6 {
+    color: #888;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  &__header {
+    height: 128px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      box-sizing: border-box;
+      height: 49px;
+    }
+  }
+
+  &__main {
+
+    &__container {
+      width: 700px;
+      background-color: white;
+      margin: 0 auto;
+
+      &__head {
+        padding: 32px 16px;
+        border-bottom: 1px solid #f5f5f5;
+      }
+
+      &__form {
+        input {
+          height: 48px;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    width: 456px;
+    height: 140px;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+    ul {
+      display: flex;
+      justify-content: center;
+
+    }
+
+    a {
+      font-size: 12px;
+      margin: 0 10px;
+    }
+
+    &__logo {
+
+      img {
+        width: 80px;
+        margin: 40px auto 0;
+      }
+
+    }
+  }
+}
+
+@mixin split {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin formSelectBox {
+  @include split();
+
+  &__select-box{
+    width: 400px;
+
+    select {
+      margin-top: 8px;
+    }
+
+    &__wrap {
+      position: relative;
+      font-family: "font-awesome";
+      font-size: 32px;
+      color: #666;
+
+      i {
+        position: absolute;
+        right: 15px;
+        top: 14px;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin formBox {
+  padding: 40px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+#price-field{
+  width: 160px;
+  padding: 9px;
+  text-align: right;
+}
+
+.sell-form {
+  &__image {
+    @include formBox();
+    h3 {
+      font-size: 16px;
+      text-align: left;
+    }
+
+    p {
+      font-size: 14px;
+      margin-top: 8px;;
+    }
+    &__input {
+      display: none;
+    }
+
+    &__dropbox {
+      box-sizing: border-box;
+      background-color: #f5f5f5;
+      border: 1px dashed #ccc;
+      width: 620px;
+      margin-top: 16px;
+      padding: 50px 100px;
+      text-align: center;
+    }
+  }
+
+  &__summary {
+    @include formBox();
+    &__name {
+      margin: 8px 0 0 0;
+    }
+
+    &__comment {
+      margin-top: 8px;
+    }
+  }
+
+  &__detail {
+    @include formBox();
+    @include formSelectBox();
+  }
+
+  &__shipping {
+    @include formBox();
+    @include formSelectBox();
+  }
+
+  &__price {
+    @include formBox();
+    @include split();
+
+    &__select-box {
+      width: 400px;
+
+      &__price-wrap {
+        @include split();
+        line-height: 48px;
+        padding-bottom: 24px;
+
+        &__right {
+          display: flex;
+          text-align: right;
+          p {
+
+            margin-right: 5px;
+          }
+        }
+      }
+
+      &__charge-wrap {
+        @include split();
+        padding: 24px 0 24px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+
+      &__profit-wrap {
+        @include split();
+        padding: 24px 0 24px;
+      }
+    }
+  }
+
+  &__submit {
+    @include formBox();
+    &__back {
+      box-sizing: border-box;
+      height: 48px;
+      width: 277px;
+      margin: 24px auto 0;
+    }
+  }
+}
+
+.question {
+  background-color: #0099e8;
+  font-size: 12px;
+  color: white;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &:visited {
+    color: white;
+  }
+}
+
