@@ -1,0 +1,59 @@
+.mypage {
+  &__side{
+    width: 280px;
+    margin-right: 40px;
+    &__nav{
+      &__list{
+        &__item{
+          background-color: rgb(245, 245, 245);
+          display: block;
+          height: 48px;
+          padding: 0 16px;
+          border-top: 1px solid #eee;
+          list-style: none;
+          text-decoration: none;
+          color: black;
+          line-height: 48px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &:hover {
+            background-color: #CCCCCC;
+          }
+          &:hover .fa {
+            transform: translateX(4px);
+            transition-duration: 0.3s;
+            color: black;
+          }
+          &__center{
+            flex-grow:0.8;
+            display: flex;
+            flex-direction: row-reverse;
+            &__num{
+              border-radius: 50%;
+              background-color: white;
+              color: rgb(245, 245, 245);
+              width: 24px;
+              height: 24px;
+              text-align: center;
+              line-height: 24px;
+            }
+          }
+          &__icon{
+            font-size: 1.8em;
+            line-height: 48px;
+            color: #ccc;
+            -webkit-text-stroke: 1.8px white;
+          }
+        }
+      }
+      &__head{
+        min-height: 48px;
+        font-weight: bold;
+        padding-top: 40px;
+        padding-bottom: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+}
