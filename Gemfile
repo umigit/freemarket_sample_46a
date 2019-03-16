@@ -78,4 +78,6 @@ gem 'haml-rails'
 gem 'ransack'
 gem 'jquery-rails'
 gem 'devise'
+gem 'carrierwave'
+gem 'mini_magick'
 
