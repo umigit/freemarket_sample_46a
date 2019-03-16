@@ -2,6 +2,15 @@ $(function () {
 
   $(document).on('change', '#item_category_id', function () {
     const id = $(this).val();
+    const prompt = `<option value="">---</option>`;
+    if (!id) {
+      $("#item_sub_category_id").html(prompt);
+      $("#item_sub_sub_category_id").html(prompt);
+      $("#sell-form-sub_category").css("display", "none");
+      $("#sell-form-sub_sub_category").css("display", "none");
+
+      return false;
+    }
 
     $.ajax({
       type: "get",
@@ -11,7 +20,7 @@ $(function () {
     })
     .then(
       function (response) {
-        const prompt = `<option value="">---</option>`;
+
 
         $("#item_sub_category_id").html(prompt);
         $("#item_sub_sub_category_id").html(prompt);
