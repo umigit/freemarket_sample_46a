@@ -1,80 +1,78 @@
-.left-content
+.left-content__bar
+  %nav.mypage-navigation
+    %ul.mypage-nav__list
+      %li#first__list
+        = link_to "マイページ", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "お知らせ", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "やることリスト", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "いいね！一覧", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "出品する", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "出品した商品-出品中", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "出品した商品-取引中", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "出品した商品-売却済み", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "購入した商品-取引中", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "購入した商品-過去の取引", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "ニュース一覧", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "評価一覧", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "ガイド", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "お問い合わせ", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
   .left-content__bar
-    %nav.mypage-navigation
-      %ul.mypage-nav__list
-        %li#first__list
-          = link_to "マイページ", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "お知らせ", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "やることリスト", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "いいね！一覧", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "出品する", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "出品した商品-出品中", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "出品した商品-取引中", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "出品した商品-売却済み", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "購入した商品-取引中", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "購入した商品-過去の取引", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "ニュース一覧", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "評価一覧", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "ガイド", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "お問い合わせ", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-    .left-content__bar
-      %h4.mypage-nav__head メルペイ
-      %ul.mypage-nav__list
-        %li#first__list
-          = link_to "売上・振込申請", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "ポイント", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-    .left-content__bar
-      %h4.mypage-nav__head 設定
-      %ul.mypage-nav__list
-        %li#first__list
-          = link_to "プロフィール", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "発送元・お届け先住所変更", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "支払い方法", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "メール/パスワード", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "本人情報", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "電話番号の確認", "", class: "mypage-nav__list__item"
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
-        %li
-          = link_to "ログアウト", "", class: "mypage-nav__list__item"
-          %i.fa.fa-chevron-right#chevron
-          = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+    %h4.mypage-nav__head メルペイ
+    %ul.mypage-nav__list
+      %li#first__list
+        = link_to "売上・振込申請", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "ポイント", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+  .left-content__bar
+    %h4.mypage-nav__head 設定
+    %ul.mypage-nav__list
+      %li#first__list
+        = link_to "プロフィール", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "発送元・お届け先住所変更", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "支払い方法", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "メール/パスワード", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "本人情報", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "電話番号の確認", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
+      %li
+        = link_to "ログアウト", "", class: "mypage-nav__list__item"
+        = link_to(content_tag(:i, '', class: 'fa fa-chevron-right', id:"chevron"))
