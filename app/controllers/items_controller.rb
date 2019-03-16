@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def new
     @categories = Category.ransack(parent_id_null: true).result
+    @regions = Region.all
   end
 
   def create
