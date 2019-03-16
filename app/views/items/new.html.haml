@@ -13,6 +13,7 @@
           %p 最大10枚までアップロードできます
           = f.file_field :images , class: "sell-form__image__input", id: "sell-form-upload", multiple: true
           .sell-form__image__dropbox#uploadField
+            .sell-form__image__dropbox__thumbnail#thumbnailBox
             .sell-form__image__dropbox__inner#dropbox
               %pre
                 ドラッグアンドドロップ

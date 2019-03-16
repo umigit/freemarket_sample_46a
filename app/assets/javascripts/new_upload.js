@@ -1,9 +1,15 @@
 $(function () {
+  let imageCount = 0;
+  let imageList = [];
+
+
   $(document).on('change', '#sell-form-upload', function () {
     const files = $(this).prop('files');
     const fileLength = files.length;
+    imageCount += fileLength;
 
-    if (fileLength > 10) {
+    if (imageCount > 10) {
+      imageCount -= fileLength;
       return false;
     }
 
@@ -11,7 +17,8 @@ $(function () {
       const reader = new FileReader();
 
       reader.onload = function () {
-        addPreviewToUploadField(reader.result, i);
+        imageList.push(reader.result);
+        addPreviewToUploadField(reader.result, imageList.length - 1);
       }
 
       reader.readAsDataURL(files[i]);
@@ -22,12 +29,24 @@ $(function () {
     $("#sell-form-upload").click();
   });
 
+  $(document).on('click', '.upload-item__container__button__delete', function () {
+    const id = $(this).data('id');
+    console.log('delete');
+    console.log(id);
+    imageList[id] = null;
+    imageCount--;
+    $("#uploadItem-" + id).empty();
+
+  });
+
   function addPreviewToUploadField(image, index) {
     const html = `<div class="upload-item" id="uploadItem-${index}">
-                    <figure><img src="${image}" class="upload-item__image" id="uploadImage-${index}"/></figure>
-                    <div class="upload-item__button" id="upButton-${index}">
-                      <a class="upload-item__button__edit" data-id="${index}">編集</a>
-                      <a class="upload-item__button__delete" data-id="${index}">削除</a>
+                    <div class="upload-item__container">
+                      <figure><img src="${image}" class="upload-item__container__image" id="uploadImage-${index}"/></figure>
+                      <div class="upload-item__container__button" id="upButton-${index}">
+                        <a class="upload-item__container__button__edit" data-id="${index}">編集</a>
+                        <a class="upload-item__container__button__delete" data-id="${index}">削除</a>
+                      </div>
                     </div>
                   </div>`
 
