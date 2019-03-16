@@ -72,7 +72,7 @@
               配送料の負担
               %span 必須
             .sell-form__shipping__select-box__wrap
-              = f.select :shipping_fee, ["---", "送料込み（出品者負担）", "着払い（購入者負担）"], size: "1"
+              = f.select :shipping_fee, Item.shipping_fees.keys, prompt: "---"
               = fa_icon "angle-down"
             %h5.mt-40
               発送元の地域
