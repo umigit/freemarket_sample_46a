@@ -122,6 +122,10 @@
       display: none;
     }
 
+    &__error {
+      color: $red;
+    }
+
     &__dropbox {
         margin-top: 16px;
         display: flex;

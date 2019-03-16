@@ -11,13 +11,14 @@
             出品画像
             %span 必須
           %p 最大10枚までアップロードできます
-          = f.file_field :images , class: "sell-form__image__input", id: "sell-form-upload", multiple: true
+          = f.file_field :images , class: "sell-form__image__input", id: "sell-form-upload", multiple: true, accept: ".jpg, .jpeg, .png"
           .sell-form__image__dropbox#uploadField
             .sell-form__image__dropbox__thumbnail#thumbnailBox
             .sell-form__image__dropbox__inner#dropbox
               %pre
                 ドラッグアンドドロップ
                 またはクリックしてファイルをアップロード
+          .sell-form__image__error
         .sell-form__summary
           %h5
             商品名
@@ -60,7 +61,7 @@
               商品の状態
               %span 必須
             .sell-form__detail__select-box__wrap
-              = f.select :condition, ["---", "新品、未使用", "未使用に近い", "目立った傷や汚れなし"], size: "1"
+              = f.select :condition, Item.conditions.keys, prompt: "---"
               = fa_icon "angle-down"
         .sell-form__shipping
           %h6
@@ -77,13 +78,13 @@
               発送元の地域
               %span 必須
             .sell-form__shipping__select-box__wrap
-              = f.select :region_id, ["---", "北海道", "青森"], size: "1"
+              = f.select :region_id, @regions.map{|t| [t.name, t.id]}, prompt: "---"
               = fa_icon "angle-down"
             %h5.mt-40
               配送料の負担
               %span 必須
             .sell-form__shipping__select-box__wrap
-              = f.select :days_to_ship, ["---", "1~2日で発送", "2~3日で発送", "4~7日で発送"], size: "1"
+              = f.select :days_to_ship, Item.days_to_ships.keys, prompt: "---"
               = fa_icon "angle-down"
         .sell-form__price
           %h6
