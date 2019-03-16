@@ -1,0 +1,23 @@
+.container
+  = render "layouts/header"
+  .main-background
+    .left-content
+      = render "modules/mypage-side-navi"
+      .right-profile
+        %section.right-continer
+          %h2.right-continer__head プロフィール
+          %form{action: "https://www.mercari.com/jp/mypage/profile/", method: "POST"}
+            .setting-profile-icon
+              %figure
+                %img{ src: "",height: "60", width: "60"}
+              %input{type: "text", class: "input-default", placeholder: "例)AYA☆セール中"}
+            .setting-profile-content
+              %textarea{class:"textarea-default", name: "introduction", placeholder: "例)こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+              %input{type: "hidden", value: "https://www.mercari.com/jp/mypage/profile/", name: "after_save_callback"}
+              %input{type: "submit", value: "変更する", class: "btn-default btn-red"}
+  .aside
+    .aside__banner
+      = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
+  = render "layouts/footer"
+  = render "layouts/sell-button"
+
