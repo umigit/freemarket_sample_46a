@@ -3,6 +3,11 @@ $(function () {
   $(document).on('change', '#item_category_id', function () {
     const id = $(this).val();
     const prompt = `<option value="">---</option>`;
+
+    $("#item_category_id").attr("name", "item[category_id]");
+    $("#item_sub_category_id").attr("name", "");
+    $("#item_sub_sub_category_id").attr("name", "");
+
     if (!id) {
       $("#item_sub_category_id").html(prompt);
       $("#item_sub_sub_category_id").html(prompt);
@@ -44,6 +49,17 @@ $(function () {
   $(document).on('change', '#item_sub_category_id', function () {
     const id = $(this).val();
 
+    if (id) {
+      $("#item_category_id").attr("name", "");
+      $("#item_sub_category_id").attr("name", "item[category_id]");
+      $("#item_sub_sub_category_id").attr("name", "");
+    }
+    else {
+      $("#item_category_id").attr("name", "item[category_id]");
+      $("#item_sub_category_id").attr("name", "");
+      $("#item_sub_sub_category_id").attr("name", "");
+    }
+
     $.ajax({
       type: "get",
       url: "/items/category",
@@ -66,5 +82,20 @@ $(function () {
 
       }
     );
+  });
+
+  $(document).on('change', '#item_sub_sub_category_id', function () {
+    const id = $(this).val();
+
+    if (id) {
+      $("#item_category_id").attr("name", "");
+      $("#item_sub_category_id").attr("name", "");
+      $("#item_sub_sub_category_id").attr("name", "item[category_id]");
+    }
+    else {
+      $("#item_category_id").attr("name", "");
+      $("#item_sub_category_id").attr("name", "item[category_id]");
+      $("#item_sub_sub_category_id").attr("name", "");
+    }
   });
 });
