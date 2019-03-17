@@ -80,5 +80,4 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'carrierwave-base64'
 
