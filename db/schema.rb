@@ -153,14 +153,15 @@ ActiveRecord::Schema.define(version: 2019_03_13_104238) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "phone"
-    t.integer "paying_way", null: false
-    t.string "mail", null: false
-    t.string "password", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mail"], name: "index_users_on_mail", unique: true
-    t.index ["password"], name: "index_users_on_password", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "addresses", "users"
