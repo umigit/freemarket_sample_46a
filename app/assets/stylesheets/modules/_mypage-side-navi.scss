@@ -23,12 +23,18 @@
           padding: 13px;
           display: flex;
           align-items: center;
+          &__title {
+            position: relative;
+            display: block;
+            background: #fff;
+            color: #333;
+          }
         }
-        #chevron {
+        .fa-chevron-right {
           position: absolute;
           top: 38%;
           right: 16px;
-          color: #DDDDDD;
+          color: #ccc;
         }
       }
       &__head {
