@@ -1,0 +1,110 @@
+.container
+  = render "layouts/header"
+  .main-background
+    .left-content
+      = render "modules/mypage-side-navi"
+      .right-identity-information
+        %section.right-continer
+          %h2.right-continer__head 本人情報の登録
+          %form{action: "https://www.mercari.com/jp/mypage/identification/save/", method: "POST", class: "right-continer__inner"}
+            .form-group__first
+              %p
+                お客さまの本人情報をご登録ください。
+                %br
+                登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+              %p.text-right
+                = link_to 'https://www.mercari.com/jp/help_center/article/495/', target: "_blank" do
+                  本人確認書類のアップロードについて
+                  %i.fa.fa-chevron-right
+            .form-group
+              %label お名前
+              %p current_user.name
+            .form-group
+              %label お名前カナ
+              %p current_user.nameカナ
+            .form-group
+              %label{for: "birthday"} 生年月日
+              %p current_user.Birthday
+            .form-group
+              %label{for: "zip_code"} 郵便番号
+              %span.form-arbitrary 任意
+              %input{type: "text", class: "input-default", placeholder: "例) 1234567"}
+            .form-group
+              %label{for: "prefecture"} 都道府県
+              %span.form-arbitrary 任意
+              .select-wrap
+                %select{name: "prefecture", class: "select-default"}
+                  %option --
+                  %option 北海道
+                  %option 青森県
+                  %option 岩手県
+                  %option 宮城県
+                  %option 秋田県
+                  %option 山形県
+                  %option 福島県
+                  %option 東京都
+                  %option 神奈川県
+                  %option 埼玉県
+                  %option 千葉県
+                  %option 茨城県
+                  %option 栃木県
+                  %option 群馬県
+                  %option 山梨県
+                  %option 新潟県
+                  %option 長野県
+                  %option 富山県
+                  %option 石川県
+                  %option 福井県
+                  %option 愛知県
+                  %option 岐阜県
+                  %option 静岡県
+                  %option 三重県
+                  %option 大阪府
+                  %option 兵庫県
+                  %option 京都府
+                  %option 滋賀県
+                  %option 奈良県
+                  %option 和歌山県
+                  %option 鳥取県
+                  %option 島根県
+                  %option 岡山県
+                  %option 広島県
+                  %option 山口県
+                  %option 徳島県
+                  %option 香川県
+                  %option 愛媛県
+                  %option 高知県
+                  %option 福岡県
+                  %option 佐賀県
+                  %option 長崎県
+                  %option 熊本県
+                  %option 大分県
+                  %option 宮崎県
+                  %option 鹿児島県
+                  %option 沖縄県
+                %i.fas.fa-angle-down
+            .form-group
+              %label{for: "city"} 市区町村
+              %span.form-arbitrary 任意
+              %input{type: "text", class: "input-default", placeholder: "例) 横浜市緑区"}
+            .form-group
+              %label{for: "address1_label"} 番地
+              %span.form-arbitrary 任意
+              %input{type: "text", class: "input-default", placeholder: "例) 青山1-1-1"}
+            .form-group
+              %label{for: "address2_label"} 建物名
+              %span.form-arbitrary 任意
+              %input{type: "text", class: "input-default", placeholder: "例) 柳ビル103"}
+            %input{type: "submit", value: "登録する", class: "btn-default btn-red form-group"}
+            .form-group.text-right
+              = link_to 'https://www.mercari.com/jp/help_center/article/423/', target: "_blank" do
+                本人確認書類の登録について
+                %i.fa.fa-chevron-right
+
+
+  .aside
+    .aside__banner
+      = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
+  = render "layouts/footer"
+  = render "layouts/sell-button"
+
