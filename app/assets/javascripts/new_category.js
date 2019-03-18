@@ -23,27 +23,28 @@ $(function () {
       data: { id: id },
       dataType: "json",
     })
-    .then(
-      function (response) {
+      .then(
+        function (response) {
+          console.log('success');
 
+          $("#item_sub_category_id").html(prompt);
+          $("#item_sub_sub_category_id").html(prompt);
 
-        $("#item_sub_category_id").html(prompt);
-        $("#item_sub_sub_category_id").html(prompt);
+          $("#sell-form-sub_category").css("display", "block");
+          $("#sell-form-sub_sub_category").css("display", "none");
 
-        $("#sell-form-sub_category").css("display", "block");
-        $("#sell-form-sub_sub_category").css("display", "none");
+          response.forEach(function (category) {
 
-        response.forEach(function (category) {
+            const item = `<option value="${category.id}">${category.name}</option>`;
 
-          const item = `<option value="${category.id}">${category.name}</option>`;
+            $("#item_sub_category_id").append(item);
+          });
+        },
+        function (response) {
 
-          $("#item_sub_category_id").append(item);
-        });
-      },
-      function (response) {
+        }
+      );
 
-      }
-    );
   });
 
   $(document).on('change', '#item_sub_category_id', function () {
