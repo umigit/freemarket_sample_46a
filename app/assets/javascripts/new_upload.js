@@ -86,7 +86,7 @@ $(function () {
       processData: false,
       contentType: false,
     }).then(function () {
-
+      window.location = "/";
     }, function (response) {
 
     }).then(function () {
