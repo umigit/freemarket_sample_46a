@@ -25,7 +25,6 @@ $(function () {
     })
       .then(
         function (response) {
-          console.log('success');
 
           $("#item_sub_category_id").html(prompt);
           $("#item_sub_sub_category_id").html(prompt);

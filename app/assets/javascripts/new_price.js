@@ -1,7 +1,7 @@
 $(function () {
   $(document).on('keyup', '#priceField', function () {
     let input = $(this).val() / 1;
-    console.log(input);
+
     if (input < 300 || input > 9999999) {
       $("#chargeField").text("-");
       $("#profitField").text("-");
