@@ -32,6 +32,7 @@ $(function () {
     manageFiles(files);
   });
 
+  //送信機能
   $(document).on('click', '#newItemSubmitButton', function (event) {
     event.preventDefault();
 
@@ -67,7 +68,7 @@ $(function () {
       formData.append("item[category_id]", $("#item_category_id").val());
     }
     else {
-
+      formData.append("item[category_id]", "");
     }
 
     formData.append("item[name]", $("#nameField").val());
@@ -86,10 +87,13 @@ $(function () {
       processData: false,
       contentType: false,
     }).then(function () {
+      //success
       window.location = "/";
     }, function (response) {
-
-    }).then(function () {
+      //error
+        showError();
+      }).then(function () {
+      //always
       $("#newItemSubmitButton").prop('disabled', false);
     });
   });
@@ -143,6 +147,71 @@ $(function () {
       }
 
       reader.readAsDataURL(files[i]);
+    }
+  }
+
+  function showError() {
+    if (imageCount < 1) {
+      $(".sell-form__image__error").html(`<p>画像がありません</p>`);
+    }
+    else {
+      $(".sell-form__image__error").empty();
+    }
+
+    if ($("#nameField").val()) {
+      $(".sell-form__summary__name__error").empty();
+    }
+    else {
+      $(".sell-form__summary__name__error").html(`<p>入力してください</p>`);
+    }
+
+    if ($("#commentField").val()) {
+      $(".sell-form__summary__comment__error").empty();
+    }
+    else {
+      $(".sell-form__summary__comment__error").html(`<p>入力してください</p>`);
+    }
+
+    if ($("#item_category_id").val()) {
+      $(".sell-form__detail__select-box__category__error").empty();
+    }
+    else {
+      $(".sell-form__detail__select-box__category__error").html(`<p>選択してください</p>`);
+    }
+
+    if ($("#item_condition").val()) {
+      $(".sell-form__detail__select-box__condition__error").empty();
+    }
+    else {
+      $(".sell-form__detail__select-box__condition__error").html(`<p>選択してください</p>`);
+    }
+
+    if ($("#item_shipping_fee").val()) {
+      $(".sell-form__shipping__select-box__fee__error").empty();
+    }
+    else {
+      $(".sell-form__shipping__select-box__fee__error").html(`<p>選択してください</p>`);
+    }
+
+    if ($("#item_region_id").val()) {
+      $(".sell-form__shipping__select-box__region__error").empty();
+    }
+    else {
+      $(".sell-form__shipping__select-box__region__error").html(`<p>選択してください</p>`);
+    }
+
+    if ($("#item_days_to_ship").val()) {
+      $(".sell-form__shipping__select-box__days__error").empty();
+    }
+    else {
+      $(".sell-form__shipping__select-box__days__error").html(`<p>選択してください</p>`);
+    }
+
+    if ($("#profitField").text() === "-") {
+      $(".sell-form__price__select-box__price-wrap__left__error").html(`<p>300以上9999999以下で入力してください</p>`);
+    }
+    else {
+      $(".sell-form__price__select-box__price-wrap__left__error").empty();
     }
   }
 });
