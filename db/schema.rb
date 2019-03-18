@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_104238) do
+ActiveRecord::Schema.define(version: 2019_03_18_031801) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
@@ -113,6 +113,12 @@ ActiveRecord::Schema.define(version: 2019_03_13_104238) do
     t.bigint "order_status_id", null: false
     t.index ["order_status_id"], name: "index_point_transaction_records_on_order_status_id"
     t.index ["user_id"], name: "index_point_transaction_records_on_user_id"
+  end
+
+  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "prefecture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
