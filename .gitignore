@@ -25,6 +25,7 @@
 /yarn-error.log
 
 /public/assets
+/public/uploads
 .byebug_history
 credentials.yml.enc
 # Ignore master key for decrypting credentials and more.
