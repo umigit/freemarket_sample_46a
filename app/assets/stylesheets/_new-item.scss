@@ -100,13 +100,18 @@
   border-bottom: 1px solid #f5f5f5;
 }
 
-#price-field{
+#priceField{
   width: 160px;
   padding: 9px;
   text-align: right;
 }
 
 .sell-form {
+  font {
+    color: $red;
+    font-size: 14px;
+  }
+
   &__image {
     @include formBox();
     h3 {
@@ -122,14 +127,45 @@
       display: none;
     }
 
+    &__error {
+      color: $red;
+    }
+
     &__dropbox {
-      box-sizing: border-box;
-      background-color: #f5f5f5;
-      border: 1px dashed #ccc;
-      width: 620px;
-      margin-top: 16px;
-      padding: 50px 100px;
-      text-align: center;
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: space-between;
+      &__thumbnail {
+        box-sizing: border-box;
+        height: 160px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      &__inner {
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+        border: 1px dashed #ccc;
+        max-width: 100%;
+        min-width: 112px;
+        height: 160px;
+        padding: 40px;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        flex: 1;
+        position: relative;
+        pre {
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          margin: 0;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: calc(50% - 24px);
+
+        }
+      }
     }
   }
 
@@ -137,21 +173,75 @@
     @include formBox();
     &__name {
       margin: 8px 0 0 0;
+
+      &__error{
+        font-size: 14px;
+        color: $red;
+        margin-top: 8px;
+      }
     }
 
     &__comment {
       margin-top: 8px;
+
+      &__error {
+        font-size: 14px;
+        color: $red;
+        margin-top: 8px;
+      }
     }
   }
 
   &__detail {
     @include formBox();
     @include formSelectBox();
+    &__select-box {
+      &__category {
+        &__error {
+          font-size: 14px;
+          color: $red;
+          margin-top: 8px;
+        }
+      }
+
+      &__condition {
+        &__error {
+          font-size: 14px;
+          color: $red;
+          margin-top: 8px;
+        }
+      }
+    }
   }
 
   &__shipping {
     @include formBox();
     @include formSelectBox();
+    &__select-box {
+      &__fee {
+        &__error {
+          font-size: 14px;
+          color: $red;
+          margin-top: 8px;
+        }
+      }
+
+      &__region {
+        &__error {
+          font-size: 14px;
+          color: $red;
+          margin-top: 8px;
+        }
+      }
+
+      &__days {
+        &__error {
+          font-size: 14px;
+          color: $red;
+          margin-top: 8px;
+        }
+      }
+    }
   }
 
   &__price {
@@ -165,7 +255,15 @@
         @include split();
         line-height: 48px;
         padding-bottom: 24px;
-
+        &__left {
+          &__error {
+            font-size: 14px;
+            color: $red;
+            margin-top: 8px;
+            overflow: visible;
+            white-space: nowrap;
+          }
+        }
         &__right {
           display: flex;
           text-align: right;
@@ -201,6 +299,61 @@
   }
 }
 
+.upload-item {
+  &__container{
+  background: #f5f5f5;
+  width: 112px;
+  height: 160px;
+  margin: 0 5px 10px;
+
+  border: 1px solid #eee;
+
+    figure {
+      height: 114px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    &__image {
+      box-sizing: border-box;
+      max-height: 100%;
+      width: 100%;
+    }
+
+    &__button {
+      height: 44px;
+      line-height: 44px;
+      display: flex;
+
+
+      &__edit {
+        box-sizing: border-box;
+        display: inline-block;
+        width: 50%;
+        height: 44px;
+        margin: 0;
+        color: $blue;
+      }
+
+      &__delete {
+        box-sizing: border-box;
+        display: inline-block;
+        width: 50%;
+        height: 44px;
+        margin: 0;
+        border-left: 1px solid #eee;
+        color: $blue;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
 .question {
   background-color: #0099e8;
   font-size: 12px;
@@ -215,3 +368,8 @@
   }
 }
 
+#sell-form {
+  &-brand, &-size, &-sub_category, &-sub_sub_category {
+    display: none;
+  }
+}
