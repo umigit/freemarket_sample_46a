@@ -2,13 +2,13 @@
   %main.mypage__body.clearfix
 
     .mypage__body__main
-      %section.mypage-user-icon
+      %section.mypage__user-icon
         = link_to "#" do
           %figure
             = image_tag "no-translate-detected_318-10541.jpg", alt: "ユーザーアイコン", alt: "ユーザーアイコン", height: "60", width: "60"
           %h2
             ユーザー名
-          .mypage-number
+          .mypage__number
             %p
               評価
               %span 0
@@ -16,8 +16,8 @@
               出品数
               %span 0
 
-      %section.mypage-tab-notification-todo
-        %ul.mypage-tabs
+      %section.mypage__tab
+        %ul.mypage__tab__list
           %li.notification
             %h3
               = link_to "#" do
@@ -26,7 +26,7 @@
             %h3
               = link_to "#" do
                 やることリスト
-        .tab-content
+        .mypage__tab-content
           %ul.notification-list
             %li
               = link_to "#", class: "notification-list__link" do
@@ -82,7 +82,7 @@
               = link_to "#" do
                 一覧を見る
 
-      %section.mypage-tab-trading-traded
+      %section.mypage__trading-traded
         %h2.mypage-tab-head 購入した商品
         %ul.mypage-tabs
           %li.trading

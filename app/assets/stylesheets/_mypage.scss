@@ -31,7 +31,7 @@
 
       width: 700px;
 
-      .mypage-user-icon {
+      .mypage__user-icon {
         position: relative;
         text-align: center;
         height: 160px;
@@ -62,7 +62,7 @@
           line-height: 1.4;
           font-weight: bold;
           }
-          .mypage-number {
+          .mypage__number {
             margin: 8px 0 0;
             p {
               display: inline-block;
@@ -81,10 +81,10 @@
         }
       }
 
-      .mypage-tab-notification-todo {
+      .mypage__tab {
         margin: 0;
         background: #fff;
-        .mypage-tabs {
+        &__list {
           border: 0;
           background: #eee;
           font-size: 0;
@@ -113,6 +113,7 @@
             }
           }
         }
+
         .notification-list {
           li {
             position: relative;
@@ -192,7 +193,7 @@
         }
       }
 
-      .mypage-tab-trading-traded {
+      .mypage__trading-traded {
         margin: 40px 0 0;
         background: #fff;
         .mypage-tab-head {
