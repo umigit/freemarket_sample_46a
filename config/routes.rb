@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :user_profiles, only: [:edit,:update]
   resources :users, only: [:index]
-  resources :items, only: [:new, :create] do
+  resources :items, only: [:new, :create, :edit, :update] do
     collection do
       get :category
     end
