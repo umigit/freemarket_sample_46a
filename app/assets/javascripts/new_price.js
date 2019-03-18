@@ -9,9 +9,11 @@ $(function () {
     }
 
     let charge = parseInt(input / 10);
-    $("#chargeField").text("¥" + charge.toLocaleString());
+    if (charge) {
+      $("#chargeField").text("¥" + charge.toLocaleString());
 
-    let profit = input - charge;
-    $("#profitField").text("¥" + profit.toLocaleString());
+      let profit = input - charge;
+      $("#profitField").text("¥" + profit.toLocaleString());
+    }
   });
 });
