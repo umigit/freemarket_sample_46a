@@ -115,12 +115,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_031801) do
     t.index ["user_id"], name: "index_point_transaction_records_on_user_id"
   end
 
-  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "prefecture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "parent_id"
