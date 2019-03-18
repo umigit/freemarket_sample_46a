@@ -3,20 +3,18 @@ $(function () {
   let imageList = [];
 
 
-  $(document).on('change', '#sell-form-upload', function () {
+  $(document).on('change', '#item_item_images_attributes_0_image', function () {
     const files = $(this).prop('files');
-
     manageFiles(files);
   });
 
   $(document).on('click', '#dropbox', function () {
-    $("#sell-form-upload").click();
+    $("#item_item_images_attributes_0_image").click();
   });
 
   $(document).on('click', '.upload-item__container__button__delete', function () {
     const id = $(this).data('id');
-    console.log('delete');
-    console.log(id);
+
     imageList[id] = null;
     imageCount--;
     $("#uploadItem-" + id).empty();
@@ -32,6 +30,68 @@ $(function () {
     event.preventDefault();
     const files = event.originalEvent.dataTransfer.files;
     manageFiles(files);
+  });
+
+  $(document).on('click', '#newItemSubmitButton', function (event) {
+    event.preventDefault();
+
+    $("#newItemSubmitButton").prop('disabled', true);
+
+    $.ajaxPrefilter(function(options, originalOptions, jqXHR){
+      var token;
+      if (!options.crossDomain){
+        token = $('meta[name="csrf-token"]').attr('content');
+
+        if (token){
+          return jqXHR.setRequestHeader('X-CSRF-Token', token);
+        }
+      }
+    });
+
+    let formData = new FormData();
+
+    let images = imageList.filter(function (image) {
+      return image != null;
+    });
+    images.forEach(function (image, index) {
+      formData.append(`item[item_images_attributes][${index}][image]`, image);
+    });
+
+    if ($("#item_sub_sub_category_id").val()) {
+      formData.append("item[category_id]", $("#item_sub_sub_category_id").val());
+    }
+    else if ($("#item_sub_category_id").val()) {
+      formData.append("item[category_id]", $("#item_sub_category_id").val());
+    }
+    else if ($("#item_category_id").val()) {
+      formData.append("item[category_id]", $("#item_category_id").val());
+    }
+    else {
+
+    }
+
+    formData.append("item[name]", $("#nameField").val());
+    formData.append("item[comment]", $("#commentField").val());
+    formData.append("item[condition]", $("#item_condition").val());
+    formData.append("item[shipping_fee]", $("#item_shipping_fee").val());
+    formData.append("item[region_id]", $("#item_region_id").val());
+    formData.append("item[days_to_ship]", $("#item_days_to_ship").val());
+    formData.append("item[price]", $("#priceField").val());
+
+    $.ajax({
+      type: "POST",
+      url: "/items",
+      data: formData,
+      dataType: "json",
+      processData: false,
+      contentType: false,
+    }).then(function () {
+
+    }, function (response) {
+
+    }).then(function () {
+      $("#newItemSubmitButton").prop('disabled', false);
+    });
   });
 
   function addPreviewToUploadField(image, index) {
@@ -78,7 +138,7 @@ $(function () {
       const reader = new FileReader();
 
       reader.onload = function () {
-        imageList.push(reader.result);
+        imageList.push(files[i]);
         addPreviewToUploadField(reader.result, imageList.length - 1);
       }
 
