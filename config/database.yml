@@ -27,5 +27,5 @@ production:
   <<: *default
   database: db/freemarket_sample_46a_production
   username: root
-  password: mintia
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
