@@ -7,7 +7,7 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  username: railsuser
+  username: root
   password:
   pool: 5
 
