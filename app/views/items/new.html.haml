@@ -1,6 +1,7 @@
 .container.new-item
   .new-item__header
-    = link_to image_tag("logo.svg"), "/"
+    .single-header
+      = link_to image_tag("logo.svg"), "/"
   .new-item__main
     .new-item__main__container
       .new-item__main__container__head
@@ -124,14 +125,4 @@
           %p また、出品をもちまして加盟店規約に同意したことになります。
           = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
-.new-item__footer
-  %ul
-    %li
-      = link_to "プライバシーポリシー", "/"
-    %li
-      = link_to "メルカリ利用規約", "/"
-    %li
-      = link_to "特定商取引に関する表記", "/"
-  = link_to image_tag("logo-gray.svg"), "/", class: "new-item__footer__logo"
-  %p
-    %small ©︎2019 Mercari
+= render "layouts/single-footer"

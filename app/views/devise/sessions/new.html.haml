@@ -1,0 +1,22 @@
+.single-container
+  .single-header
+    %h1
+      =link_to image_tag("logo.svg"),"/"
+  .single-main
+    .single-main__l.panel
+      .single-main__l.panel--new
+        %p アカウントをお持ちでない方はこちら
+        =link_to '新規登録会員',""
+      .single-main__l.panel-sns
+        =link_to "", class: 'btn-default btn-sns btn-sns-facebook' do
+          Facebookで登録
+          %i.fab.fa-facebook
+        =link_to "", class: 'btn-default btn-sns btn-sns-google' do
+          Googleで登録
+          %i.fab.fa-google
+      .single-main__l.panel-form
+        %input{:name => "email", :type => "email", :value => "メールアドレス", class: 'email-box'}
+        %input{:name => "password", :type => "password", :value => "パスワード", class: 'password-box'}
+        %button.login-submit.btn-default.btn-red{:type => "submit"} ログイン
+        =link_to 'パスワードをお忘れの方', "" ,class: 'owasure'
+  = render "devise/registrations/footer"
