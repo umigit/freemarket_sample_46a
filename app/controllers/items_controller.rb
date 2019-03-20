@@ -19,6 +19,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @categories = Category.ransack(parent_id_null: true).result
+
+
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update
+  end
+
   def category
     @categories = Category.ransack(parent_id_eq: params[:id]).result
 

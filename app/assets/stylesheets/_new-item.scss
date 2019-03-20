@@ -28,10 +28,6 @@
       }
     }
   }
-
-  &__footer {
-
-  }
 }
 
 @mixin split {
@@ -94,7 +90,7 @@
       margin-top: 8px;;
     }
     &__input {
-      display: none;
+      // display: none;
     }
 
     &__error {
