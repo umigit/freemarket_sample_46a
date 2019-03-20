@@ -75,6 +75,7 @@ $(function () {
 
     formData.append("item[name]", $("#nameField").val());
     formData.append("item[comment]", $("#commentField").val());
+    formData.append("item[brand_id]", $("#item_brand_id").val());
     formData.append("item[condition]", $("#item_condition").val());
     formData.append("item[shipping_fee]", $("#item_shipping_fee").val());
     formData.append("item[region_id]", $("#item_region_id").val());
