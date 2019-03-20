@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
+    @brands = Brand.all
     @regions = Region.all
     @itemimage = ItemImage.new
   end
@@ -22,8 +23,7 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @categories = Category.ransack(parent_id_null: true).result
-
-
+    @item_images = @item.item_images
   end
 
   def update

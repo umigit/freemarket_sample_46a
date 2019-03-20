@@ -12,10 +12,11 @@
             出品画像
             %span 必須
           %p 最大10枚までアップロードできます
-          = f.fields_for :item_images do |ff|
+          = f.fields_for @item_images do |ff|
             = ff.file_field :image , class: "sell-form__image__input", accept: ".jpg, .jpeg, .png", multiple: true
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
+              = render @item_images
               .sell-form__image__dropbox__inner#dropbox
                 %pre
                   ドラッグアンドドロップ
