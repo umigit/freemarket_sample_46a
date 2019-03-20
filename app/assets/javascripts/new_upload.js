@@ -4,8 +4,10 @@ $(function () {
 
 
   $(document).on('change', '#item_item_images_attributes_0_image', function () {
-    const files = $(this).prop('files');
+    const files = $.extend(true, {}, $(this).prop('files'));
+
     manageFiles(files);
+    $(this).val("");
   });
 
   $(document).on('click', '#dropbox', function () {

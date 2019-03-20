@@ -1,0 +1,129 @@
+.container.new-item
+  .new-item__header
+    .single-header
+      = link_to image_tag("logo.svg"), "/"
+  .new-item__main
+    .new-item__main__container
+      .new-item__main__container__head
+        %h2 商品の情報を入力
+      = form_with model: @item, local: true , class: "new-item__main__container__form sell-form" do |f|
+        .sell-form__image
+          %h3
+            出品画像
+            %span 必須
+          %p 最大10枚までアップロードできます
+          = f.fields_for @item_images do |ff|
+            = ff.file_field :image , class: "sell-form__image__input", accept: ".jpg, .jpeg, .png", multiple: true
+            .sell-form__image__dropbox#uploadField
+              .sell-form__image__dropbox__thumbnail#thumbnailBox
+              = render @item_images
+              .sell-form__image__dropbox__inner#dropbox
+                %pre
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+            .sell-form__image__error
+        .sell-form__summary
+          .sell-form__summary__name
+            %h5
+              商品名
+              %span 必須
+            = f.text_field :name, class: "sell-form__summary__name", id: "nameField", placeholder: "商品名（必須 40文字まで)"
+            .sell-form__summary__name__error
+          .sell-form__summary__comment
+            %h5.mt-40
+              商品の説明
+              %span 必須
+            = f.text_area :comment, class: "sell-form__summary__comment", id: "commentField", rows: "5", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+            .sell-form__summary__comment__error
+        .sell-form__detail
+          %h6 商品の詳細
+          .sell-form__detail__select-box
+            .sell-form__detail__select-box__category
+              %h5
+                カテゴリー
+                %span 必須
+              .sell-form__detail__select-box__wrap
+                = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
+                = fa_icon "angle-down"
+              .sell-form__detail__select-box__wrap#sell-form-sub_category
+                %select#item_sub_category_id{name: ""}
+                = fa_icon "angle-down"
+              .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
+                %select#item_sub_sub_category_id{name: ""}
+                = fa_icon "angle-down"
+              .sell-form__detail__select-box__category__error
+            #sell-form-brand
+              %h5.mt-40
+                ブランド
+                %span.gray 任意
+              .sell-form__detail__select-box__wrap
+                = f.text_field :brand_id, placeholder: "例）シャネル"
+                = fa_icon "angle-down"
+            .sell-form__detail__select-box__condition
+              %h5.mt-40
+                商品の状態
+                %span 必須
+              .sell-form__detail__select-box__wrap
+                = f.select :condition, Item.conditions.keys, prompt: "---"
+                = fa_icon "angle-down"
+              .sell-form__detail__select-box__condition__error
+        .sell-form__shipping
+          %h6
+            配送について
+            = link_to "?", "/", class: "question"
+          .sell-form__shipping__select-box
+            .sell-form__shipping__select-box__fee
+              %h5
+                配送料の負担
+                %span 必須
+              .sell-form__shipping__select-box__wrap
+                = f.select :shipping_fee, Item.shipping_fees.keys, prompt: "---"
+                = fa_icon "angle-down"
+              .sell-form__shipping__select-box__fee__error
+            .sell-form__shipping__select-box__region
+              %h5.mt-40
+                発送元の地域
+                %span 必須
+              .sell-form__shipping__select-box__wrap
+                = f.collection_select :region_id, Prefecture.all, :id, :name, prompt: "---"
+                = fa_icon "angle-down"
+              .sell-form__shipping__select-box__region__error
+            .sell-form__shipping__select-box__days
+              %h5.mt-40
+                発送までの日数
+                %span 必須
+              .sell-form__shipping__select-box__wrap
+                = f.select :days_to_ship, Item.days_to_ships.keys, prompt: "---"
+                = fa_icon "angle-down"
+              .sell-form__shipping__select-box__days__error
+        .sell-form__price
+          %h6
+            販売価格(300〜9,999,999)
+            = link_to "?", "/", class: "question"
+          .sell-form__price__select-box
+            .sell-form__price__select-box__price-wrap
+              .sell-form__price__select-box__price-wrap__left
+                %h5
+                  価格
+                  %span 必須
+                .sell-form__price__select-box__price-wrap__left__error
+              .sell-form__price__select-box__price-wrap__right
+                %p ¥
+                = f.text_field :price, id: "priceField", placeholder: "例）300"
+            .sell-form__price__select-box__charge-wrap
+              .sell-form__price__select-box__charge-wrap__left
+                %p 販売手数料(10%)
+              .sell-form__price__select-box__charge-wrap__right
+                %p#chargeField -
+            .sell-form__price__select-box__profit-wrap
+              .sell-form__price__select-box__profit-wrap__left
+                %h3 販売利益
+              .sell-form__price__select-box__profit-wrap__right
+                %h3#profitField -
+        .sell-form__submit
+          %p 禁止されている出品、行為を必ずご確認ください。
+          %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+          %p また、出品をもちまして加盟店規約に同意したことになります。
+          = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40"
+          = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
+= render "layouts/single-footer"
