@@ -25,9 +25,11 @@
 /yarn-error.log
 
 /public/assets
+/public/uploads
 .byebug_history
-credentials.yml.enc
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 gibo 2.1.2 by Simon Whitaker <sw@netcetera.org>
 https://github.com/simonwhitaker/gibo
+config/secrets.yml
