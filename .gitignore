@@ -27,7 +27,7 @@
 /public/assets
 /public
 .byebug_history
-
+index.csv.ruby
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 gibo 2.1.2 by Simon Whitaker <sw@netcetera.org>
