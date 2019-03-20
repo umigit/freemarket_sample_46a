@@ -1,8 +1,5 @@
 .single-container
-  .single-header
-    %h1
-      = link_to image_tag("logo.svg"), "/"
-
+  = render "layouts/single-header"
   .single-main
     .single-main-container
       %h2.single-main-container__head 新規会員登録
@@ -17,4 +14,4 @@
           = link_to "" , class: 'btn-default btn-sns btn-sns-google' do
             Googoleで登録
             %i.fab.fa-google.google.icon
-  = render 'footer'
+  = render 'layouts/single-footer'
