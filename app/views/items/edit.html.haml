@@ -6,17 +6,17 @@
     .new-item__main__container
       .new-item__main__container__head
         %h2 商品の情報を入力
-      = form_with model: @item, local: true , class: "new-item__main__container__form sell-form" do |f|
-        .sell-form__image
+      = form_with model: @item, local: true , id: "itemForm", class: "new-item__main__container__form sell-form" do |f|
+        .sell-form__image{"data-image_count": @item.item_images.count}
           %h3
             出品画像
             %span 必須
           %p 最大10枚までアップロードできます
-          = f.fields_for @item_images do |ff|
+          = f.fields_for @item.item_images do |ff|
             = ff.file_field :image , class: "sell-form__image__input", accept: ".jpg, .jpeg, .png", multiple: true
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
-              = render @item_images
+              = render @item.item_images
               .sell-form__image__dropbox__inner#dropbox
                 %pre
                   ドラッグアンドドロップ
@@ -42,22 +42,46 @@
               %h5
                 カテゴリー
                 %span 必須
-              .sell-form__detail__select-box__wrap
-                = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---"
-                %i.fas.fa-angle-down
-              .sell-form__detail__select-box__wrap#sell-form-sub_category
-                %select#item_sub_category_id{name: ""}
-                %i.fas.fa-angle-down
-              .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
-                %select#item_sub_sub_category_id{name: ""}
-                %i.fas.fa-angle-down
-              .sell-form__detail__select-box__category__error
+              - if !@item.category.parent
+                .sell-form__detail__select-box__wrap
+                  = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__wrap#sell-form-sub_categor{style: "display:none"}
+                  %select#item_sub_category_id{name: ""}
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__wrap#sell-form-sub_sub_categor{style: "display:none"}
+                  %select#item_sub_sub_category_id{name: ""}
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__category__error
+              - elsif !@item.category.parent.parent
+                .sell-form__detail__select-box__wrap
+                  = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category.parent.id
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__wrap#sell-form-sub_category
+                  = f.select :sub_category_id, @item.category.parent.children.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__wrap#sell-form-sub_sub_category{style: "display:none"}
+                  %select#item_sub_sub_category_id{name: ""}
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__category__error
+              - elsif !@item.category.parent.parent.parent
+                .sell-form__detail__select-box__wrap
+                  = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category.parent.parent.id
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__wrap#sell-form-sub_category
+                  = f.select :sub_category_id, @item.category.parent.parent.children.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category.parent.id
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
+                  = f.select :sub_sub_category_id, @item.category.parent.children.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
+                  %i.fas.fa-angle-down
+                .sell-form__detail__select-box__category__error
+              - else
             #sell-form-brand
               %h5.mt-40
                 ブランド
                 %span.gray 任意
               .sell-form__detail__select-box__wrap
-                = f.text_field :brand_id, placeholder: "例）シャネル"
+                = f.select :brand_id, Brand.all.map{|t| [t.name, t.id]}, prompt: "---"
                 %i.fas.fa-angle-down
             .sell-form__detail__select-box__condition
               %h5.mt-40
@@ -85,7 +109,7 @@
                 発送元の地域
                 %span 必須
               .sell-form__shipping__select-box__wrap
-                = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "---"
+                = f.select :prefecture_id, Prefecture.all.map{|t| [t.name, t.id]}, prompt: "---"
                 %i.fas.fa-angle-down
               .sell-form__shipping__select-box__region__error
             .sell-form__shipping__select-box__days

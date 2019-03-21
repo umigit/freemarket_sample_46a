@@ -1,9 +1,8 @@
 $(function () {
-  let imageCount = 0;
+  let imageCount = $(".sell-form__image").data('image_count');
   let imageList = [];
 
-
-  $(document).on('change', '#item_item_images_attributes_0_image', function () {
+  $(document).on('change', '#item_item_images_image', function () {
     const files = $.extend(true, {}, $(this).prop('files'));
 
     manageFiles(files);
@@ -11,7 +10,7 @@ $(function () {
   });
 
   $(document).on('click', '#dropbox', function () {
-    $("#item_item_images_attributes_0_image").click();
+    $("#item_item_image_image").click();
   });
 
   $(document).on('click', '.upload-item__container__button__delete', function () {
@@ -21,6 +20,22 @@ $(function () {
     imageCount--;
     $("#uploadItem-" + id).empty();
     $("#dropbox").css("display", "block");
+  });
+
+  $(document).on('click', '.stored-item__container__button__delete', function () {
+    const id = $(this).data('id');
+
+    $.ajax({
+      type: "delete",
+      url: "/item_images/" + id,
+      data: { id: id },
+      dataType: "json",
+    }).then(function () {
+      imageCount--;
+      $("#storedItem-" + id).empty();
+      $("#dropbox").css("display", "block");
+    })
+
   });
 
   $(document).on('dragover', '#dropbox', function (event) {
@@ -78,13 +93,18 @@ $(function () {
     formData.append("item[brand_id]", $("#item_brand_id").val());
     formData.append("item[condition]", $("#item_condition").val());
     formData.append("item[shipping_fee]", $("#item_shipping_fee").val());
-    formData.append("item[region_id]", $("#item_region_id").val());
+    formData.append("item[prefecture_id]", $("#item_prefecture_id").val());
     formData.append("item[days_to_ship]", $("#item_days_to_ship").val());
     formData.append("item[price]", $("#priceField").val());
 
+    let type = 'POST';
+    if ($("[name=_method]").length){
+      type = $("[name=_method]").val();
+    }
+    const url = $("#itemForm").attr('action');
     $.ajax({
-      type: "POST",
-      url: "/items",
+      type: type,
+      url: url,
       data: formData,
       dataType: "json",
       processData: false,
@@ -152,6 +172,7 @@ $(function () {
     }
   }
 
+  //未入力チェック
   function showError() {
     if (imageCount < 1) {
       $(".sell-form__image__error").html(`<p>画像がありません</p>`);
@@ -195,7 +216,7 @@ $(function () {
       $(".sell-form__shipping__select-box__fee__error").html(`<p>選択してください</p>`);
     }
 
-    if ($("#item_region_id").val()) {
+    if ($("#item_prefecture_id").val()) {
       $(".sell-form__shipping__select-box__region__error").empty();
     }
     else {

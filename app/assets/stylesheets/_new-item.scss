@@ -261,7 +261,9 @@
   }
 }
 
-.upload-item {
+
+@mixin uploadImage {
+
   &__container{
   background: #f5f5f5;
   width: 112px;
@@ -315,6 +317,13 @@
     }
   }
 }
+.upload-item {
+  @include uploadImage();
+}
+
+.stored-item {
+  @include uploadImage();
+}
 
 .question {
   background-color: #0099e8;
@@ -331,7 +340,7 @@
 }
 
 #sell-form {
-  &-size, &-sub_category, &-sub_sub_category {
+  &-size {
     display: none;
   }
 }

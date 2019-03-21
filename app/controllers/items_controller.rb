@@ -1,13 +1,5 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-
-    respond_to do |format|
-      format.html
-      format.csv do
-        send_data render_to_string, filename: "items.csv", type: :csv
-      end
-    end
+  def indexs
   end
 
   def new
@@ -30,13 +22,15 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    # @item_images = @item.item_images
+    # @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
-    @item_images = @item.item_images
+
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update
+    @item.update(item_params)
   end
 
   def category
@@ -51,7 +45,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :comment, :category_id, :brand_id, :shipping_fee, :region_id, :days_to_ship, :price, :condition, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :comment, :category_id, :brand_id, :shipping_fee, :prefecture_id, :days_to_ship, :price, :condition, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def buy

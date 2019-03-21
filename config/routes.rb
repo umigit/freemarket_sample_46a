@@ -22,5 +22,5 @@ Rails.application.routes.draw do
       get :card
     end
   end
-  resources :item_images, only: [:index]
+  resources :item_images, only: [:destroy]
 end
