@@ -6,7 +6,7 @@
     .new-item__main__container
       .new-item__main__container__head
         %h2 商品の情報を入力
-      = form_with model: @item, local: true , id: "itemForm", class: "new-item__main__container__form sell-form" do |f|
+      = form_with model: @item, local: true , class: "new-item__main__container__form sell-form" do |f|
         .sell-form__image
           %h3
             出品画像
