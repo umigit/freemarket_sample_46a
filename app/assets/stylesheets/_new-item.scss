@@ -261,9 +261,7 @@
   }
 }
 
-
-@mixin uploadImage {
-
+.upload-item {
   &__container{
   background: #f5f5f5;
   width: 112px;
@@ -316,13 +314,6 @@
       }
     }
   }
-}
-.upload-item {
-  @include uploadImage();
-}
-
-.stored-item {
-  @include uploadImage();
 }
 
 .question {

@@ -7,7 +7,7 @@
       .new-item__main__container__head
         %h2 商品の情報を入力
       = form_with model: @item, local: true , id: "itemForm", class: "new-item__main__container__form sell-form" do |f|
-        .sell-form__image{"data-image_count": 0}
+        .sell-form__image
           %h3
             出品画像
             %span 必須
