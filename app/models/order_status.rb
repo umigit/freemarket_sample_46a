@@ -1,2 +1,0 @@
-class OrderStatus < ApplicationRecord
-end
