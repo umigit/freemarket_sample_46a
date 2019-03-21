@@ -73,7 +73,6 @@
                   %i.fas.fa-angle-down
                 .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
                   = f.select :sub_sub_category_id, @item.category.parent.children.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
-                  %select#item_sub_sub_category_id{name: ""}
                   %i.fas.fa-angle-down
                 .sell-form__detail__select-box__category__error
               - else
@@ -82,7 +81,7 @@
                 ブランド
                 %span.gray 任意
               .sell-form__detail__select-box__wrap
-                = f.text_field :brand_id, placeholder: "例）シャネル"
+                = f.select :brand_id, Brand.all.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.brand_id
                 %i.fas.fa-angle-down
             .sell-form__detail__select-box__condition
               %h5.mt-40
