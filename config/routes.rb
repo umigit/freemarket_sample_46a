@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :user_profiles, only: [:edit,:update]
   resources :users, only: [:index]
 
-  resources :items, only: [:index, :new, :create, :show] do
+  resources :items, only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get :category
     end

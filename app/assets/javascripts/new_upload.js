@@ -90,13 +90,12 @@ $(function () {
       processData: false,
       contentType: false,
     }).then(function () {
-      //success
-      window.location = "/";
+      location.href = "/";
     }, function (response) {
       //error
         showError();
-      }).then(function () {
-      //always
+    }).then(function () {
+    //always
       $("#newItemSubmitButton").prop('disabled', false);
     });
   });
