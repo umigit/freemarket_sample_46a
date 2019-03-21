@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update
+    @item.update(item_params)
   end
 
   def category
