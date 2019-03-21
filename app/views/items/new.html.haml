@@ -43,13 +43,13 @@
                 %span 必須
               .sell-form__detail__select-box__wrap
                 = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_category
                 %select#item_sub_category_id{name: ""}
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
                 %select#item_sub_sub_category_id{name: ""}
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__category__error
             #sell-form-brand
               %h5.mt-40
@@ -57,14 +57,14 @@
                 %span.gray 任意
               .sell-form__detail__select-box__wrap
                 = f.select :brand_id, @brands.map{|t| [t.name, t.id]}, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
             .sell-form__detail__select-box__condition
               %h5.mt-40
                 商品の状態
                 %span 必須
               .sell-form__detail__select-box__wrap
                 = f.select :condition, Item.conditions.keys, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__condition__error
         .sell-form__shipping
           %h6
@@ -77,7 +77,7 @@
                 %span 必須
               .sell-form__shipping__select-box__wrap
                 = f.select :shipping_fee, Item.shipping_fees.keys, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__shipping__select-box__fee__error
             .sell-form__shipping__select-box__region
               %h5.mt-40
@@ -85,7 +85,7 @@
                 %span 必須
               .sell-form__shipping__select-box__wrap
                 = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__shipping__select-box__region__error
             .sell-form__shipping__select-box__days
               %h5.mt-40
@@ -93,7 +93,7 @@
                 %span 必須
               .sell-form__shipping__select-box__wrap
                 = f.select :days_to_ship, Item.days_to_ships.keys, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__shipping__select-box__days__error
         .sell-form__price
           %h6
