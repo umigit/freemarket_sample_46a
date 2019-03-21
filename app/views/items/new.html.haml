@@ -84,7 +84,7 @@
                 発送元の地域
                 %span 必須
               .sell-form__shipping__select-box__wrap
-                = f.collection_select :region_id, Prefecture.all, :id, :name, prompt: "---"
+                = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "---"
                 %i.fas.fa-angle-down
               .sell-form__shipping__select-box__region__error
             .sell-form__shipping__select-box__days
