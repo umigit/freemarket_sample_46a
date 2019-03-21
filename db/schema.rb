@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_031801) do
+ActiveRecord::Schema.define(version: 2019_03_20_231953) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_031801) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
-    t.bigint "region_id"
     t.bigint "user_id", null: false
     t.integer "brand_id"
     t.boolean "shipping_fee", null: false
@@ -80,8 +79,8 @@ ActiveRecord::Schema.define(version: 2019_03_18_031801) do
     t.integer "price", null: false
     t.integer "condition", null: false
     t.boolean "sales_condition", default: false, null: false
+    t.integer "prefecture_id", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["region_id"], name: "index_items_on_region_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -171,7 +170,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_031801) do
   add_foreign_key "favorite_items", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
-  add_foreign_key "items", "regions"
   add_foreign_key "items", "users"
   add_foreign_key "money_transaction_records", "order_statuses"
   add_foreign_key "money_transaction_records", "users"
