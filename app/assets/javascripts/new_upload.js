@@ -1,9 +1,8 @@
 $(function () {
-  let imageCount = 0;
+  let imageCount = $(".sell-form__image").data('image_count');
   let imageList = [];
 
-
-  $(document).on('change', '#item_item_images_attributes_0_image', function () {
+  $(document).on('change', '#item_item_images_image', function () {
     const files = $.extend(true, {}, $(this).prop('files'));
 
     manageFiles(files);
@@ -11,7 +10,7 @@ $(function () {
   });
 
   $(document).on('click', '#dropbox', function () {
-    $("#item_item_images_attributes_0_image").click();
+    $("#item_item_image_image").click();
   });
 
   $(document).on('click', '.upload-item__container__button__delete', function () {
@@ -21,6 +20,22 @@ $(function () {
     imageCount--;
     $("#uploadItem-" + id).empty();
     $("#dropbox").css("display", "block");
+  });
+
+  $(document).on('click', '.stored-item__container__button__delete', function () {
+    const id = $(this).data('id');
+
+    $.ajax({
+      type: "delete",
+      url: "/item_images/" + id,
+      data: { id: id },
+      dataType: "json",
+    }).then(function () {
+      imageCount--;
+      $("#storedItem-" + id).empty();
+      $("#dropbox").css("display", "block");
+    })
+
   });
 
   $(document).on('dragover', '#dropbox', function (event) {
