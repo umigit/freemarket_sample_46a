@@ -1,14 +1,10 @@
 class ItemImagesController < ApplicationController
-  def new
-  end
+  def index
+    @item_images = ItemImage.all
 
-  def create
-    # ItemImage.create(item_images_params)
-  end
-
-  private
-
-  def item_images_params
-    # params.require(:item_image).permit(:image)
+    respond_to do |format|
+      format.html
+      format.csv { send_data render_to_string, filename: "item_images.csv", type: :csv }
+    end
   end
 end
