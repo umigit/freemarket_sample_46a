@@ -1,0 +1,34 @@
+.footer {
+  background-color: $black;
+  padding: 60px 0;
+  color: white;
+  text-align: center;
+
+  h2 {
+    font-size: 16px;
+  }
+  a {
+    color: white;
+  }
+  &__navigation {
+    display: flex;
+    width: 700px;
+    margin: 0 auto;
+    
+    &__item {
+      width: 23%;
+      padding-right: 2%;
+    }
+  }
+
+  &__logo {
+    height: 33px;
+    margin-top: 40px;
+  }
+
+  &__copyright {
+    p {
+      font-size: 14px;
+    }
+  }
+}
