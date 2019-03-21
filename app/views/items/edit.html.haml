@@ -43,7 +43,7 @@
                 カテゴリー
                 %span 必須
               .sell-form__detail__select-box__wrap
-                = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
+                = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---"
                 %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_category
                 %select#item_sub_category_id{name: ""}
