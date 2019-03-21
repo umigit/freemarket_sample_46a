@@ -1,7 +1,6 @@
 .header
   .header__container
     .header__container__search
-
       = link_to image_tag("logo.svg"), "/", class: "header__container__search__logo"
       = form_with local: true, class: "header__container__search__form" do |f|
         = f.text_field :keyword, class: "header__container__search__form__input", type: "search", name: "keyword", placeholder: "キーワードから探す"
