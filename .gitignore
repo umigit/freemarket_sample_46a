@@ -25,7 +25,7 @@
 /yarn-error.log
 
 /public/assets
-/public
+/public/uploads
 .byebug_history
 index.csv.ruby
 # Ignore master key for decrypting credentials and more.
