@@ -15,5 +15,5 @@ CSV.foreach('db/items.csv', headers: true) do |row|
 end
 
 CSV.foreach('db/item_images.csv', headers: true) do |row|
-  ItemImage.create!(id: row['id'], created_at: row['created_at'], updated_at: row['updated_at'], item_id: row['item_id'], image: open("#{Rails.root}" + row['image']))
+  ItemImage.create!(id: row['id'], created_at: row['created_at'], updated_at: row['updated_at'], item_id: row['item_id'], image: open("#{Rails.root}/public" + row['image']))
 end
