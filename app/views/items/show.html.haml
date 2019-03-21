@@ -1,0 +1,292 @@
+.container
+  = render "layouts/header"
+  .main-background
+    %section.item-box-container
+      %h1.item-name 正規品！COACH【コーチ】★★大きめ ミニシグネチャーショルダーバッグ
+
+      .item-main-content
+        .item-photo
+          = image_tag "item_dummy.jpg", class: "item-box__image"
+        %table.item-detail-table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = link_to "DPS(ぶーん)@コスパNo1優良店", "/", class: "user-name-string";
+                .item-user-ratings
+                  .item-user-rating
+                    %i.fas.fa-laugh
+                    %span 555
+                  .item-user-rating
+                    %i.fas.fa-meh
+                    %span 24
+                  .item-user-rating
+                    %i.fas.fa-frown
+                    %span 2
+            %tr
+              %th カテゴリー
+              %td
+                = link_to "/" do
+                  .item-detail-table-sub
+                    レディース
+                = link_to "/" do
+                  .item-detail-table-sub__sub
+                    %i.fas.fa-angle-right
+                    バッグ
+                = link_to "/" do
+                  .item-detail-table-sub__sub__sub
+                    %i.fas.fa-angle-right
+                    ショルダーバッグ
+            %tr
+              %th ブランド
+              %td
+                = link_to "コーチ", "/", class: "brand-name"
+
+            %tr
+              %th 商品の状態
+              %td
+                .item-detail やや傷や汚れあり
+            %tr
+              %th 配送料の負担
+              %td
+                .item-detail 送料込み(出品者負担)
+            %tr
+              %th 配送の方法
+              %td
+                .item-detail らくらくメルカリ便
+            %tr
+              %th 発送元地域
+              %td
+                .item-detail.prefecture-name らくらくメルカリ便
+            %tr
+              %th 配送日の目安
+              %td
+                .item-detail 1~2日で発送
+
+      .item-price-box
+        %span.item-price ¥3,380
+        %span.item-tax (税込)
+        %span.item-shipping-fee 送料込み
+      .item-buy-btn 売り切れました
+      .item-description
+        %p.item-description__inner
+          ■商品ご覧頂き、誠にありがとうございます。
+          %br
+          ※今だけ、フォロワーになって下さった方に、300円のお値引きサービス中！！
+          %br
+          私の商品検索は、
+          %br
+          #Boon・バッグ　
+          %br
+          検索してください。
+          %br
+          %br
+          質問がありましたらコメントでよろしくお願いします！
+          %br
+          ■ 商品説明 ■
+          %br
+          まずはプロフを確認してください☆
+          %br
+          %br
+          ■ 商品詳細 ■
+          %br
+          シンプルな落ち着いたお色味でどんな場面にも合い、
+          %br
+          どんな服にも合わせやすいお鞄です。使用感有！角擦れはございませんが
+          %br
+          多少の汚れはあります。内側はとても綺麗です☆
+          %br
+          使わなくなったのでどなたか使っていただける方お願いします。
+          %br
+          製造番号　H2K-9294
+          %br
+          %br
+          【ブランド】
+          %br
+          COACH　コーチ
+          %br
+          %br
+          【商品名】
+          %br
+          コーチ大き目シンプル
+          %br
+          %br
+          【仕様】
+          %br
+          外ポケット１　内ポケット４
+          %br
+          %br
+          【サイズ】
+          %br
+          縦：32
+          %br
+          横：31
+          %br
+          幅：7
+          %br
+          紐：130 多少調節可能
+          %br
+          %br
+          ＊他にも数多くの商品を出品しているので、ぜひご覧ください。
+          %br
+          ＊複数購入、お取り置き(５日まで)もできるので、お気軽にお声がけくださいませ。
+          %br
+          ＊中古品になりますので、予めご理解いただきますよう、お願い致します^_^
+          %br
+          ※自宅保管、素人検品、素人寸法の誤差などにご理解がない方、神経質な方、完璧な物が欲しい方は購入お控えください。
+          %br
+          、お願い致します^_^
+          %br
+          ※自宅保管、素人検品、素人寸法の誤差などにご理解がない方、神経質な方、完璧な物が欲しい方は購入お控えください。
+          %br
+          %br
+          ・シンプル ・かわいい ・大き目 ・かばん ・バッグ
+
+      .item-button-container
+        .item-button-left
+          %button{type: "button", name: "like!", class: "item-button"}
+            %i.far.fa-heart
+            %span.fade-in-down いいね!
+            %span.fade-in-down 7
+          = link_to "", class: "item-button__report" do
+            %i.far.fa-flag
+            不適切な商品の報告
+        .item-button-right
+          = link_to 'https://www.mercari.com/jp/safe/description/', target: "_blank", class: "safe-description" do
+            %i.fas.fa-lock.clock-font
+            あんしん・あんぜんへの取り組み
+
+    .item-detail-message
+      .message-continer
+        .message-content
+          %ul.message-items
+            %li.message-item
+              .message-user
+                %figure
+                  .message-user-unknown
+                    = image_tag("user-icon.svg")
+              .message-body-continer
+                %p.user-name-string
+                  aaaa
+                .message-body
+                  .message-body__text 出品者がコメントを削除しました
+                  .message-icons
+                    .message-icon-left
+                      %i.far.fa-clock
+                      %span.days-ago 141日前
+                    .message-icon-right
+                      = link_to "" do
+                        %i.far.fa-flag
+            %li.message-item
+              .message-user
+                %figure
+                  .message-user-unknown
+                    = image_tag("user-icon.svg")
+              .message-body-continer
+                %p.user-name-string
+                  aaaa
+                .message-body
+                  .message-body__text 出品者がコメントを削除しました
+                  .message-icons
+                    .message-icon-left
+                      %i.far.fa-clock
+                      %span.days-ago 141日前
+                    .message-icon-right
+                      = link_to "" do
+                        %i.far.fa-flag
+            %li.message-item
+              .message-user
+                %figure
+                  .message-user-unknown
+                    = image_tag("user-icon.svg")
+              .message-body-continer
+                %p.user-name-string
+                  aaaa
+                .message-body
+                  .message-body__text 出品者がコメントを削除しました
+                  .message-icons
+                    .message-icon-left
+                      %i.far.fa-clock
+                      %span.days-ago 141日前
+                    .message-icon-right
+                      = link_to "" do
+                        %i.far.fa-flag
+            %li.message-item
+              .message-user
+                %figure.user-profile-image
+                  = link_to image_tag("member_photo_noimage.png"), "/", class: "message-user-image"
+              .message-body-continer
+                %p.user-name-string
+                  碇 シンジ
+                .message-body
+                  .message-body__text 出品者がコメントを削除しました
+                  .message-icons
+                    .message-icon-left
+                      %i.far.fa-clock
+                      %span.days-ago 141日前
+                    .message-icon-right
+                      = link_to "" do
+                        %i.far.fa-flag
+
+        .message-content
+          %form{action: "https://www.mercari.com/jp/comment/add/", method: "POST", class: "message-form"}
+            %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %textarea{type: "text", name: "body", class: "textarea-default"}
+            %buttton{type: "submit", class: "message-submit button-default"}
+              %span.message-submit__button 売り切れのためコメントできません
+
+    %ul.nav-item-link
+      %li.nav-item-link-prev
+        = link_to '/' do
+          %i.fas.fa-chevron-left
+            ディズニーチケット
+      %li.nav-item-link-next
+        = link_to '/' do
+          ハリーウィンストン 時計
+          %i.fa.fa-chevron-right
+
+    .item-social-media-box
+      .text-center
+      %ul.social-media-box
+        %li
+          = link_to "", target: "_blank", class: "share-btn" do
+            %i.fab.fa-facebook-square
+        %li
+          = link_to "", target: "_blank", class: "share-btn" do
+            %i.fab.fa-twitter
+        %li
+          = link_to "", target: "_blank", class: "share-btn" do
+            %i.fab.fa-line
+        %li
+          = link_to "", target: "_blank", class: "share-btn" do
+            %i.fab.fa-pinterest
+
+
+    .items-in-user-profile
+      %section.items-box-continer
+        = link_to "/" do
+          %h3.items-box-head
+            コスパNO１優良店
+        .item-box-content
+          %section
+            .pickup-box__items
+              = render "home/item"
+              = render "home/item"
+              = render "home/item"
+            .pickup-box__view-all
+        = link_to "/" do
+          %h3.items-box-head
+            コーチのショルダーバッグ その他の商品
+        .item-box-content
+          %section
+            .pickup-box__items
+              = render "home/item"
+              = render "home/item"
+              = render "home/item"
+            .pickup-box__view-all
+
+  .aside
+    .aside__banner
+      = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
+  = render "layouts/footer"
+  = render "layouts/sell-button"
