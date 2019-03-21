@@ -7,12 +7,12 @@
       .new-item__main__container__head
         %h2 商品の情報を入力
       = form_with model: @item, local: true , id: "itemForm", class: "new-item__main__container__form sell-form" do |f|
-        .sell-form__image
+        .sell-form__image{"data-image_count": @item.item_images.count}
           %h3
             出品画像
             %span 必須
           %p 最大10枚までアップロードできます
-          = f.fields_for :item_images do |ff|
+          = f.fields_for @item.item_images do |ff|
             = ff.file_field :image , class: "sell-form__image__input", accept: ".jpg, .jpeg, .png", multiple: true
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
