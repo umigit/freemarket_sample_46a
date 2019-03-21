@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     collection do
       get :category
     end
-  ends
+  end
   resources :user_profiles, only: [:edit, :update]
   resources :addresses, only: [:new, :create, :edit, :update]
-  resource :users  do
+  resources :users  do
     collection do
       get :logout
       get :card
