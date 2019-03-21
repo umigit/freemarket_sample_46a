@@ -15,11 +15,8 @@
           Googleで登録
           %i.fab.fa-google
       .single-main__l.panel-form
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          = f.email_field :email, class: 'email-box'
-          = f.password_field :password, autocomplete: "off", class: 'password-box'
-          = f.submit "ログイン", class: "login-submit btn-default btn-red"
-        -# %input{:name => "password", :type => "password", :value => "パスワード"}
-        -# %button.login-submit.btn-default.btn-red{:type => "submit"} ログイン
-        -# =link_to 'パスワードをお忘れの方', "" ,class: 'owasure'
-  = render "layouts/footer"
+        %input{:name => "email", :type => "email", :value => "メールアドレス", class: 'email-box'}
+        %input{:name => "password", :type => "password", :value => "パスワード", class: 'password-box'}
+        %button.login-submit.btn-default.btn-red{:type => "submit"} ログイン
+        =link_to 'パスワードをお忘れの方', "" ,class: 'owasure'
+  = render "devise/registrations/footer"

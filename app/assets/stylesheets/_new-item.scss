@@ -331,7 +331,7 @@
 }
 
 #sell-form {
-  &-size {
+  &-size, &-sub_category, &-sub_sub_category {
     display: none;
   }
 }
