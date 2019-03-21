@@ -82,9 +82,14 @@ $(function () {
     formData.append("item[days_to_ship]", $("#item_days_to_ship").val());
     formData.append("item[price]", $("#priceField").val());
 
+    let type = 'POST';
+    if ($("[name=_method]").length){
+      type = $("[name=_method]").val();
+    }
+    const url = $("#itemForm").attr('action');
     $.ajax({
-      type: "POST",
-      url: "/items",
+      type: type,
+      url: url,
       data: formData,
       dataType: "json",
       processData: false,
@@ -152,6 +157,7 @@ $(function () {
     }
   }
 
+  //未入力チェック
   function showError() {
     if (imageCount < 1) {
       $(".sell-form__image__error").html(`<p>画像がありません</p>`);
