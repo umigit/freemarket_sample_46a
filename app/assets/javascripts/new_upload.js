@@ -78,7 +78,7 @@ $(function () {
     formData.append("item[brand_id]", $("#item_brand_id").val());
     formData.append("item[condition]", $("#item_condition").val());
     formData.append("item[shipping_fee]", $("#item_shipping_fee").val());
-    formData.append("item[region_id]", $("#item_region_id").val());
+    formData.append("item[prefecture_id]", $("#item_prefecture_id").val());
     formData.append("item[days_to_ship]", $("#item_days_to_ship").val());
     formData.append("item[price]", $("#priceField").val());
 
@@ -195,7 +195,7 @@ $(function () {
       $(".sell-form__shipping__select-box__fee__error").html(`<p>選択してください</p>`);
     }
 
-    if ($("#item_region_id").val()) {
+    if ($("#item_prefecture_id").val()) {
       $(".sell-form__shipping__select-box__region__error").empty();
     }
     else {
