@@ -74,7 +74,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "font-awesome-rails"
-gem 'haml-rails'
+gem 'haml-rails', '1.0.0'
 gem 'ransack'
 gem 'jquery-rails'
 gem 'devise'
