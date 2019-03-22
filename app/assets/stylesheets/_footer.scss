@@ -14,7 +14,7 @@
     display: flex;
     width: 700px;
     margin: 0 auto;
-    
+
     &__item {
       width: 23%;
       padding-right: 2%;
@@ -22,8 +22,13 @@
   }
 
   &__logo {
-    height: 33px;
+
     margin-top: 40px;
+
+    img {
+      box-sizing: border-box;
+      height: 33px;
+    }
   }
 
   &__copyright {

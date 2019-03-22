@@ -12,9 +12,23 @@
       height: 36px;
       display: flex;
 
+      &__logo {
+        width: 134px;
+        box-sizing: border-box;
+        display: block;
+        flex-shrink: 0;
+
+        img {
+          height: 100%;
+        }
+      }
       &__form {
         width: 100%;
         padding-left: 16px;
+
+        input {
+          height: 100%;
+        }
       }
     }
 
@@ -23,6 +37,7 @@
       width: 100%;
       position: absolute;
       bottom: 0;
+
     }
   }
 }
@@ -43,6 +58,30 @@
     float: right;
     display: flex;
     justify-content: right;
+
+    &__todo {
+
+      &:before {
+        font-family: 'Font Awesome 5 Free';
+        font-size: 16px;
+        margin-right: 8px;
+        font-weight: 900;
+        content: '\f00c';
+      }
+    }
+
+    &__note {
+
+      &:before {
+        font-family: 'Font Awesome 5 Free';
+        font-size: 16px;
+        margin-right: 8px;
+        font-weight: 400;
+        content: '\f0f3';
+      }
+    }
+
+    &
 
     a {
       padding-left: 16px;
