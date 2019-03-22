@@ -1,12 +1,13 @@
 .container.new-item
   .new-item__header
-    = link_to image_tag("logo.svg"), "/"
+    .single-header
+      = link_to image_tag("logo.svg"), "/"
   .new-item__main
     .new-item__main__container
       .new-item__main__container__head
         %h2 商品の情報を入力
-      = form_with model: @item, local: true , class: "new-item__main__container__form sell-form" do |f|
-        .sell-form__image
+      = form_with model: @item, local: true , id: "itemForm", class: "new-item__main__container__form sell-form" do |f|
+        .sell-form__image{"data-image_count": 0}
           %h3
             出品画像
             %span 必須
@@ -42,28 +43,28 @@
                 %span 必須
               .sell-form__detail__select-box__wrap
                 = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_category
                 %select#item_sub_category_id{name: ""}
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
                 %select#item_sub_sub_category_id{name: ""}
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__category__error
             #sell-form-brand
               %h5.mt-40
                 ブランド
                 %span.gray 任意
               .sell-form__detail__select-box__wrap
-                = f.text_field :brand_id, placeholder: "例）シャネル"
-                = fa_icon "angle-down"
+                = f.select :brand_id, @brands.map{|t| [t.name, t.id]}, prompt: "---"
+                %i.fas.fa-angle-down
             .sell-form__detail__select-box__condition
               %h5.mt-40
                 商品の状態
                 %span 必須
               .sell-form__detail__select-box__wrap
                 = f.select :condition, Item.conditions.keys, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__detail__select-box__condition__error
         .sell-form__shipping
           %h6
@@ -76,15 +77,15 @@
                 %span 必須
               .sell-form__shipping__select-box__wrap
                 = f.select :shipping_fee, Item.shipping_fees.keys, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__shipping__select-box__fee__error
             .sell-form__shipping__select-box__region
               %h5.mt-40
                 発送元の地域
                 %span 必須
               .sell-form__shipping__select-box__wrap
-                = f.collection_select :region_id, Prefecture.all, :id, :name, prompt: "---"
-                = fa_icon "angle-down"
+                = f.select :prefecture_id, Prefecture.all.map{|t| [t.name, t.id]}, prompt: "---"
+                %i.fas.fa-angle-down
               .sell-form__shipping__select-box__region__error
             .sell-form__shipping__select-box__days
               %h5.mt-40
@@ -92,7 +93,7 @@
                 %span 必須
               .sell-form__shipping__select-box__wrap
                 = f.select :days_to_ship, Item.days_to_ships.keys, prompt: "---"
-                = fa_icon "angle-down"
+                %i.fas.fa-angle-down
               .sell-form__shipping__select-box__days__error
         .sell-form__price
           %h6
@@ -124,14 +125,4 @@
           %p また、出品をもちまして加盟店規約に同意したことになります。
           = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
-.new-item__footer
-  %ul
-    %li
-      = link_to "プライバシーポリシー", "/"
-    %li
-      = link_to "メルカリ利用規約", "/"
-    %li
-      = link_to "特定商取引に関する表記", "/"
-  = link_to image_tag("logo-gray.svg"), "/", class: "new-item__footer__logo"
-  %p
-    %small ©︎2019 Mercari
+= render "layouts/single-footer"

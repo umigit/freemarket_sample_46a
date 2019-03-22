@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
+  def indexs
+  end
+
   def new
     @item = Item.new
     @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
+    @brands = Brand.all
     @regions = Region.all
     @itemimage = ItemImage.new
   end
@@ -10,10 +14,23 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to item_path(@item)
+
     else
-      render :new
+
     end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    # @item_images = @item.item_images
+    # @item.item_images.build
+    @categories = Category.ransack(parent_id_null: true).result
+
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
   end
 
   def category
@@ -28,7 +45,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :comment, :category_id, :brand_id, :shipping_fee, :region_id, :days_to_ship, :price, :condition, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :comment, :category_id, :brand_id, :shipping_fee, :prefecture_id, :days_to_ship, :price, :condition, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def buy

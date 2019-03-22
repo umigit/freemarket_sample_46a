@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "home#index"
+  root "items#index"
   resources :items, only: [:new, :create] do
     member do
       get :buy
@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
   resources :user_profiles, only: [:edit,:update]
   resources :users, only: [:index]
-  resources :items, only: [:new, :create] do
+
+  resources :items, only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get :category
     end
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
       get :card
     end
   end
+  resources :item_images, only: [:destroy]
 end

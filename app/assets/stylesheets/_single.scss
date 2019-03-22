@@ -1,0 +1,38 @@
+.single-header {
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    box-sizing: border-box;
+    height: 49px;
+    padding: 0;
+  }
+}
+
+.single-footer {
+  width: 456px;
+  min-height: 140px;
+  margin: 0 auto;
+  padding: 40px 0;
+  text-align: center;
+  ul {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  a {
+    font-size: 12px;
+    margin: 0 10px;
+  }
+
+  &__logo {
+
+    img {
+      width: 80px;
+      margin: 40px auto 0;
+    }
+
+  }
+}

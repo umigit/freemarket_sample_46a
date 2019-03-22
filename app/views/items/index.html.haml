@@ -1,10 +1,11 @@
+- content_for :head do
+  %meta{name: "turbolinks-cache-control", content: "no-cache"}
 .container
   = render "layouts/header"
-  .banner-top
-    = image_tag "banner_top_tmp.jpg", class: ".banner-top__image banner"
+  = render "carousel"
   .main
     %h2 ピックアップカテゴリー
-    .pickup-box  
+    .pickup-box
       %h3
         = link_to "レディース新着アイテム"
       .pickup-box__items
@@ -14,7 +15,7 @@
         = render "item"
       .pickup-box__view-all
         = link_to "全ての商品を見る"
-    .pickup-box  
+    .pickup-box
       %h3
         = link_to "レディース新着アイテム"
       .pickup-box__items
@@ -24,7 +25,7 @@
         = render "item"
       .pickup-box__view-all
         = link_to "すべての商品を見る"
-    .pickup-box  
+    .pickup-box
       %h3
         = link_to "レディース新着アイテム"
       .pickup-box__items
