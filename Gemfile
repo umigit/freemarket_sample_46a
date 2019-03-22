@@ -82,4 +82,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'active_hash'
 gem 'fog-aws'
-
+gem "jquery-slick-rails"
