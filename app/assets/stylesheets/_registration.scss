@@ -7,8 +7,7 @@ a{
   font-size: 13px;
 }
 
-
-.l-single-container{
+.single-main-container{
   width: 700px;
   margin: 0 auto;
   &__head{
@@ -61,7 +60,16 @@ a{
     }
 }
 
+.far{
+  position: relative;
+  float: left;
+  left: 20px;
+}
 
-
+.fab{
+  position: relative;
+  float: left;
+  left: 20px;
+}
 
 
