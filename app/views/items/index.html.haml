@@ -9,32 +9,59 @@
       %h3
         = link_to "レディース新着アイテム"
       .pickup-box__items
-        = render "item"
-        = render "item"
-        = render "item"
-        = render "item"
-      .pickup-box__view-all
-        = link_to "全ての商品を見る"
-    .pickup-box
-      %h3
-        = link_to "レディース新着アイテム"
-      .pickup-box__items
-        = render "item"
-        = render "item"
-        = render "item"
-        = render "item"
+        - @ladies.each do |item|
+          = render partial: "item", locals: {image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
         = link_to "すべての商品を見る"
     .pickup-box
       %h3
-        = link_to "レディース新着アイテム"
+        = link_to "メンズ新着アイテム"
       .pickup-box__items
-        = render "item"
-        = render "item"
-        = render "item"
-        = render "item"
+        - @mens.each do |item|
+          = render partial: "item", locals: {image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "全ての商品を見る"
+        = link_to "すべての商品を見る"
+    .pickup-box
+      %h3
+        = link_to "ベビー・キッズ新着アイテム"
+      .pickup-box__items
+        - @kids.each do |item|
+          = render partial: "item", locals: {image: item.item_images[0].image, name: item.name, price: item.price}
+      .pickup-box__view-all
+        = link_to "すべての商品を見る"
+    %h2 ピックアップブランド
+    .pickup-box
+      %h3
+        = link_to "ジャネル新着アイテム"
+      .pickup-box__items
+        - @janel.each do |item|
+          = render partial: "item", locals: {image: item.item_images[0].image, name: item.name, price: item.price}
+      .pickup-box__view-all
+        = link_to "すべての商品を見る"
+    .pickup-box
+      %h3
+        = link_to "ルイビトン新着アイテム"
+      .pickup-box__items
+        - @biton.each do |item|
+          = render partial: "item", locals: {image: item.item_images[0].image, name: item.name, price: item.price}
+      .pickup-box__view-all
+        = link_to "すべての商品を見る"
+    .pickup-box
+      %h3
+        = link_to "シュリンプ新着アイテム"
+      .pickup-box__items
+        - @shrimp.each do |item|
+          = render partial: "item", locals: {image: item.item_images[0].image, name: item.name, price: item.price}
+      .pickup-box__view-all
+        = link_to "すべての商品を見る"
+    .pickup-box
+      %h3
+        = link_to "マイキ新着アイテム"
+      .pickup-box__items
+        - @mike.each do |item|
+          = render partial: "item", locals: {image: item.item_images[0].image, name: item.name, price: item.price}
+      .pickup-box__view-all
+        = link_to "すべての商品を見る"
   .aside
     .aside__banner
       = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
