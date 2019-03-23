@@ -44,7 +44,7 @@
               .sell-form__detail__select-box__wrap
                 = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
                 %i.fas.fa-angle-down
-              .sell-form__detail__select-box__wrap#sell-form-sub_categor{style: "display:none"}
+              .sell-form__detail__select-box__wrap#sell-form-sub_category{style: "display:none"}
                 %select#item_sub_category_id{name: ""}
                 %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_sub_category{style: "display:none"}
