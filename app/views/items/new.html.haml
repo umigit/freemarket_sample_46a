@@ -45,10 +45,10 @@
                 = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
                 %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_category
-                %select#item_sub_category_id{name: ""}
+                %select#item_sub_category_id{name: "", style: "display:none"}
                 %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
-                %select#item_sub_sub_category_id{name: ""}
+                %select#item_sub_sub_category_id{name: "", style: "display:none"}
                 %i.fas.fa-angle-down
               .sell-form__detail__select-box__category__error
             #sell-form-brand

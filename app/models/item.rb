@@ -10,4 +10,10 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :item_images
   accepts_nested_attributes_for :item_images
+
+  scope :by_category_id, -> (id) {eager_load(category: :parent).where("category_id = ? or categories.parent_id = ? or parents_categories.parent_id = ?", id, id, id)}
+
+  def self.ransackable_scopes(auth_object = nil)
+    %i[by_category_id]
+  end
 end
