@@ -1,0 +1,7 @@
+.stored-item{id: "storedItem-#{item_image.id}"}
+  .stored-item__container
+    %figure
+      = image_tag item_image.image.url, class: "stored-item__container__image", id: "storedImage-#{item_image.id}"
+    .stored-item__container__button{id: "stButton-#{item_image.id}"}
+      %a.stored-item__container__button__edit{"data-id": "#{item_image.id}"} 編集
+      %a.stored-item__container__button__delete{"data-id": "#{item_image.id}"} 削除

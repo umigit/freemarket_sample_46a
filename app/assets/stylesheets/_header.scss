@@ -12,9 +12,23 @@
       height: 36px;
       display: flex;
 
+      &__logo {
+        width: 134px;
+        box-sizing: border-box;
+        display: block;
+        flex-shrink: 0;
+
+        img {
+          height: 100%;
+        }
+      }
       &__form {
         width: 100%;
         padding-left: 16px;
+
+        input {
+          height: 100%;
+        }
       }
     }
 
@@ -23,6 +37,7 @@
       width: 100%;
       position: absolute;
       bottom: 0;
+
     }
   }
 }
@@ -36,6 +51,13 @@
 
     a {
       padding-right: 16px;
+      line-height: 38px;
+      box-sizing: border-box;
+      border: 0 solid white;
+      display: block;
+      &:hover {
+        color: $blue;
+      }
     }
   }
 
@@ -44,16 +66,38 @@
     display: flex;
     justify-content: right;
 
-    a {
+    &__mypage,&__todo, &__note {
+      height: 38px;
       padding-left: 16px;
-    }
-  }
+      display: block;
+      line-height: 38px;
 
-  a {
-    line-height: 38px;
-    box-sizing: border-box;
-    border: 0 solid white;
-    display: block;
+
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    &__todo {
+      &:before {
+        font-family: 'Font Awesome 5 Free';
+        font-size: 16px;
+        margin-right: 8px;
+        font-weight: 900;
+        content: '\f00c';
+      }
+    }
+
+    &__note {
+      &:before {
+        font-family: 'Font Awesome 5 Free';
+        font-size: 16px;
+        margin-right: 8px;
+        font-weight: 400;
+        content: '\f0f3';
+      }
+    }
   }
 }
 
@@ -65,5 +109,27 @@
   img {
     box-sizing: border-box;
     height: 49px;
+  }
+}
+
+.btn {
+
+  &-nav {
+    height: 32px;
+    margin-left: 8px;
+    border-radius: 4px;
+    padding: 0 10px;
+    line-height: 32px;
+    font-size: 14px;
+  }
+
+  &-reg {
+    background-color: white;
+    color: $blue;
+    border: 1px solid $blue;
+
+    &:visited {
+      color: $blue;
+    }
   }
 }

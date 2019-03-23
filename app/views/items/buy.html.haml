@@ -1,0 +1,61 @@
+.items__buy_cf__container
+  .items__buy_cf__container__main
+    %h2.items__buy_cf__container__main__header
+      購入を確定しますか?
+    .items__buy_cf__container__main__content
+      .items__buy_cf__container__main__content__inner
+        .items__buy_cf__container__main__content__inner__item_image_container
+          = image_tag "https://static.mercdn.net/thumb/photos/m92947360317_1.jpg?1552570575", alt: "写真", class:"item_photo"
+        %p.items__buy_cf__container__main__content__inner__item_name
+          = "新品 チェックワイドパンツ"
+        = form_with model: @item, method: 'post', class: "items__buy_cf__container__main__content__inner__buy_form", local: true do |f|
+          %p.items__buy_cf__container__main__content__inner__buy_form__item_price
+            = "¥ " + "999"
+            %span.items__buy_cf__container__main__content__inner__buy_form__item_price__shipping_fee
+              送料込み
+            .items__buy_cf__container__main__content__inner__buy_form__accordion
+              .items__buy_cf__container__main__content__inner__buy_form__accordion_toggle
+                ポイントはありません
+
+            .payment
+              .payment_text
+                支払い金額
+              .payment_price
+                = '¥ ' + "999"
+          = f.fields_for :order_statuses do |status_f|
+            = status_f.hidden_field :status, value: "0"
+            = status_f.hidden_field :purchaser_id, value: current_user.id
+            = status_f.hidden_field :seller_id, value: 1
+            = status_f.hidden_field :item_id, value: 1
+          = f.hidden_field :price, value: 666
+          = f.hidden_field :buyer_id, value: current_user.id
+          = f.submit'購入する', class: "btn_default"
+
+
+    .buy_user_info
+      .buy_user_info_container
+        %h3
+          配送先
+        %address
+          .buy_user_info_container_text
+            = "〒" + "194-0041"
+            %br
+            = "東京都 町田市 金森5丁目18番 4-806号 "
+        .buy_user_info_container__angle_right
+          =link_to "#", class: "angle-right" do
+            変更する
+            %i.fab-fa-angle-right
+    .buy_user_info
+      .buy_user_info_container
+        %h3
+          支払い方法
+        .buy_user_info_container_text
+          ************4310
+          %br
+          08 / 22
+        .buy_user_info_container_visa
+          = image_tag "https://i1.wp.com/creditcard-site.com/images/visa_shin_logo2.png?w=1170&ssl=1", size: "49x15", alt: "写真"
+        .buy_user_info_container__angle_right
+          =link_to "#", class: "angle-right" do
+            変更する
+            %i.fab.fa-sangle-right"
