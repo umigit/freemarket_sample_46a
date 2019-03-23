@@ -12,7 +12,7 @@
             出品画像
             %span 必須
           %p 最大10枚までアップロードできます
-          = f.fields_for @item.item_images do |ff|
+          = f.fields_for :item_images do |ff|
             = ff.file_field :image , class: "sell-form__image__input", accept: ".jpg, .jpeg, .png", multiple: true
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
@@ -148,6 +148,6 @@
           %p 禁止されている出品、行為を必ずご確認ください。
           %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
           %p また、出品をもちまして加盟店規約に同意したことになります。
-          = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40"
+          = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40", type: "button"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
 = render "layouts/single-footer"
