@@ -1,0 +1,54 @@
+.aside {
+  background-image: url(image_path("download_bg_pc.jpg"));
+  background-size: cover;
+  &__banner {
+    width: 750px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    &__inner {
+      flex: 1;
+
+      &__icon {
+        display: flex;
+
+        img {
+          height: 68px;
+        }
+
+        &__app {
+          margin-left: 24px;
+          display: flex;
+          align-items: center;
+
+          a {
+            display: block;
+          }
+
+          img {
+            vertical-align: middle;
+            margin-right: 16px;
+            height: 40px;
+          }
+        }
+
+
+      }
+
+      h2 {
+        color: white;
+        text-align: left;
+      }
+
+      p {
+        color: white;
+        font-size: 35px;
+      }
+    }
+
+    &__image{
+      box-sizing: border-box;
+      height: 260px;
+    }
+  }
+}
