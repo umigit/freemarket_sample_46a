@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       get :category
     end
   end
-  resources :user_profiles, only: [:edit, :update]
   resources :addresses, only: [:new, :create, :edit, :update]
   resources :users  do
     collection do
@@ -23,4 +22,3 @@ Rails.application.routes.draw do
     end
   end
   resources :item_images, only: [:destroy]
-end
