@@ -6,8 +6,8 @@
     .new-item__main__container
       .new-item__main__container__head
         %h2 商品の情報を入力
-      = form_with model: @item, local: true , class: "new-item__main__container__form sell-form" do |f|
-        .sell-form__image
+      = form_with model: @item, local: true , id: "itemForm", class: "new-item__main__container__form sell-form" do |f|
+        .sell-form__image{"data-image_count": 0}
           %h3
             出品画像
             %span 必須
@@ -44,10 +44,10 @@
               .sell-form__detail__select-box__wrap
                 = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
                 %i.fas.fa-angle-down
-              .sell-form__detail__select-box__wrap#sell-form-sub_category
+              .sell-form__detail__select-box__wrap#sell-form-sub_category{style: "display:none"}
                 %select#item_sub_category_id{name: ""}
                 %i.fas.fa-angle-down
-              .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
+              .sell-form__detail__select-box__wrap#sell-form-sub_sub_category{style: "display:none"}
                 %select#item_sub_sub_category_id{name: ""}
                 %i.fas.fa-angle-down
               .sell-form__detail__select-box__category__error
@@ -84,7 +84,7 @@
                 発送元の地域
                 %span 必須
               .sell-form__shipping__select-box__wrap
-                = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "---"
+                = f.select :prefecture_id, Prefecture.all.map{|t| [t.name, t.id]}, prompt: "---"
                 %i.fas.fa-angle-down
               .sell-form__shipping__select-box__region__error
             .sell-form__shipping__select-box__days
@@ -123,6 +123,6 @@
           %p 禁止されている出品、行為を必ずご確認ください。
           %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
           %p また、出品をもちまして加盟店規約に同意したことになります。
-          = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40"
+          = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40", type: "button"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
 = render "layouts/single-footer"
