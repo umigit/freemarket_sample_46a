@@ -4,6 +4,7 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
     -if content_for?(:head)
       = yield(:head)
+    %meta{name: "google-signin-client_id", content: "1095034003510-ti39t13psbpg3s1ctjpe4poj7an2d0lt.apps.googleusercontent.com"}
     %title FreemarketSample46a
     = csrf_meta_tags
     = csp_meta_tag
