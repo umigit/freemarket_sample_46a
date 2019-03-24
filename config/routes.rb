@@ -22,3 +22,4 @@ Rails.application.routes.draw do
     end
   end
   resources :item_images, only: [:destroy]
+end
