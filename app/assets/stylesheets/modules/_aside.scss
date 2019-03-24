@@ -1,0 +1,16 @@
+.aside {
+
+  &__banner {
+    background-image: url(image_path("download_bg_pc.png"))
+    display: flex;
+
+    &__inner {
+      flex: 1;
+    }
+
+    &__image{
+      box-sizing: border-box;
+      height: 260px;
+    }
+  }
+}
