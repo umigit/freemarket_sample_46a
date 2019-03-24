@@ -148,6 +148,8 @@
           %p 禁止されている出品、行為を必ずご確認ください。
           %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
           %p また、出品をもちまして加盟店規約に同意したことになります。
-          = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large mt-40", type: "button"
+          .sell-form__submit__button
+            = image_tag "icon_loader.gif", class: "sell-form__submit__button__load", id: "loadIcon"
+            = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large", type: "button"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
 = render "layouts/single-footer"
