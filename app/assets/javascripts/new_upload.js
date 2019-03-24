@@ -109,13 +109,19 @@ $(function () {
       dataType: "json",
       processData: false,
       contentType: false,
-    }).then(function () {
+      beforeSend: function () {
+        $("#newItemSubmitButton").val("");
+        $("#newItemSubmitButton").css("background-color", "#ccc");
+        $("#loadIcon").css("display", "block");
+      },
+    }).done(function () {
       location.href = "/";
-    }, function (response) {
-      //error
-        showError();
-    }).then(function () {
-    //always
+    }).fail(function (response) {
+      showError();
+    }).always(function () {
+      $("#newItemSubmitButton").val("出品する");
+      $("#newItemSubmitButton").css("background-color", "#e62017");
+      $("#loadIcon").css("display", "none");
       $("#newItemSubmitButton").prop('disabled', false);
     });
   });
