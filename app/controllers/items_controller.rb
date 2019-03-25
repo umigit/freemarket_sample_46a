@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :get_categories, only: [:index, :show]
 
   def index
     @ladies = Item.ransack(by_category_id: 1.0).result.limit(4)
@@ -9,7 +10,6 @@ class ItemsController < ApplicationController
     @biton = Item.ransack(brand_id_eq: 3).result.limit(4)
     @shrimp = Item.ransack(brand_id_eq: 4).result.limit(4)
     @mike = Item.ransack(brand_id_eq: 2).result.limit(4)
-    @categories = Category.all
   end
 
   def show
