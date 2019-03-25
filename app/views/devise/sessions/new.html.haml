@@ -8,8 +8,8 @@
         %p アカウントをお持ちでない方はこちら
         =link_to '新規登録会員', new_user_registration_path
       .single-main__l.panel-sns
-        = link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook"
-        = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google"
+        = link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", method: :get
+        = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", method: :get
       .single-main__l.panel-form
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = f.email_field :email, class: 'email-box'
