@@ -1,13 +1,18 @@
-.category-container {
-  padding: 40px;
+.category{
+  text-align: center;
+  &__container {
+    display: inline-block;
+    width: auto;
 
-  h1 {
-    margin: 24px 0 8px;
-    text-align-last: left;
-    font-size: 24px;
-  }
-  &__item {
-    display: flex;
-    flex-wrap: wrap;
+    h1 {
+      margin: 24px 0 8px;
+      font-size: 24px;
+      text-align: left;
+    }
+
+    &__item {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }

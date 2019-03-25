@@ -1,8 +1,9 @@
 = render "layouts/header"
-.category-container
-  %h1 #{@category.name}の商品一覧
-  .category-container__item
-    = render @items
+.category
+  .category__container
+    %h1 #{@category.name}の商品一覧
+    .category__container__item
+      = render @items
 = render "layouts/aside"
 = render "layouts/footer"
 = render "layouts/sell-button"
