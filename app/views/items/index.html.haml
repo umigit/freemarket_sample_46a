@@ -12,7 +12,6 @@
         - @ladies.each do |item|
           = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "すべての商品を見る"
     .pickup-box
       %h3
         = link_to "メンズ新着アイテム"
@@ -20,7 +19,6 @@
         - @mens.each do |item|
           = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "すべての商品を見る"
     .pickup-box
       %h3
         = link_to "ベビー・キッズ新着アイテム"
@@ -28,7 +26,6 @@
         - @kids.each do |item|
           = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "すべての商品を見る"
     %h2 ピックアップブランド
     .pickup-box
       %h3
@@ -37,7 +34,6 @@
         - @janel.each do |item|
           = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "すべての商品を見る"
     .pickup-box
       %h3
         = link_to "ルイビトン新着アイテム"
@@ -45,7 +41,6 @@
         - @biton.each do |item|
           = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "すべての商品を見る"
     .pickup-box
       %h3
         = link_to "シュリンプ新着アイテム"
@@ -53,7 +48,6 @@
         - @shrimp.each do |item|
           = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "すべての商品を見る"
     .pickup-box
       %h3
         = link_to "マイキ新着アイテム"
@@ -61,7 +55,6 @@
         - @mike.each do |item|
           = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
       .pickup-box__view-all
-        = link_to "すべての商品を見る"
   = render "layouts/aside"
   = render "layouts/footer"
   = render "layouts/sell-button"
