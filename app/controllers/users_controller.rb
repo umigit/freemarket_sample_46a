@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :get_categories, only: [:index]
 
-
   def index
   end
 
@@ -11,4 +10,9 @@ class UsersController < ApplicationController
   def card
   end
 
+  private
+
+  def get_categories
+    @all_categories = Category.all
+  end
 end
