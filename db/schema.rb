@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_231953) do
+ActiveRecord::Schema.define(version: 2019_03_24_092036) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_231953) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.integer "parent_id"
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -122,6 +123,15 @@ ActiveRecord::Schema.define(version: 2019_03_20_231953) do
     t.index ["name"], name: "index_regions_on_name", unique: true
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "user_evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "high_count"
     t.integer "medium_count"
@@ -174,4 +184,5 @@ ActiveRecord::Schema.define(version: 2019_03_20_231953) do
   add_foreign_key "money_transaction_records", "order_statuses"
   add_foreign_key "money_transaction_records", "users"
   add_foreign_key "order_statuses", "items"
+  add_foreign_key "sns_credentials", "users"
 end

@@ -1,7 +1,8 @@
 .item-box
-  = image_tag "item_dummy.jpg", class: "item-box__image"
-  .item-box__body
-    %h4.item-box__body__name 猫大集合Tシャツ（中古）
-    .item-box__body__price
-      %h5 \ 3,000
-      %p （税込）
+  = link_to item_path(id) do
+    = image_tag image.url, class: "item-box__image"
+    .item-box__body
+      %h4.item-box__body__name #{name}
+      .item-box__body__price
+        %h5 ¥ #{price}
+        %p （税込）

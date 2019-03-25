@@ -17,9 +17,6 @@
             = link_to "#", target: "blank", class: "card__content__middle__bottom__link" do
               #card__span 支払い方法について
               =fa_icon "angle-right"
-  .aside
-    .aside__banner
-      = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
-
+  = render "layouts/aside"
   = render "layouts/footer"
   = render "layouts/sell-button"
