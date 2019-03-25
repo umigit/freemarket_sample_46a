@@ -1,0 +1,15 @@
+%ul.category-menu__level1
+  - @categories.each do |category1|
+    - unless category1.parent_id
+      %li
+        = link_to category1.name, "/"
+        %ul.category-menu__level1__level2
+          - @categories.each do |category2|
+            - if category2.parent_id == category1.id
+              %li
+                = link_to category2.name, "/"
+                %ul.category-menu__level1__level2__level3
+                  - @categories.each do |category3|
+                    - if category3.parent_id == category2.id
+                      %li
+                        =link_to category3.name, "/"
