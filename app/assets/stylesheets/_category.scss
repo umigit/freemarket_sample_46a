@@ -1,0 +1,13 @@
+.category-container {
+  padding: 40px;
+
+  h1 {
+    margin: 24px 0 8px;
+    text-align-last: left;
+    font-size: 24px;
+  }
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
