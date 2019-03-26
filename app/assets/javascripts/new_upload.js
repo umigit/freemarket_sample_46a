@@ -2,7 +2,7 @@ $(function () {
   let imageCount = $(".sell-form__image").data('image_count');
   let imageList = [];
 
-  $(document).on('change', '#item_item_images_image', function () {
+  $(document).on('change', '#item_item_image_image', function () {
     const files = $.extend(true, {}, $(this).prop('files'));
 
     manageFiles(files);
@@ -109,13 +109,19 @@ $(function () {
       dataType: "json",
       processData: false,
       contentType: false,
-    }).then(function () {
+      beforeSend: function () {
+        $("#newItemSubmitButton").val("");
+        $("#newItemSubmitButton").css("background-color", "#ccc");
+        $("#loadIcon").css("display", "block");
+      },
+    }).done(function () {
       location.href = "/";
-    }, function (response) {
-      //error
-        showError();
-    }).then(function () {
-    //always
+    }).fail(function (response) {
+      showError();
+    }).always(function () {
+      $("#newItemSubmitButton").val("出品する");
+      $("#newItemSubmitButton").css("background-color", "#e62017");
+      $("#loadIcon").css("display", "none");
       $("#newItemSubmitButton").prop('disabled', false);
     });
   });

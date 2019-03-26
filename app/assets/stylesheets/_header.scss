@@ -59,6 +59,25 @@
         color: $blue;
       }
     }
+
+    &__category {
+      position: relative;
+      &:hover {
+        ul {
+          display: block;
+
+          ul {
+            display: none;
+          }
+        }
+      }
+
+      &__menu {
+        position: absolute;
+        top: 38px;
+        z-index: 2000;
+      }
+    }
   }
 
   &__right {

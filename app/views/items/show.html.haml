@@ -6,13 +6,13 @@
 
       .item-main-content
         .item-photo
-          = image_tag "item_dummy.jpg", class: "item-box__image"
+          = image_tag @item.item_images[0].image.url, class: "item-box__image"
         %table.item-detail-table
           %tbody
             %tr
               %th 出品者
               %td
-                = link_to "DPS(ぶーん)@コスパNo1優良店", "/", class: "user-name-string";
+                = link_to "<user_profile.name>", "/", class: "user-name-string";
                 .item-user-ratings
                   .item-user-rating
                     %i.fas.fa-laugh
@@ -270,9 +270,9 @@
         .item-box-content
           %section
             .pickup-box__items
-              = render "items/item"
-              = render "items/item"
-              = render "items/item"
+              -# = render "items/item"
+              -# = render "items/item"
+              -# = render "items/item"
             .pickup-box__view-all
         = link_to "/" do
           %h3.items-box-head
@@ -280,13 +280,11 @@
         .item-box-content
           %section
             .pickup-box__items
-              = render "items/item"
-              = render "items/item"
-              = render "items/item"
+              -# = render "items/item"
+              -# = render "items/item"
+              -# = render "items/item"
             .pickup-box__view-all
 
-  .aside
-    .aside__banner
-      = image_tag "banner_bottom_tmp.jpg", class: "aside__banner__image banner"
+  = render "layouts/aside"
   = render "layouts/footer"
   = render "layouts/sell-button"
