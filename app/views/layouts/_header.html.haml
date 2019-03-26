@@ -9,9 +9,11 @@
         .navigation__left__category
           = link_to "カテゴリーから探す"
           .navigation__left__category__menu
-            = render "items/menu"
+            = render "items/category-menu"
         .navigation__left__brand
           = link_to "ブランドから探す"
+          .navigation__left__brand__menu
+            = render "items/brand-menu"
       .navigation__right
         - if user_signed_in?
           = link_to "マイページ", "/", class: "navigation__right__mypage"
