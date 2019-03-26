@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def category
-    @categories = Category.search(parent_id: params[:id]).result
+    @categories = Category.ransack(parent_id_eq: params[:id]).result
 
     respond_to do |format|
       format.html
