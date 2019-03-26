@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_categories, only: [:index]
+  before_action :get_categories, only: [:index, :card]
 
   def index
   end
