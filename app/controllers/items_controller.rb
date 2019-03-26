@@ -50,14 +50,12 @@ class ItemsController < ApplicationController
   end
 
   def category
-    puts 1
-    @categories = Category.ransack(id_eq: params[:id]).result
-    puts 2
+    @categories = Category.ransack(parent_id_eq: params[:id]).result
+
     respond_to do |format|
       format.html
       format.json {render json: @categories.select(:id, :name)}
     end
-    puts 3
   end
 
   private

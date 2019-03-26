@@ -29,18 +29,12 @@ $(function () {
       data: { id: id },
       dataType: "json",
     })
-      .then(
-        function (response) {
-          response.forEach(function (category) {
-            let item = `<option value="${category.id}">${category.name}</option>`;
-            $("#item_sub_category_id").append(item);
-          });
-        },
-        function (response) {
-
-        }
-      );
-
+    .done(function (response) {
+      response.forEach(function (category) {
+        let item = `<option value="${category.id}">${category.name}</option>`;
+        $("#item_sub_category_id").append(item);
+      });
+    });
   });
 
   $(document).on('change', '#item_sub_category_id', function () {
