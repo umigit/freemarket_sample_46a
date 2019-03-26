@@ -8,10 +8,8 @@
           = link_to "" ,class: 'btn-default btn-mail' do
             メールアドレスで登録
             %i.far.fa-envelope
-          = link_to "" ,class: 'btn-default btn-sns btn-sns-facebook' do
-            Facebookで登録
-            %i.fab.fa-facebook
-          = link_to "" , class: 'btn-default btn-sns btn-sns-google' do
-            Googoleで登録
-            %i.fab.fa-google.google.icon
+          = link_to "Facebookで登録", user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", method: :get
+          = link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", method: :get
+
   = render 'layouts/single-footer'
+  %script{src: "https://apis.google.com/js/platform.js?onload=renderButton", async: "defer"}

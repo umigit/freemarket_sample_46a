@@ -43,28 +43,7 @@
     a {
       font-size: 14px;
       color: blue;
-      
-    }
-  }
-}
-.item-box {
-  background-color: white;
-  width: 213px;
-  margin: 0 10px;
 
-  &__image {
-    box-sizing: border-box;
-    width: 100%;
-  }
-
-  &__body {
-    padding: 16px;
-
-    h4 {
-      text-align: left;
-    }
-    p {
-      font-size: 10px;
     }
   }
 }

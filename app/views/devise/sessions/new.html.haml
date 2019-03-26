@@ -6,14 +6,10 @@
     .single-main__l.panel
       .single-main__l.panel--new
         %p アカウントをお持ちでない方はこちら
-        =link_to '新規登録会員',""
+        =link_to '新規登録会員', new_user_registration_path
       .single-main__l.panel-sns
-        =link_to "", class: 'btn-default btn-sns btn-sns-facebook' do
-          Facebookで登録
-          %i.fab.fa-facebook
-        =link_to "", class: 'btn-default btn-sns btn-sns-google' do
-          Googleで登録
-          %i.fab.fa-google
+        = link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", method: :get
+        = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", method: :get
       .single-main__l.panel-form
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = f.email_field :email, class: 'email-box'
