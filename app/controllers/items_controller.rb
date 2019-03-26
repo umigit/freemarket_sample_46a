@@ -41,10 +41,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    # @item_images = @item.item_images
-    # @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
-
   end
 
   def update
@@ -53,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def category
-    @categories = Category.ransack(parent_id_eq: params[:id]).result
+    @categories = Category.search(parent_id: params[:id]).result
 
     respond_to do |format|
       format.html
