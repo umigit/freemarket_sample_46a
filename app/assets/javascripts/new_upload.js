@@ -2,7 +2,7 @@ $(function () {
   let imageCount = $(".sell-form__image").data('image_count');
   let imageList = [];
 
-  $(document).on('change', '#item_item_image_image', function () {
+  $(document).on('change', '#item_item_images_attributes_0_image', function () {
     const files = $.extend(true, {}, $(this).prop('files'));
 
     manageFiles(files);
@@ -10,7 +10,7 @@ $(function () {
   });
 
   $(document).on('click', '#dropbox', function () {
-    $("#item_item_image_image").click();
+    $("#item_item_images_attributes_0_image").click();
   });
 
   $(document).on('click', '.upload-item__container__button__delete', function () {
@@ -109,13 +109,9 @@ $(function () {
       dataType: "json",
       processData: false,
       contentType: false,
-      beforeSend: function () {
-        $("#newItemSubmitButton").val("");
-        $("#newItemSubmitButton").css("background-color", "#ccc");
-        $("#loadIcon").css("display", "block");
-      },
-    }).done(function () {
-      location.href = "/";
+    }).done(function (response) {
+      console.log('success');
+      // location.href = "/";
     }).fail(function (response) {
       showError();
     }).always(function () {
@@ -124,6 +120,12 @@ $(function () {
       $("#loadIcon").css("display", "none");
       $("#newItemSubmitButton").prop('disabled', false);
     });
+  });
+
+  $(document).ajaxSend(function() {
+    $("#newItemSubmitButton").val("");
+    $("#newItemSubmitButton").css("background-color", "#ccc");
+    $("#loadIcon").css("display", "block");
   });
 
   function addPreviewToUploadField(image, index) {
