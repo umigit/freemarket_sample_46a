@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def new\
+  def new
     @item = Item.new
     @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
