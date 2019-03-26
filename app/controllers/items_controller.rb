@@ -28,7 +28,10 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      respond_to do |format|
+        format.html
+        format.json {render json: @item}
+      end
     else
       render :new
     end
