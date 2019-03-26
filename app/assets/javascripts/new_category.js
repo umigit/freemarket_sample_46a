@@ -31,13 +31,8 @@ $(function () {
     })
       .then(
         function (response) {
-
-
-
           response.forEach(function (category) {
-
             const item = `<option value="${category.id}">${category.name}</option>`;
-
             $("#item_sub_category_id").append(item);
           });
         },
