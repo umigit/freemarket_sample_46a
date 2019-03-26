@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def new
+  def new\
     @item = Item.new
     @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
@@ -32,7 +32,10 @@ class ItemsController < ApplicationController
         format.json {render json: @item}
       end
     else
-      render :new
+      respond_to do |format|
+        format.html
+        format.json render :new
+      end
     end
   end
 
