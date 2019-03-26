@@ -214,25 +214,27 @@
       width: 400px;
 
       &__price-wrap {
-        @include split();
-        line-height: 48px;
         padding-bottom: 24px;
-        &__left {
-          &__error {
-            font-size: 14px;
-            color: $red;
-            margin-top: 8px;
-            overflow: visible;
-            white-space: nowrap;
+
+        &__input {
+          @include split();
+          line-height: 48px;
+
+          &__right {
+            display: flex;
+            text-align: right;
+            p {
+              margin-right: 5px;
+            }
           }
         }
-        &__right {
-          display: flex;
-          text-align: right;
-          p {
 
-            margin-right: 5px;
-          }
+        &__error {
+          font-size: 14px;
+          color: $red;
+          margin-top: 8px;
+          overflow: visible;
+          white-space: nowrap;
         }
       }
 
