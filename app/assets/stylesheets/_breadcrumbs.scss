@@ -1,0 +1,20 @@
+.breadcrumbs{
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  padding: 20px;
+}
+
+a {
+  font-size: 14px;
+  // margin: 0 50px;
+  // left: 50px;
+
+}
+
+.current{
+  background-color: #fff;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+}
