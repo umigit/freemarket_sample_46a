@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :get_categories, only: [:index, :show]
+  before_action :get_categories, only: [:index, :show, :buy]
 
   def index
     @ladies = Item.ransack(by_category_id: 1.0).result.limit(4)
