@@ -45,6 +45,20 @@ a{
 .btn-sns-facebook {
     margin: 16px 0 0;
     background: #385185;
+    color: white;
+    position: relative;
+
+
+    &:before {
+    font-family: 'Font Awesome 5 Brands';
+    content: '\f082';
+    font-weight: 400;
+    font-size: 26px;
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translate(0, -50%);
+    }
 }
 .btn-sns {
     &:visited {
@@ -53,7 +67,7 @@ a{
 }
 .btn-sns-google {
     margin: 16px 0 0;
-    background: #fff;
+    background: #fff url(image_path("google.svg")) no-repeat 3px top;
     border: #979797 solid 1px;
     &:visited {
     color:  black;
@@ -63,7 +77,10 @@ a{
 .far{
   position: relative;
   float: left;
-  left: 20px;
+  font-size: 25px;
+  color:#C0C0C0;
+  left: 15px;
+  top: 10px;
 }
 
 .fab{

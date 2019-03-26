@@ -2,7 +2,7 @@ $(function () {
   let imageCount = $(".sell-form__image").data('image_count');
   let imageList = [];
 
-  $(document).on('change', '#item_item_images_image', function () {
+  $(document).on('change', '#item_item_images_attributes_0_image', function () {
     const files = $.extend(true, {}, $(this).prop('files'));
 
     manageFiles(files);
@@ -10,7 +10,7 @@ $(function () {
   });
 
   $(document).on('click', '#dropbox', function () {
-    $("#item_item_image_image").click();
+    $("#item_item_images_attributes_0_image").click();
   });
 
   $(document).on('click', '.upload-item__container__button__delete', function () {
@@ -71,6 +71,7 @@ $(function () {
     let images = imageList.filter(function (image) {
       return image != null;
     });
+
     images.forEach(function (image, index) {
       formData.append(`item[item_images_attributes][${index}][image]`, image);
     });
@@ -109,13 +110,19 @@ $(function () {
       dataType: "json",
       processData: false,
       contentType: false,
-    }).then(function () {
+      beforeSend: function () {
+        $("#newItemSubmitButton").val("");
+        $("#newItemSubmitButton").css("background-color", "#ccc");
+        $("#loadIcon").css("display", "block");
+      },
+    }).done(function (response) {
       location.href = "/";
-    }, function (response) {
-      //error
-        showError();
-    }).then(function () {
-    //always
+    }).fail(function (response) {
+      showError();
+    }).always(function () {
+      $("#newItemSubmitButton").val("出品する");
+      $("#newItemSubmitButton").css("background-color", "#e62017");
+      $("#loadIcon").css("display", "none");
       $("#newItemSubmitButton").prop('disabled', false);
     });
   });

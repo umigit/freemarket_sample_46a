@@ -1,0 +1,63 @@
+.category-menu {
+  &__level1 {
+    display: none;
+
+    li {
+      width: 224px;
+      background-color: white;
+
+      a{
+        text-align: left;
+        padding: 0 16px;
+      }
+
+      &:hover {
+        background-color: $red;
+
+        a {
+          color: white;
+        }
+
+        ul {
+          display: block;
+
+          a{
+            color: black;
+          }
+
+          ul {
+            display: none;
+          }
+
+          li {
+            &:hover {
+              background-color: #ccc;
+              ul {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__level2 {
+      background-color: white;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 224px;
+      bottom: 0;
+      display: none;
+
+      &__level3 {
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 224px;
+        bottom: 0;
+        display: none;
+      }
+    }
+  }
+}
