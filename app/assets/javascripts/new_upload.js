@@ -110,8 +110,12 @@ $(function () {
       dataType: "json",
       processData: false,
       contentType: false,
+      beforeSend: function () {
+        $("#newItemSubmitButton").val("");
+        $("#newItemSubmitButton").css("background-color", "#ccc");
+        $("#loadIcon").css("display", "block");
+      },
     }).done(function (response) {
-      console.log('success');
       location.href = "/";
     }).fail(function (response) {
       showError();
@@ -121,12 +125,6 @@ $(function () {
       $("#loadIcon").css("display", "none");
       $("#newItemSubmitButton").prop('disabled', false);
     });
-  });
-
-  $(document).ajaxSend(function() {
-    $("#newItemSubmitButton").val("");
-    $("#newItemSubmitButton").css("background-color", "#ccc");
-    $("#loadIcon").css("display", "block");
   });
 
   function addPreviewToUploadField(image, index) {
