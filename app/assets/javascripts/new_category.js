@@ -31,10 +31,12 @@ $(function () {
     })
       .then(
         function (response) {
+          console.log('begin');
           response.forEach(function (category) {
-            const item = `<option value="${category.id}">${category.name}</option>`;
+            let item = `<option value="${category.id}">${category.name}</option>`;
             $("#item_sub_category_id").append(item);
           });
+          console.log('end');
         },
         function (response) {
 
