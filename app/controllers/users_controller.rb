@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :get_categories, only: [:index, :card, :logout]
+  before_action :get_categories, only: [:index, :card, :logout, :index]
 
 
   def index
