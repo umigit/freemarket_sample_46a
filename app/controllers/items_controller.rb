@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :get_categories, only: [:index, :show]
+  before_action :get_categories, only: [:index, :show, :buy]
 
   def index
     @ladies = Item.ransack(by_category_id: 1.0).result.limit(4)
@@ -28,9 +28,12 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-
+      respond_to do |format|
+        format.html
+        format.json {render json: @item}
+      end
     else
-
+      render :new
     end
   end
 
