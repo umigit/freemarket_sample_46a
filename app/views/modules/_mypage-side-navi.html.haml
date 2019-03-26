@@ -2,7 +2,7 @@
   %nav.mypage-navigation
     %ul.mypage-nav__list
       %li#first__list
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to users_path, class: "mypage-nav__list__item" do
           マイページ
           %i.fa.fa-chevron-right
       %li
@@ -18,7 +18,7 @@
           いいね！一覧
           %i.fa.fa-chevron-right
       %li
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to  new_item_path, class: "mypage-nav__list__item" do
           出品する
           %i.fa.fa-chevron-right
       %li
@@ -72,7 +72,7 @@
     %h4.mypage-nav__head 設定
     %ul.mypage-nav__list
       %li#first__list
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to edit_user_profile_path(current_user), class: "mypage-nav__list__item" do
           プロフィール
           %i.fa.fa-chevron-right
       %li
@@ -80,7 +80,7 @@
           発送元・お届け先住所変更
           %i.fa.fa-chevron-right
       %li
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to  card_users_path, class: "mypage-nav__list__item" do
           支払い方法
           %i.fa.fa-chevron-right
       %li
@@ -88,7 +88,7 @@
           メール/パスワード
           %i.fa.fa-chevron-right
       %li
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to edit_address_path(current_user), class: "mypage-nav__list__item" do
           本人情報
           %i.fa.fa-chevron-right
       %li
@@ -96,6 +96,6 @@
           電話番号の確認
           %i.fa.fa-chevron-right
       %li
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to logout_users_path, class: "mypage-nav__list__item" do
           ログアウト
           %i.fa.fa-chevron-right
