@@ -1,3 +1,4 @@
+= render "layouts/header"
 .items__buy_cf__container
   .items__buy_cf__container__main
     %h2.items__buy_cf__container__main__header
@@ -59,3 +60,7 @@
           =link_to "#", class: "angle-right" do
             変更する
             %i.fab.fa-sangle-right"
+
+= render "layouts/aside"
+= render "layouts/footer"
+= render "layouts/sell-button"
