@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root "items#index"
   resources :items, only: [:new, :create] do
     member do
@@ -8,13 +8,11 @@ Rails.application.routes.draw do
   end
   resources :user_profiles, only: [:edit,:update]
   resources :users, only: [:index]
-
   resources :items, only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get :category
     end
   end
-  resources :user_profiles, only: [:edit, :update]
   resources :addresses, only: [:new, :create, :edit, :update]
   resources :users  do
     collection do
@@ -23,4 +21,5 @@ Rails.application.routes.draw do
     end
   end
   resources :item_images, only: [:destroy]
+  resources :categories, only: [:show]
 end
