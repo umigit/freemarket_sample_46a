@@ -112,7 +112,7 @@ $(function () {
       contentType: false,
     }).done(function (response) {
       console.log('success');
-      // location.href = "/";
+      location.href = "/";
     }).fail(function (response) {
       showError();
     }).always(function () {
