@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @categories}
+      format.json {render json: @categories.select(:id, :name)}
     end
   end
 
