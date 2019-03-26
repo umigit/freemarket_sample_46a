@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_categories, only: [:index]
+  before_action :get_categories, only: [:index, :logout, :edit]
 
   def index
   end
@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   end
 
   def card
+  end
+
+  def edit
   end
 
   private
