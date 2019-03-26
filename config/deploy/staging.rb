@@ -1,3 +1,7 @@
+before_exec do |server|
+  app_path = File.expand_path('../../../', __FILE__)
+  ENV['BUNDLE_GEMFILE'] = app_path + "/Gemfile"
+end
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
