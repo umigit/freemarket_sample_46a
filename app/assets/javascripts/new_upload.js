@@ -71,6 +71,7 @@ $(function () {
     let images = imageList.filter(function (image) {
       return image != null;
     });
+
     images.forEach(function (image, index) {
       formData.append(`item[item_images_attributes][${index}][image]`, image);
     });
