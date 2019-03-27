@@ -238,10 +238,10 @@ $(function () {
     }
 
     if ($("#profitField").text() === "-") {
-      $(".sell-form__price__select-box__price-wrap__left__error").html(`<p>300以上9999999以下で入力してください</p>`);
+      $(".sell-form__price__select-box__price-wrap__error").html(`<p>300以上9999999以下で入力してください</p>`);
     }
     else {
-      $(".sell-form__price__select-box__price-wrap__left__error").empty();
+      $(".sell-form__price__select-box__price-wrap__error").empty();
     }
   }
 });
