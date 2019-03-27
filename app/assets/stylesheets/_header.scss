@@ -139,21 +139,37 @@
       &__list {
         position: absolute;
         top: 38px;
-        left: 50%;
-        transform: translate(-50%, 0);
+        right: 0;
         z-index: 2000;
-
-
       }
     }
 
     &__note {
-      &:before {
-        font-family: 'Font Awesome 5 Free';
-        font-size: 16px;
-        margin-right: 8px;
-        font-weight: 400;
-        content: '\f0f3';
+      position: relative;
+
+      a{
+        display: block;
+
+        &:before {
+          font-family: 'Font Awesome 5 Free';
+          font-size: 16px;
+          margin-right: 8px;
+          font-weight: 400;
+          content: '\f0f3';
+        }
+      }
+
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+
+      &__list {
+        position: absolute;
+        top: 38px;
+        right: -131px;
+        z-index: 2000;
       }
     }
   }
