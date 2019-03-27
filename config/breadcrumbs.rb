@@ -7,6 +7,28 @@ crumb :mypage do
   parent :root
 end
 
+crumb :card do
+  link "支払い方法", card_users_path
+  parent :mypage
+end
+
+
+crumb :profile do
+  link "プロフィール", edit_user_profile_path
+  parent :mypage
+end
+
+crumb :identification do
+  link "本人情報の登録", edit_address_path
+  parent :mypage
+end
+
+crumb :logout do
+  link "ログアウト", logout_users_path
+  parent :mypage
+end
+
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

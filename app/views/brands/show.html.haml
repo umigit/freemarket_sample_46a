@@ -1,0 +1,9 @@
+= render "layouts/header"
+.brand
+  .brand__container
+    %h1 #{@brand.name}の商品一覧
+    .brand__container__item
+      = render @items
+= render "layouts/aside"
+= render "layouts/footer"
+= render "layouts/sell-button"
