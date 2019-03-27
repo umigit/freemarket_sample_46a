@@ -6,8 +6,14 @@
         = f.text_field :keyword, class: "header__container__search__form__input", type: "search", name: "keyword", placeholder: "キーワードから探す"
     .header__container__navigation.navigation
       .navigation__left
-        = link_to "カテゴリーから探す"
-        = link_to "ブランドから探す"
+        .navigation__left__category
+          = link_to "カテゴリーから探す"
+          .navigation__left__category__menu
+            = render "items/category-menu"
+        .navigation__left__brand
+          = link_to "ブランドから探す"
+          .navigation__left__brand__menu
+            = render "items/brand-menu"
       .navigation__right
         - if user_signed_in?
           = link_to "マイページ", "/", class: "navigation__right__mypage"
@@ -16,3 +22,9 @@
         - else
           = link_to "ログイン", new_user_session_path, class: "btn btn-nav btn-login btn-red"
           = link_to "新規会員登録", new_user_registration_path, class: "btn btn-nav btn-reg"
+
+  //パンくず
+.pankuzu
+  = breadcrumbs separator: " &rsaquo; "
+
+

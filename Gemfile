@@ -83,5 +83,6 @@ gem 'mini_magick'
 gem 'active_hash'
 gem 'fog-aws'
 gem "jquery-slick-rails"
+gem 'gretel'
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'

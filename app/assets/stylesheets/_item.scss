@@ -1,0 +1,37 @@
+.item-box {
+  box-sizing: border-box;
+  background-color: white;
+  width: 180px;
+  margin: 0 10px 20px;
+
+  &__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  &__body {
+    box-sizing: border-box;
+    padding: 16px;
+    background-color: white;
+
+
+    h4 {
+      height: 3rem;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5rem;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    h5 {
+      font-size: 20px;
+      text-align: left;
+    }
+    p {
+      font-size: 10px;
+      text-align-last: left;
+    }
+  }
+}

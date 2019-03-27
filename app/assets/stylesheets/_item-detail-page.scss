@@ -11,9 +11,24 @@
     display: flex;
     justify-content: space-between;
     .item-photo{
-      min-width: 300px;
       max-width: 300px;
-      min-height: 375px;
+      font-size:0;
+      .item-image {
+        width: 100%;
+      }
+      .owl-dot {
+        line-height: 0;
+        width: 25%;
+        max-height: none;
+        display: inline-block;
+        &-inner {
+          width: auto;
+          height: auto;
+          padding: 0;
+          opacity: .4;
+          cursor: pointer;
+        }
+      }
     }
     .item-detail-table{
       max-width: 300px;
@@ -59,6 +74,7 @@
         }
         .brand-name {
           color: #0099e8;
+          text-align: left;
         }
         .prefecture-name {
           color: #0099e8;
@@ -114,7 +130,7 @@
     }
   }
   .item-buy-btn {
-    background: #888;
+    background: #e62017;
     cursor: not-allowed;
     margin: 16px 0 0;
     color: #fff;
@@ -394,7 +410,24 @@
     line-height: 1.4;
     color: #0099e8;
     text-align: start;
+    display: flex;
   }
 }
 
+.item-image {
+  display:none;
+}
 
+.active {
+  display: block;
+}
+
+#hover {
+  opacity: 1;
+  cursor: default;
+}
+.item-box__images {
+  box-sizing: border-box;
+  width: 100%;
+
+}
