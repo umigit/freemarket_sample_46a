@@ -50,31 +50,44 @@
             %tr
               %th 出品者
               %td
-                = link_to "nickname", "/", class: "user-name-string";
+                = link_to "#{@item.user.user_profile.nickname}", "/", class: "user-name-string";
                 .item-user-ratings
                   .item-user-rating
                     %i.fas.fa-laugh
-                    %span 555
+                    %span 0
                   .item-user-rating
                     %i.fas.fa-meh
-                    %span 24
+                    %span 0
                   .item-user-rating
                     %i.fas.fa-frown
-                    %span 2
+                    %span 0
             %tr
               %th カテゴリー
               %td
-                = link_to "/" do
-                  .item-detail-table-sub
-                    = @item.category.parent.name
-                = link_to "/" do
-                  .item-detail-table-sub__sub
-                    %i.fas.fa-angle-right
-                    = @item.category.parent.parent.name
-                = link_to "/" do
-                  .item-detail-table-sub__sub__sub
-                    %i.fas.fa-angle-right
-                    = @item.category.parent.parent.name
+                - if !@item.category.parent_id
+                  = link_to "/" do
+                    .item-detail-table-sub
+                      = @item.category.name
+                - elsif !@item.category.parent.parent_id
+                  = link_to "/" do
+                    .item-detail-table-sub
+                      = @item.category.parent.name
+                  = link_to "/" do
+                    .item-detail-table-sub__sub
+                      %i.fas.fa-angle-right
+                      = @item.category.name
+                - else
+                  = link_to "/" do
+                    .item-detail-table-sub
+                      = @item.category.parent.parent.name
+                  = link_to "/" do
+                    .item-detail-table-sub__sub
+                      %i.fas.fa-angle-right
+                      = @item.category.parent.name
+                  = link_to "/" do
+                    .item-detail-table-sub__sub__sub
+                      %i.fas.fa-angle-right
+                      = @item.category.name
             %tr
               %th ブランド
               %td
@@ -256,8 +269,8 @@
             .pickup-box__view-all
         = link_to "/" do
           %h3.items-box-head
-            #{@item.category.parent.name} の
-            #{@item.category.parent.parent.name} その他の商品
+            -# #{@item.category.parent.name} の
+            -# #{@item.category.parent.parent.name} その他の商品
         .item-box-content
           %section
             .pickup-box__items
