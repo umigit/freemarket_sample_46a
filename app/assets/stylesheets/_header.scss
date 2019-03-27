@@ -107,20 +107,43 @@
       display: block;
       line-height: 38px;
 
-
-
-      &:hover {
-        color: $blue;
+      a {
+        &:hover {
+          color: $blue;
+        }
       }
+
     }
 
     &__todo {
-      &:before {
-        font-family: 'Font Awesome 5 Free';
-        font-size: 16px;
-        margin-right: 8px;
-        font-weight: 900;
-        content: '\f00c';
+      position: relative;
+
+      a{
+        display: block;
+
+        &:before {
+          font-family: 'Font Awesome 5 Free';
+          font-size: 16px;
+          margin-right: 8px;
+          font-weight: 900;
+          content: '\f00c';
+        }
+      }
+
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+
+      &__list {
+        position: absolute;
+        top: 38px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 2000;
+
+
       }
     }
 
