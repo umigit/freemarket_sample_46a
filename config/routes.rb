@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     collection do
       get :category
+      get :search
     end
   end
   resources :item_images, only: [:destroy]

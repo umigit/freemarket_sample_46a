@@ -2,8 +2,10 @@
   .header__container
     .header__container__search
       = link_to image_tag("logo.svg"), root_path, class: "header__container__search__logo"
-      = form_with local: true, class: "header__container__search__form" do |f|
-        = f.text_field :keyword, class: "header__container__search__form__input", type: "search", name: "keyword", placeholder: "キーワードから探す"
+      = form_tag search_items_path, method: :get, class: "header__container__search__form" do
+        = text_field_tag :keyword, "", class: "header__container__search__form__input", placeholder: "キーワードから探す"
+        = button_tag type: "submit",class: "header__container__search__form__button" do
+          %i.fas.fa-search
     .header__container__navigation.navigation
       .navigation__left
         .navigation__left__category
@@ -16,9 +18,15 @@
             = render "items/brand-menu"
       .navigation__right
         - if user_signed_in?
-          = link_to "マイページ", "/", class: "navigation__right__mypage"
-          = link_to "お知らせ", "/", class: "navigation__right__note"
-          = link_to "やることリスト", destroy_user_session_path, method: :delete, class: "navigation__right__todo"
+          = link_to "マイページ", users_path, class: "navigation__right__mypage"
+          .navigation__right__note
+            = link_to "お知らせ", "#"
+            .navigation__right__note__list
+              = render "layouts/note-list"
+          .navigation__right__todo
+            = link_to "やることリスト", "#", method: :delete
+            .navigation__right__todo__list
+              = render "layouts/todo-list"
         - else
           = link_to "ログイン", new_user_session_path, class: "btn btn-nav btn-login btn-red"
           = link_to "新規会員登録", new_user_registration_path, class: "btn btn-nav btn-reg"
