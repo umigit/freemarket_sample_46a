@@ -2,8 +2,8 @@
   .header__container
     .header__container__search
       = link_to image_tag("logo.svg"), root_path, class: "header__container__search__logo"
-      = form_with model: Item.new, type: "search", local: true, class: "header__container__search__form" do |f|
-        = f.text_field :keyword, class: "header__container__search__form__input", type: "search", name: "keyword", placeholder: "キーワードから探す"
+      = form_tag search_items_path, method: :get, class: "header__container__search__form" do
+        = text_field_tag :keyword, "", class: "header__container__search__form__input", placeholder: "キーワードから探す"
         = button_tag type: "submit",class: "header__container__search__form__button" do
           %i.fas.fa-search
     .header__container__navigation.navigation
