@@ -1,0 +1,9 @@
+= render "layouts/header"
+.search
+  .search__container
+    %h1 検索結果 1- #{@items.count}件
+    .search__container__item
+      = render @items
+= render "layouts/aside"
+= render "layouts/footer"
+= render "layouts/sell-button"

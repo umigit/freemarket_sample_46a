@@ -25,9 +25,23 @@
       &__form {
         width: 100%;
         padding-left: 16px;
+        position: relative;
 
-        input {
+        &__input {
           height: 100%;
+          padding: 8px 38px 8px 16px;
+        }
+
+        &__button {
+          font-size: 16px;
+          width: 30px;
+          height: 30px;
+          padding: 0;
+          position: absolute;
+          top: 50%;
+          right: 4px;
+          transform: translate(0, -50%);
+          border: 0;
         }
       }
     }
@@ -37,7 +51,6 @@
       width: 100%;
       position: absolute;
       bottom: 0;
-
     }
   }
 }
@@ -107,30 +120,69 @@
       display: block;
       line-height: 38px;
 
-
-
-      &:hover {
-        color: $blue;
+      a {
+        &:hover {
+          color: $blue;
+        }
       }
+
     }
 
     &__todo {
-      &:before {
-        font-family: 'Font Awesome 5 Free';
-        font-size: 16px;
-        margin-right: 8px;
-        font-weight: 900;
-        content: '\f00c';
+      position: relative;
+
+      a{
+        display: block;
+
+        &:before {
+          font-family: 'Font Awesome 5 Free';
+          font-size: 16px;
+          margin-right: 8px;
+          font-weight: 900;
+          content: '\f00c';
+        }
+      }
+
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+
+      &__list {
+        position: absolute;
+        top: 38px;
+        right: 0;
+        z-index: 2000;
       }
     }
 
     &__note {
-      &:before {
-        font-family: 'Font Awesome 5 Free';
-        font-size: 16px;
-        margin-right: 8px;
-        font-weight: 400;
-        content: '\f0f3';
+      position: relative;
+
+      a{
+        display: block;
+
+        &:before {
+          font-family: 'Font Awesome 5 Free';
+          font-size: 16px;
+          margin-right: 8px;
+          font-weight: 400;
+          content: '\f0f3';
+        }
+      }
+
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+
+      &__list {
+        position: absolute;
+        top: 38px;
+        right: -131px;
+        z-index: 2000;
       }
     }
   }
