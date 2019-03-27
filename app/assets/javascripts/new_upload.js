@@ -71,6 +71,7 @@ $(function () {
     let images = imageList.filter(function (image) {
       return image != null;
     });
+
     images.forEach(function (image, index) {
       formData.append(`item[item_images_attributes][${index}][image]`, image);
     });
@@ -114,7 +115,7 @@ $(function () {
         $("#newItemSubmitButton").css("background-color", "#ccc");
         $("#loadIcon").css("display", "block");
       },
-    }).done(function () {
+    }).done(function (response) {
       location.href = "/";
     }).fail(function (response) {
       showError();
@@ -237,10 +238,10 @@ $(function () {
     }
 
     if ($("#profitField").text() === "-") {
-      $(".sell-form__price__select-box__price-wrap__left__error").html(`<p>300以上9999999以下で入力してください</p>`);
+      $(".sell-form__price__select-box__price-wrap__error").html(`<p>300以上9999999以下で入力してください</p>`);
     }
     else {
-      $(".sell-form__price__select-box__price-wrap__left__error").empty();
+      $(".sell-form__price__select-box__price-wrap__error").empty();
     }
   }
 });

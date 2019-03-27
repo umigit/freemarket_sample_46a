@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :get_categories, only: [:index, :show, :buy]
 
   def index
     @ladies = Item.ransack(by_category_id: 1.0).result.limit(4)
@@ -14,6 +13,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @categories = Category.ransack(parent_id_null: true).result
+    @janel = Item.ransack(brand_id_eq: 1).result.limit(3)
   end
 
   def new
@@ -28,18 +29,21 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-
+      respond_to do |format|
+        format.html
+        format.json {render json: @item}
+      end
     else
-
+      respond_to do |format|
+        format.html
+        format.json render :new
+      end
     end
   end
 
   def edit
     @item = Item.find(params[:id])
-    # @item_images = @item.item_images
-    # @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
-
   end
 
   def update
@@ -60,10 +64,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :comment, :category_id, :brand_id, :shipping_fee, :prefecture_id, :days_to_ship, :price, :condition, item_images_attributes: [:image]).merge(user_id: current_user.id)
-  end
-
-  def get_categories
-    @all_categories = Category.all
   end
 
   def buy

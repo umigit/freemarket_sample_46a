@@ -2,11 +2,49 @@
   = render "layouts/header"
   .main-background
     %section.item-box-container
-      %h1.item-name 正規品！COACH【コーチ】★★大きめ ミニシグネチャーショルダーバッグ
-
+      %h1
+        .item-name
+          = @item.name
       .item-main-content
         .item-photo
-          = image_tag @item.item_images[0].image.url, class: "item-box__image"
+          = image_tag @item.item_images[0].image.url, class: "item-image active"
+          - if @item.item_images.second.present?
+            = image_tag @item.item_images[1].image.url, class: "item-image"
+          - else
+            .noneimage
+          - if @item.item_images.second.present?
+            = image_tag @item.item_images[2].image.url, class: "item-image"
+          - else
+            .noneimage
+          - if @item.item_images.second.present?
+            = image_tag @item.item_images[3].image.url, class: "item-image"
+          - else
+            .noneimage
+          .owl-dots
+            .owl-dot
+              .owl-dot-inner#hover
+                - if @item.item_images.second.present?
+                  = image_tag @item.item_images[0].image.url, class: "item-box__images"
+                - else
+                  .noneimage
+            .owl-dot
+              .owl-dot-inner
+                - if @item.item_images.second.present?
+                  = image_tag @item.item_images[1].image.url, class: "item-box__images"
+                - else
+                  .noneimage
+            .owl-dot
+              .owl-dot-inner
+                - if @item.item_images.third.present?
+                  = image_tag @item.item_images[2].image.url, class: "item-box__images"
+                - else
+                  .noneimage
+            .owl-dot
+              .owl-dot-inner
+                - if @item.item_images.fourth.present?
+                  = image_tag @item.item_images[3].image.url, class: "item-box__images"
+                - else
+                  .no-image
         %table.item-detail-table
           %tbody
             %tr
@@ -28,28 +66,34 @@
               %td
                 = link_to "/" do
                   .item-detail-table-sub
-                    レディース
+                    = @item.category.parent.name
                 = link_to "/" do
                   .item-detail-table-sub__sub
                     %i.fas.fa-angle-right
-                    バッグ
+                    = @item.category.parent.parent.name
                 = link_to "/" do
                   .item-detail-table-sub__sub__sub
                     %i.fas.fa-angle-right
-                    ショルダーバッグ
+                    = @item.category.parent.parent.name
             %tr
               %th ブランド
               %td
-                = link_to "コーチ", "/", class: "brand-name"
-
+                = link_to "/" do
+                  .brand-name
+                    - if @item.brand_id.present?
+                      = @item.brand.name
+                    - else
+                      .no-name
             %tr
               %th 商品の状態
               %td
-                .item-detail やや傷や汚れあり
+                .item-detail
+                  = @item.condition
             %tr
               %th 配送料の負担
               %td
-                .item-detail 送料込み(出品者負担)
+                .item-detail
+                  = @item.shipping_fee
             %tr
               %th 配送の方法
               %td
@@ -57,91 +101,29 @@
             %tr
               %th 発送元地域
               %td
-                .item-detail.prefecture-name らくらくメルカリ便
+                .item-detail.prefecture-name
+                  = @item.prefecture.name
             %tr
               %th 配送日の目安
               %td
-                .item-detail 1~2日で発送
+                .item-detail
+                  = @item.days_to_ship
 
       .item-price-box
-        %span.item-price ¥3,380
+        %span.item-price
+          ¥ #{@item.price}
         %span.item-tax (税込)
-        %span.item-shipping-fee 送料込み
-      .item-buy-btn 売り切れました
+        %span.item-shipping-fee
+          - if @item.shipping_fee=="送料込み(出品者負担)"
+            送料込み
+          - else
+            着払い
+
+      = link_to "/items/#{@item.id}/buy" do
+        .item-buy-btn 購入画面に進む
       .item-description
         %p.item-description__inner
-          ■商品ご覧頂き、誠にありがとうございます。
-          %br
-          ※今だけ、フォロワーになって下さった方に、300円のお値引きサービス中！！
-          %br
-          私の商品検索は、
-          %br
-          #Boon・バッグ　
-          %br
-          検索してください。
-          %br
-          %br
-          質問がありましたらコメントでよろしくお願いします！
-          %br
-          ■ 商品説明 ■
-          %br
-          まずはプロフを確認してください☆
-          %br
-          %br
-          ■ 商品詳細 ■
-          %br
-          シンプルな落ち着いたお色味でどんな場面にも合い、
-          %br
-          どんな服にも合わせやすいお鞄です。使用感有！角擦れはございませんが
-          %br
-          多少の汚れはあります。内側はとても綺麗です☆
-          %br
-          使わなくなったのでどなたか使っていただける方お願いします。
-          %br
-          製造番号　H2K-9294
-          %br
-          %br
-          【ブランド】
-          %br
-          COACH　コーチ
-          %br
-          %br
-          【商品名】
-          %br
-          コーチ大き目シンプル
-          %br
-          %br
-          【仕様】
-          %br
-          外ポケット１　内ポケット４
-          %br
-          %br
-          【サイズ】
-          %br
-          縦：32
-          %br
-          横：31
-          %br
-          幅：7
-          %br
-          紐：130 多少調節可能
-          %br
-          %br
-          ＊他にも数多くの商品を出品しているので、ぜひご覧ください。
-          %br
-          ＊複数購入、お取り置き(５日まで)もできるので、お気軽にお声がけくださいませ。
-          %br
-          ＊中古品になりますので、予めご理解いただきますよう、お願い致します^_^
-          %br
-          ※自宅保管、素人検品、素人寸法の誤差などにご理解がない方、神経質な方、完璧な物が欲しい方は購入お控えください。
-          %br
-          、お願い致します^_^
-          %br
-          ※自宅保管、素人検品、素人寸法の誤差などにご理解がない方、神経質な方、完璧な物が欲しい方は購入お控えください。
-          %br
-          %br
-          ・シンプル ・かわいい ・大き目 ・かばん ・バッグ
-
+          = @item.comment
       .item-button-container
         .item-button-left
           %button{type: "button", name: "like!", class: "item-button"}
@@ -233,7 +215,7 @@
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %textarea{type: "text", name: "body", class: "textarea-default"}
             %buttton{type: "submit", class: "message-submit button-default"}
-              %span.message-submit__button 売り切れのためコメントできません
+              %span.message-submit__button コメントする
 
     %ul.nav-item-link
       %li.nav-item-link-prev
@@ -266,25 +248,21 @@
       %section.items-box-continer
         = link_to "/" do
           %h3.items-box-head
-            コスパNO１優良店
+            #{@item.name}さんのその他の商品
         .item-box-content
           %section
             .pickup-box__items
-              -# = render "items/item"
-              -# = render "items/item"
-              -# = render "items/item"
+              = render @janel
             .pickup-box__view-all
         = link_to "/" do
           %h3.items-box-head
-            コーチのショルダーバッグ その他の商品
+            #{@item.category.parent.name} の
+            #{@item.category.parent.parent.name} その他の商品
         .item-box-content
           %section
             .pickup-box__items
-              -# = render "items/item"
-              -# = render "items/item"
-              -# = render "items/item"
+              = render @janel
             .pickup-box__view-all
 
   = render "layouts/aside"
   = render "layouts/footer"
-  = render "layouts/sell-button"
