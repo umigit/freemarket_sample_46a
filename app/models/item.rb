@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :user, optional: true
   belongs_to :category
+  belongs_to :brand
   has_many :item_images
   accepts_nested_attributes_for :item_images
 

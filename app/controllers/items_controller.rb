@@ -13,6 +13,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @categories = Category.ransack(parent_id_null: true).result
+    @janel = Item.ransack(brand_id_eq: 1).result.limit(3)
   end
 
   def new
@@ -41,10 +43,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    # @item_images = @item.item_images
-    # @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
-
   end
 
   def update

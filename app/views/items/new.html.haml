@@ -12,7 +12,7 @@
             出品画像
             %span 必須
           %p 最大10枚までアップロードできます
-          = f.fields_for :item_images do |ff|
+          = f.fields_for @item.item_images do |ff|
             = ff.file_field :image , class: "sell-form__image__input", accept: ".jpg, .jpeg, .png", multiple: true
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
@@ -101,14 +101,15 @@
             = link_to "?", "/", class: "question"
           .sell-form__price__select-box
             .sell-form__price__select-box__price-wrap
-              .sell-form__price__select-box__price-wrap__left
-                %h5
-                  価格
-                  %span 必須
-                .sell-form__price__select-box__price-wrap__left__error
-              .sell-form__price__select-box__price-wrap__right
-                %p ¥
-                = f.text_field :price, id: "priceField", placeholder: "例）300"
+              .sell-form__price__select-box__price-wrap__input
+                .sell-form__price__select-box__price-wrap__input__left
+                  %h5
+                    価格
+                    %span 必須
+                .sell-form__price__select-box__price-wrap__input__right
+                  %p ¥
+                  = f.text_field :price, id: "priceField", placeholder: "例）300"
+              .sell-form__price__select-box__price-wrap__error
             .sell-form__price__select-box__charge-wrap
               .sell-form__price__select-box__charge-wrap__left
                 %p 販売手数料(10%)
