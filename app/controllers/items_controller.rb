@@ -58,6 +58,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.ransack(name_cont: params[:keyword])
+  end
+
   private
 
   def item_params
