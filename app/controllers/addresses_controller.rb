@@ -1,6 +1,4 @@
 class AddressesController < ApplicationController
-  before_action :get_categories, only: [:edit]
-
   def new
   end
 
@@ -11,11 +9,5 @@ class AddressesController < ApplicationController
   end
 
   def create
-  end
-
-  private
-
-  def get_categories
-    @all_categories = Category.all
   end
 end

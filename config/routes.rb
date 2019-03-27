@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   end
   resources :item_images, only: [:destroy]
   resources :categories, only: [:show]
+  resources :brands, only: [:show]
 end
