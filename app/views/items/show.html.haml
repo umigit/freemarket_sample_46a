@@ -7,10 +7,7 @@
           = @item.name
       .item-main-content
         .item-photo
-          - if @item.item_images.second.present?
-            = image_tag @item.item_images[0].image.url, class: "item-image active"
-          - else
-            .noneimage
+          = image_tag @item.item_images[0].image.url, class: "item-image active"
           - if @item.item_images.second.present?
             = image_tag @item.item_images[1].image.url, class: "item-image"
           - else
@@ -255,8 +252,7 @@
         .item-box-content
           %section
             .pickup-box__items
-              - @janel.each do |item|
-                = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
+              = render @janel
             .pickup-box__view-all
         = link_to "/" do
           %h3.items-box-head
@@ -265,8 +261,7 @@
         .item-box-content
           %section
             .pickup-box__items
-              - @janel.each do |item|
-                = render partial: "item", locals: {id: item.id, image: item.item_images[0].image, name: item.name, price: item.price}
+              = render @janel
             .pickup-box__view-all
 
   = render "layouts/aside"
