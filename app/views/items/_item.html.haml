@@ -1,8 +1,8 @@
 .item-box
-  = link_to item_path(id) do
-    = image_tag image.url, class: "item-box__image"
+  = link_to item_path(item) do
+    = image_tag item.item_images[0].image.url, class: "item-box__image"
     .item-box__body
-      %h4.item-box__body__name #{name}
+      %h4.item-box__body__name #{item.name}
       .item-box__body__price
-        %h5 ¥ #{price}
+        %h5 ¥ #{item.price}
         %p （税込）

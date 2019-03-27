@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
 
   def index
-    @ladies = Item.ransack(by_category_id: 1.to_f).result.limit(4)
+    @ladies = Item.ransack(by_category_id: 1.0).result.limit(4)
     @mens = Item.ransack(by_category_id: 2).result.limit(4)
     @kids = Item.ransack(by_category_id: 3).result.limit(4)
     @janel = Item.ransack(brand_id_eq: 1).result.limit(4)
@@ -29,18 +29,21 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-
+      respond_to do |format|
+        format.html
+        format.json {render json: @item}
+      end
     else
-
+      respond_to do |format|
+        format.html
+        format.json render :new
+      end
     end
   end
 
   def edit
     @item = Item.find(params[:id])
-    # @item_images = @item.item_images
-    # @item.item_images.build
     @categories = Category.ransack(parent_id_null: true).result
-
   end
 
   def update
