@@ -60,6 +60,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    if item.user_id == current_user.id
+      item.destroy
+      redirect_to onsale_user_items_path, flash: {success: '商品を削除しました'}
+    end
+  end
+
   private
 
   def item_params

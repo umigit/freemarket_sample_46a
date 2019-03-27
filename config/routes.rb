@@ -8,11 +8,14 @@ Rails.application.routes.draw do
   end
   resources :user_profiles, only: [:edit,:update]
   resources :users, only: [:index]
-  resources :items, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     collection do
       get :category
     end
   end
+  resources :item_images, only: [:destroy]
+  resources :categories, only: [:show]
+  resources :brands, only: [:show]
   resources :addresses, only: [:new, :create, :edit, :update]
   resources :users  do
     collection do
@@ -20,7 +23,13 @@ Rails.application.routes.draw do
       get :card
     end
   end
-  resources :item_images, only: [:destroy]
-  resources :categories, only: [:show]
-  resources :brands, only: [:show]
+  resources :users, only: [:create] do
+    resources :items, only: [:show, :destroy] do
+      collection do
+        get :onsale
+        get :orderd
+        get :sold
+      end
+    end
+  end
 end

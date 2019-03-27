@@ -1,0 +1,72 @@
+.parent-own-item-container {
+  width: 668px;
+  height: auto;
+  background-color: white;
+  margin: 25px 0;
+  padding:20px 16px;
+  position: relative; left:225px;
+  &__edit {
+    width: 100%;
+    background-color: #ea352d;
+    border: 1px solid #ea352d;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.8;
+      transition-duration: 0.6s;
+    }
+  }
+  &__or {
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+  }
+  &__open {
+    width: 671px;
+    background-color: #ea352d;
+    border: 1px solid #ea352d;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    position: relative; left:240px;
+  }
+  &__close {
+    width: 671px;
+    background-color: #ea352d;
+    border: 1px solid #ea352d;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    position: relative; left:240px;
+  }
+  #good-to-delete {
+    display: none;
+  }
+  &__delete-btn {
+    width: 671px;
+    background-color: #aaa;
+    border: 1px solid #aaa;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    margin-top: 15px;
+    position: relative; left:240px;
+  }
+}
