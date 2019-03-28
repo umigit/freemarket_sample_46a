@@ -119,13 +119,29 @@
       padding-left: 16px;
       display: block;
       line-height: 38px;
-
+      border: 0;
       a {
         &:hover {
           color: $blue;
         }
       }
 
+    }
+
+    &__mypage {
+      display: flex;
+      img {
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+      }
+
+      &__link {
+        box-sizing: border-box;
+        line-height: 38px;
+        display: block;
+        margin-left: 8px;
+      }
     }
 
     &__todo {
