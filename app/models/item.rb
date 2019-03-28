@@ -8,9 +8,11 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :user, optional: true
   belongs_to :category
-  belongs_to :brand
-  has_many :item_images
+  belongs_to :brand, optional: true
+  has_many :item_images, dependent: :destroy
   accepts_nested_attributes_for :item_images
+
+  validates :item_images, length: { minimum: 1, maximum: 10}
 
   scope :by_category_id, -> (id) {eager_load(category: :parent).where("category_id = ? or categories.parent_id = ? or parents_categories.parent_id = ?", id, id, id)}
 

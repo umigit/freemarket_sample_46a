@@ -89,9 +89,12 @@ $(function () {
       formData.append("item[category_id]", "");
     }
 
+    if ($("#item_brand_id").val()) {
+      formData.append("item[brand_id]", $("#item_brand_id").val());
+    }
+
     formData.append("item[name]", $("#nameField").val());
     formData.append("item[comment]", $("#commentField").val());
-    formData.append("item[brand_id]", $("#item_brand_id").val());
     formData.append("item[condition]", $("#item_condition").val());
     formData.append("item[shipping_fee]", $("#item_shipping_fee").val());
     formData.append("item[prefecture_id]", $("#item_prefecture_id").val());
@@ -144,7 +147,6 @@ $(function () {
   function manageFiles(files) {
     const fileLength = files.length;
     imageCount += fileLength;
-    console.log(imageCount);
 
     for (let i = 0; i < fileLength; i++){
       if (files[i].type !== 'image/jpeg' && files[i].type !== 'image/png') {
@@ -178,8 +180,6 @@ $(function () {
 
       reader.readAsDataURL(files[i]);
     }
-
-    console.log(imageList);
   }
 
   //未入力チェック

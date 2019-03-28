@@ -129,16 +129,17 @@
           = link_to 'https://www.mercari.com/jp/safe/description/', target: "_blank", class: "safe-description" do
             %i.fas.fa-lock.clock-font
             あんしん・あんぜんへの取り組み
-    .parent-own-item-container
-      = link_to "商品の編集", edit_item_path(current_user.id, @item), class: "parent-own-item-container__edit"
-    .parent-own-item-container__or
-      or
-    - if current_user == @item.user_id
-      = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
-    - else
-      = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
-    %button.parent-own-item-container__delete-btn
-      商品を削除する
+    - if current_user.id == @item.user_id
+      .parent-own-item-container
+        = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
+        .parent-own-item-container__or
+          or
+        - if @item.sales_condition == 0
+          = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
+        - else
+          = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
+        = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
+
     .item-detail-message
       .message-continer
         .message-content
