@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
     else
       respond_to do |format|
         format.html
-        format.json render :new
+        format.json {render :new}
       end
     end
   end

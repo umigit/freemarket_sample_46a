@@ -72,7 +72,7 @@ $(function () {
       return image != null;
     });
 
-    images.forEach(function (image, index) {
+    images.map(function (image, index) {
       formData.append(`item[item_images_attributes][${index}][image]`, image);
     });
 
@@ -144,6 +144,7 @@ $(function () {
   function manageFiles(files) {
     const fileLength = files.length;
     imageCount += fileLength;
+    console.log(imageCount);
 
     for (let i = 0; i < fileLength; i++){
       if (files[i].type !== 'image/jpeg' && files[i].type !== 'image/png') {
@@ -177,6 +178,8 @@ $(function () {
 
       reader.readAsDataURL(files[i]);
     }
+
+    console.log(imageList);
   }
 
   //未入力チェック
