@@ -21,6 +21,9 @@
                 .thumbnail__item{"data-index": index}
                   .thumbnail__item__box
                     = image_tag item_image.image.url
+            - if @item.item_images.length > 5
+              - for i in 1..(10 - @item.item_images.length)
+                .thumbnail__dummy
         %table.item-detail-table
           %tbody
             %tr
