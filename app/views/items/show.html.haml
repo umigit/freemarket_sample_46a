@@ -7,44 +7,20 @@
           = @item.name
       .item-main-content
         .item-photo
-          = image_tag @item.item_images[0].image.url, class: "item-image active"
-          - if @item.item_images.second.present?
-            = image_tag @item.item_images[1].image.url, class: "item-image"
-          - else
-            .noneimage
-          - if @item.item_images.second.present?
-            = image_tag @item.item_images[2].image.url, class: "item-image"
-          - else
-            .noneimage
-          - if @item.item_images.second.present?
-            = image_tag @item.item_images[3].image.url, class: "item-image"
-          - else
-            .noneimage
-          .owl-dots
-            .owl-dot
-              .owl-dot-inner#hover
-                - if @item.item_images.second.present?
-                  = image_tag @item.item_images[0].image.url, class: "item-box__images"
-                - else
-                  .noneimage
-            .owl-dot
-              .owl-dot-inner
-                - if @item.item_images.second.present?
-                  = image_tag @item.item_images[1].image.url, class: "item-box__images"
-                - else
-                  .noneimage
-            .owl-dot
-              .owl-dot-inner
-                - if @item.item_images.third.present?
-                  = image_tag @item.item_images[2].image.url, class: "item-box__images"
-                - else
-                  .noneimage
-            .owl-dot
-              .owl-dot-inner
-                - if @item.item_images.fourth.present?
-                  = image_tag @item.item_images[3].image.url, class: "item-box__images"
-                - else
-                  .no-image
+          .slider
+            - @item.item_images.each do |item_image|
+              .slider__item
+                = image_tag item_image.image.url
+          .thumbnail
+            - @item.item_images.each.with_index do |item_image, index|
+              - if index == 0
+                .thumbnail__item.current{"data-index": index}
+                  .thumbnail__item__box
+                    = image_tag item_image.image.url
+              - else
+                .thumbnail__item{"data-index": index}
+                  .thumbnail__item__box
+                    = image_tag item_image.image.url
         %table.item-detail-table
           %tbody
             %tr
@@ -230,52 +206,20 @@
             %buttton{type: "submit", class: "message-submit button-default"}
               %span.message-submit__button コメントする
 
-    %ul.nav-item-link
-      %li.nav-item-link-prev
-        = link_to '/' do
-          %i.fas.fa-chevron-left
-            ディズニーチケット
-      %li.nav-item-link-next
-        = link_to '/' do
-          ハリーウィンストン 時計
-          %i.fa.fa-chevron-right
-
     .item-social-media-box
       .text-center
       %ul.social-media-box
         %li
-          = link_to "", target: "_blank", class: "share-btn" do
+          = link_to "#", target: "_blank", class: "share-btn" do
             %i.fab.fa-facebook-square
         %li
-          = link_to "", target: "_blank", class: "share-btn" do
+          = link_to "#", target: "_blank", class: "share-btn" do
             %i.fab.fa-twitter
         %li
-          = link_to "", target: "_blank", class: "share-btn" do
+          = link_to "#", target: "_blank", class: "share-btn" do
             %i.fab.fa-line
         %li
-          = link_to "", target: "_blank", class: "share-btn" do
+          = link_to "#", target: "_blank", class: "share-btn" do
             %i.fab.fa-pinterest
-
-
-    .items-in-user-profile
-      %section.items-box-continer
-        = link_to "/" do
-          %h3.items-box-head
-            #{@item.name}さんのその他の商品
-        .item-box-content
-          %section
-            .pickup-box__items
-              = render @janel
-            .pickup-box__view-all
-        = link_to "/" do
-          %h3.items-box-head
-            -# #{@item.category.parent.name} の
-            -# #{@item.category.parent.parent.name} その他の商品
-        .item-box-content
-          %section
-            .pickup-box__items
-              = render @janel
-            .pickup-box__view-all
-
   = render "layouts/aside"
   = render "layouts/footer"

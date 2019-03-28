@@ -42,7 +42,7 @@
                 カテゴリー
                 %span 必須
               .sell-form__detail__select-box__wrap
-                = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
+                = f.select :category_id, Category.all.map{|t| [t.name, t.id]}, prompt: "---", id: "sell-form-category"
                 %i.fas.fa-angle-down
               .sell-form__detail__select-box__wrap#sell-form-sub_category{style: "display:none"}
                 %select#item_sub_category_id{name: ""}
@@ -56,7 +56,7 @@
                 ブランド
                 %span.gray 任意
               .sell-form__detail__select-box__wrap
-                = f.select :brand_id, @brands.map{|t| [t.name, t.id]}, prompt: "---"
+                = f.select :brand_id, Brand.all.map{|t| [t.name, t.id]}, prompt: "---"
                 %i.fas.fa-angle-down
             .sell-form__detail__select-box__condition
               %h5.mt-40

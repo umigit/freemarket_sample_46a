@@ -18,7 +18,12 @@
             = render "items/brand-menu"
       .navigation__right
         - if user_signed_in?
-          = link_to "マイページ", users_path, class: "navigation__right__mypage"
+          .navigation__right__mypage
+            - if current_user.user_profile.avatar.url
+              = image_tag current_user.user_profile.avatar.url
+            - else
+              = image_tag image_path("member_photo_noimage.png")
+            = link_to "マイページ", users_path, class: "navigation__right__mypage__link"
           .navigation__right__note
             = link_to "お知らせ", "#"
             .navigation__right__note__list
