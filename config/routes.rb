@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :user_profiles, only: [:edit,:update]
   resources :users, only: [:index]
-  resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :items do
     collection do
       get :category
       get :search
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:create] do
-    resources :items, only: [:show, :destroy] do
+    resources :items, only: [:show] do
       collection do
         get :onsale
         get :orderd
