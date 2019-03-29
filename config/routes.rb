@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "users/registrations", sessions: "users/sessions"}
   root "items#index"
   resources :items, only: [:new, :create] do
     member do
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     collection do
       get :logout
       get :card
+      get :phone
     end
   end
   resources :users, only: [:create] do

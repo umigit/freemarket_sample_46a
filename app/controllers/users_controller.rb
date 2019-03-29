@@ -4,4 +4,8 @@ class UsersController < ApplicationController
 
   def logout
   end
+
+  def phone
+  end
+
 end

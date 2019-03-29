@@ -32,6 +32,12 @@ crumb :onsale do
   link "出品した商品", onsale_user_items_path(current_user)
   parent :mypage
 end
+
+crumb :phone do
+  link "電話番号の確認", phone_users_path
+  parent :mypage
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
