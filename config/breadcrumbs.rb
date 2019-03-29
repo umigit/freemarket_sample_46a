@@ -28,7 +28,10 @@ crumb :logout do
   parent :mypage
 end
 
-
+crumb :onsale do
+  link "出品した商品", onsale_user_items_path(current_user)
+  parent :mypage
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end

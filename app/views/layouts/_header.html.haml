@@ -19,7 +19,7 @@
       .navigation__right
         - if user_signed_in?
           .navigation__right__mypage
-            - if current_user.user_profile.avatar.url
+            - if current_user.user_profile && current_user.user_profile.avatar.url
               = image_tag current_user.user_profile.avatar.url
             - else
               = image_tag image_path("member_photo_noimage.png")
@@ -29,14 +29,14 @@
             .navigation__right__note__list
               = render "layouts/note-list"
           .navigation__right__todo
-            = link_to "やることリスト", "#", method: :delete
+            = link_to "やることリスト", "#"
             .navigation__right__todo__list
               = render "layouts/todo-list"
         - else
           = link_to "ログイン", new_user_session_path, class: "btn btn-nav btn-login btn-red"
           = link_to "新規会員登録", new_user_registration_path, class: "btn btn-nav btn-reg"
 
-  //パンくず
+-# パンくず
 .pankuzu
   = breadcrumbs separator: " &rsaquo; "
 
