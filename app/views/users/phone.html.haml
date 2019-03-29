@@ -1,0 +1,27 @@
+/パンくず
+-breadcrumb :phone
+/ヘッダー
+= render "layouts/header"
+
+
+%main.l-container
+  .l-container__mypage
+    = render "modules/mypage-side-navi"
+    .l-container__phone
+      %h2.l-container__phone-head 電話番号の確認
+      .l-container__phone-contents
+        .l-container__phone-contents-content
+          .l-container__phone-contents-content-label 携帯電話の番号
+          %input{type:"tel" ,name: "phone_number", placeholder: "携帯電話の番号を入力", class: "phone_form"}
+          %p 本人確認のため、携帯電話のSNS(ショートメッセージサービス)を利用して認証を行います。
+          %button.btn-default.btn-red{:type => "submit"} SMSを送信する
+          %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+
+
+/フッター画像
+= render "layouts/aside"
+/フッター詳細
+= render "layouts/footer"
+
+
+
