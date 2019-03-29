@@ -31,8 +31,6 @@ class ItemsController < ApplicationController
         format.html
         format.json {render json: @item}
       end
-
-      redirect_to item_path(@item)
     else
       render :new
     end
