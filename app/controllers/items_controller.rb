@@ -68,6 +68,10 @@ class ItemsController < ApplicationController
     @items = Item.ransack(name_cont: params[:keyword]).result
   end
 
+  def onsale
+    @items = Item.ransack(user_id_eq: current_user.id)
+  end
+
   private
 
   def item_params
