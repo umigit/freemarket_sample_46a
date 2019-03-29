@@ -1,12 +1,9 @@
 .l-container {
   background-color: #f5f5f5;
-  padding: 40px 0;
-  display: flex;
   &__mypage {
-    margin: 0 auto;
-    width: 70%;
+    margin: 40px auto;
     display: flex;
-
+    width: 1020px;
   }
 }
 
@@ -24,8 +21,8 @@
   color: #000;
 
   &__body {
-    margin: 0 auto 0;
-    width: 1020px;
+    margin: 0 autos;
+    // width: 1020px;
 
     &__main {
 
