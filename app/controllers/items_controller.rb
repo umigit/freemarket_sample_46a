@@ -31,6 +31,8 @@ class ItemsController < ApplicationController
         format.html
         format.json {render json: @item}
       end
+
+      redirect_to item_path(@item)
     else
       render :new
     end
@@ -43,7 +45,14 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update(item_params)
+      respond_to do |format|
+        format.html
+        format.json {render json: @item}
+      end
+    else
+      render :edit
+    end
   end
 
   def category
