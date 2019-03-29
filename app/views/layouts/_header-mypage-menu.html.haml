@@ -1,1 +1,9 @@
-%ul.mypage-menu
+- if current_user.user_profile
+  .mypage-menu
+    .mypage-menu__image
+    %figure.mypage-menu__avatar
+      - if current_user.user_profile.avatar.url
+        = image_tag current_user.user_profile.avatar.url
+      - else
+        = image_tag mage_path("member_photo_noimage.png")
+      %figcaption #{current_user.user_profile.nickname}
