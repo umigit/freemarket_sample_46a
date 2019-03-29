@@ -18,20 +18,17 @@ $(document).on('turbolinks:load', function () {
 
     index = $(this).data('index');
     currentItem = $(this);
-    console.log(index);
-    console.log('enter');
     clearInterval(timer);
+
     timer = setInterval(function () {
       $(".slider").slick("slickGoTo", index, false);
       beforeItem.removeClass("current");
       currentItem.addClass("current");
       beforeItem = currentItem;
-      console.log(index);
     }, 500);
   });
 
   $(".thumbnail").on('mouseleave', function () {
-    console.log('leave');
     clearInterval(timer);
   });
 });
