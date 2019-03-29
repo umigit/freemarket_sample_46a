@@ -21,10 +21,10 @@
                   %i.fa.fa-chevron-right
             .form-group
               %label お名前
-              %p #{current_user.user_profile.first_name} #{current_user.user_profile.last_name}
+              %p #{current_user.user_profile.last_name} #{current_user.user_profile.first_name}
             .form-group
               %label お名前カナ
-              %p #{current_user.user_profile.first_name_kana} #{current_user.user_profile.last_name_kana}
+              %p #{current_user.user_profile.last_name_kana} #{current_user.user_profile.first_name_kana}
             .form-group
               %label{for: "birthday"} 生年月日
               %p #{current_user.user_profile.birth_y}年#{current_user.user_profile.birth_m}月#{current_user.user_profile.birth_d}日
