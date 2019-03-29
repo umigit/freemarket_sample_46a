@@ -86,3 +86,6 @@ gem "jquery-slick-rails"
 gem 'gretel'
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
+gem 'recaptcha', require: "recaptcha/rails"
+gem 'dotenv-rails'
+

@@ -7,8 +7,7 @@
     .left-content
       = render "modules/mypage-side-navi"
       .logout__content
-        .logout__content__btn
-          ログアウト
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout__content__btn btn btn-red"
   = render "layouts/aside"
   = render "layouts/footer"
   = render "layouts/sell-button"
