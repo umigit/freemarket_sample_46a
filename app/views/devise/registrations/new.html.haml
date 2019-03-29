@@ -5,7 +5,7 @@
       %h2.single-main-container__head 新規会員登録
       .single-main-container__inner
         .single-main-container__inner--content
-          = link_to "" ,class: 'btn-default btn-mail' do
+          = link_to "/users/sign_up/registration" ,class: 'btn-default btn-mail' do
             メールアドレスで登録
             %i.far.fa-envelope
           = link_to "Facebookで登録", user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", method: :get

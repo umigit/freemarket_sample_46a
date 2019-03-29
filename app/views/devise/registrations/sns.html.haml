@@ -1,0 +1,79 @@
+.single-container
+  = render "layouts/single-header"
+  .single-main
+    .single-main-container
+      %h2.single-main-container__head 会員情報入力
+       / = form_with model: @user, local: true , class: "right-identity-information" do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        %section.right-continer
+          %h2.right-continer__head
+          .right-continer__inner
+            .form-groups
+              = f.fields_for :user_profile do |p|
+              .form-group
+                %label{for: "nickname"} ニックネーム
+                %span 必須
+                = p.text_field :name, class: "input-default", placeholder: "例) メルカリ太郎"
+              .form-group
+                %label{for: "email"} メールアドレス
+                %span 必須
+                = f.email_field :email, class: "input-default", placeholder: "例) PC・携帯どちらでも可"
+              .form-group
+                %label{for: "password"} パスワード
+                %span 必須
+                = f.password_field :password, class: "input-default", placeholder: "例) 6文字以上"
+              .form-group
+                %label{for: "confirmation password"} パスワード(確認)
+                %span 必須
+                = f.password_field :confilmation_password, class: "input-default", placeholder: "例) 6文字以上"
+              .form-group
+                %label{for: "address2_label"} 本人確認
+                %p
+                  安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+              .form-group
+                %label{for: "address2_label"} 姓 (全角)
+                %span 必須
+                = f.text_field :last_name, class: "input-default", placeholder: "例) 山田"
+              .form-group
+                %label{for: "address2_label"} 名 (全角)
+                %span 必須
+                = f.text_field :first_name, class: "input-default", placeholder: "例) 彩"
+              .form-group
+                %label{for: "address2_label"} 姓カナ (全角)
+                %span 必須
+                = f.text_field :last_name_kana, class: "input-default", placeholder: "例) ヤマダ"
+              .form-group
+                %label{for: "address2_label"} 名カナ (全角)
+                %span 必須
+                = f.text_field :first_name_kana, class: "input-default", placeholder: "例) アヤ"
+              .form-group-year
+                %label{for: "prefecture"} 生年月日
+                %span 必須
+                .select-wrap-birthday.select-wrap
+                  = f.select :year, User.years.keys, prompt: "--"
+                  %i.fas.fa-angle-down#birthday
+                  %p.birthday 年
+                .select-wrap-birthday.select-wrap
+                  = f.select :month, User.months.keys, prompt: "--"
+                  %i.fas.fa-angle-down#birthday
+                  %p.birthday 月
+                .select-wrap-birthday.select-wrap
+                  = f.select :day, Brand.days.keys, prompt: "--"
+                  %i.fas.fa-angle-down#birthday
+                  %p.birthday 日
+              %p.font-color-gray
+                ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+              .form-group
+                %p
+                  「次へ進む」のボタンを押すことにより、
+                  = link_to "利用規約", "/", id: "font-color-blue"
+                  に同意したものとみなします
+              %input{type: "submit", value: "次へ進む", class: "btn-default button-red"}
+              .form-group.text-right
+                = link_to 'https://www.mercari.com/jp/help_center/article/423/', target: "_blank" do
+                  本人確認書類の登録について
+                  %i.fa.fa-chevron-right
+
+
+  = render 'layouts/single-footer'
+  %script{src: "https://apis.google.com/js/platform.js?onload=renderButton", async: "defer"}

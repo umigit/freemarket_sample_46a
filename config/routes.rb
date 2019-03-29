@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users,
+  controllers: {
+  sessions: 'users/sessions' ,
+  registrations: 'users/registrations',
+  omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+  devise_scope :user do
+    get "users/sign_up/registration", to: "users/registrations#sns", as: "new_user_signup_registration"
+  end
   root "items#index"
   resources :items, only: [:new, :create] do
     member do
@@ -24,3 +32,5 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :brands, only: [:show]
 end
+
+
