@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
-end
+
   # GET /resource/sign_up
   # def new
   #   super
