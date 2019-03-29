@@ -118,8 +118,8 @@ $(function () {
         $("#newItemSubmitButton").css("background-color", "#ccc");
         $("#loadIcon").css("display", "block");
       },
-    }).done(function (response) {
-      location.href = "/";
+    }).done(function (data) {
+      location.href = "/items/" + data.id;
     }).fail(function (response) {
       showError();
     }).always(function () {
