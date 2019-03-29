@@ -21,13 +21,13 @@
                   %i.fa.fa-chevron-right
             .form-group
               %label お名前
-              %p current_user.name
+              %p #{current_user.user_profile.first_name} #{current_user.user_profile.last_name}
             .form-group
               %label お名前カナ
-              %p current_user.nameカナ
+              %p #{current_user.user_profile.first_name_kana} #{current_user.user_profile.last_name_kana}
             .form-group
               %label{for: "birthday"} 生年月日
-              %p current_user.Birthday
+              %p #{current_user.user_profile.birth_y}年#{current_user.user_profile.birth_m}月#{current_user.user_profile.birth_d}日
             .form-group
               %label{for: "zip_code"} 郵便番号
               %span.form-arbitrary 任意

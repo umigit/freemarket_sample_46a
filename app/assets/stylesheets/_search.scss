@@ -1,0 +1,18 @@
+.search {
+  padding: 40px;
+  width: 1020px;
+  margin: 0 auto;
+  &__container {
+    display: inline-block;
+    h1 {
+      margin: 24px 0 8px;
+      font-size: 24px;
+      text-align: left;
+    }
+
+    &__item {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}

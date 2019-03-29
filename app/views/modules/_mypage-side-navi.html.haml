@@ -22,7 +22,7 @@
           出品する
           %i.fa.fa-chevron-right
       %li
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to onsale_user_items_path(current_user), class: "mypage-nav__list__item" do
           出品した商品-出品中
           %i.fa.fa-chevron-right
       %li
@@ -92,7 +92,7 @@
           本人情報
           %i.fa.fa-chevron-right
       %li
-        = link_to "", class: "mypage-nav__list__item" do
+        = link_to phone_users_path, class: "mypage-nav__list__item" do
           電話番号の確認
           %i.fa.fa-chevron-right
       %li
