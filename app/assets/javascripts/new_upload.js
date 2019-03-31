@@ -53,7 +53,7 @@ $(function () {
     $("#croppingModal").css("display", "block");
   });
 
-  // ズームスライダー初期化
+  // ズームスライダー初期化s
   $("#zoomSlider").slider({
     orientation: "horizontal",
     max: 1,
