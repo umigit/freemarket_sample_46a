@@ -1,10 +1,12 @@
 $(document).on('turbolinks:load', function () {
+  // トップページバナー
   $(".carousel").slick({
     dots: true,
     autoplay: true,
     autoplaySpeed: 2000,
   });
 
+  // item詳細
   $(".slider").slick({
     arrows: false,
     infinite: false,
@@ -14,6 +16,7 @@ $(document).on('turbolinks:load', function () {
   let index;
   let currentItem = $(".thumbnail__item:first");
   let beforeItem = currentItem;
+
   $(".thumbnail__item").on('mouseenter', function () {
 
     index = $(this).data('index');

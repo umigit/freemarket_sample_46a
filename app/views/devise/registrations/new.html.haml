@@ -1,15 +1,38 @@
 .single-container
-  = render "layouts/single-header"
   .single-main
     .single-main-container
-      %h2.single-main-container__head 新規会員登録
-      .single-main-container__inner
-        .single-main-container__inner--content
-          = link_to "" ,class: 'btn-default btn-mail' do
-            メールアドレスで登録
-            %i.far.fa-envelope
-          = link_to "Facebookで登録", user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", method: :get
-          = link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", method: :get
-
-  = render 'layouts/single-footer'
-  %script{src: "https://apis.google.com/js/platform.js?onload=renderButton", async: "defer"}
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = f.fields_for :user_profile, resource.build_user_profile do |p|
+          = p.label :nickname
+          = p.text_field :nickname
+          .field
+            .field-label
+              = f.label :email
+            .field-input
+              = f.email_field :email
+          .field
+            .field-label
+              = f.label :password
+              %i (英数字8文字以上)
+            .field-input
+              = f.password_field :password, autocomplete: "off"
+          .field
+            .field-label
+              = f.label :password_confirmation
+            .field-input
+              = f.password_field :password_confirmation, autocomplete: "off"
+          = p.label :last_name
+          = p.text_field :last_name
+          = p.label :first_name
+          = p.text_field :first_name
+          = p.label :last_name_kana
+          = p.text_field :last_name_kana
+          = p.label :first_name_kana
+          = p.text_field :first_name_kana
+          = p.label :birth_y
+          = p.text_field :birth_y
+          = p.label :birth_m
+          = p.text_field :birth_m
+          = p.label :birth_d
+          = p.text_field :birth_d
+        = f.submit

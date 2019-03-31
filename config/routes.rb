@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_scope :user do
+    get '/sign_up' => 'users/registrations#sign_up'
+    get '/sign_up/registration' => 'users/registrations#new'
+  end
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "users/registrations", sessions: "users/sessions"}
   root "items#index"
   resources :items, only: [:new, :create] do
@@ -6,8 +11,14 @@ Rails.application.routes.draw do
       get :buy
     end
   end
+  resources :users, only: [:index]  do
+    collection do
+      get :logout
+      get :card
+      get :phone
+    end
+  end
   resources :user_profiles, only: [:edit,:update]
-  resources :users, only: [:index]
   resources :items do
     collection do
       get :category
@@ -18,13 +29,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :brands, only: [:show]
   resources :addresses, only: [:new, :create, :edit, :update]
-  resources :users  do
-    collection do
-      get :logout
-      get :card
-      get :phone
-    end
-  end
+
   resources :users, only: [:create] do
     resources :items, only: [:show] do
       collection do
@@ -34,4 +39,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
 end
