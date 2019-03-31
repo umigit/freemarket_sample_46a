@@ -85,3 +85,4 @@ gem 'fog-aws'
 gem "jquery-slick-rails"
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
+gem 'payjp'

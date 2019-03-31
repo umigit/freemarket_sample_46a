@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "items#index"
   resources :items, only: [:new, :create] do
     member do
-      get :buy
+
     end
   end
   resources :user_profiles, only: [:edit,:update]
@@ -11,8 +11,14 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get :category
+      post 'pay/:id' => 'items#pay', as: 'pay'
+    end
+
+    member do
+      get :buy
     end
   end
+
   resources :addresses, only: [:new, :create, :edit, :update]
   resources :users  do
     collection do

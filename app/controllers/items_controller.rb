@@ -41,19 +41,28 @@ class ItemsController < ApplicationController
     @categories = Category.ransack(parent_id_null: true).result
 
   end
+  def pay
+    # @item = Item.find(params[:id])
+    if
+      Payjp.api_key = 'sk_test_c28ae49cafa2c8609f211aea'
+      charge = Payjp::Charge.create(
+      :amount => 1000,
+      :card => params['payjp-token'],
+      :currency => 'jpy',)
+      redirect_to root_path,
+    else
+      redirect_to root_path,
+    end
+  end
+
+      respond_to do |format|
+        format.html
+        format.json
+      end
 
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-  end
-
-  def category
-    @categories = Category.ransack(parent_id_eq: params[:id]).result
-
-    respond_to do |format|
-      format.html
-      format.json {render json: @categories.select(:id, :name)}
-    end
   end
 
   private
