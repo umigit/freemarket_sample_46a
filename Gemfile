@@ -88,4 +88,5 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'
+gem 'cropper-rails'
 
