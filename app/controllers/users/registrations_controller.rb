@@ -1,17 +1,11 @@
-
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  prepend_before_action :check_captcha, only: [:create]
+  # prepend_before_action :check_captcha, only: [:create]
 
-<<<<<<< HEAD
-before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
 
-=======
-  
->>>>>>> origin/user-registration-new
   def sns
     @user = User.new(
       email: session[:email],
@@ -64,8 +58,6 @@ before_action :configure_sign_up_params, only: [:create]
       render 'sns'
     end
   end
-<<<<<<< HEAD
-
 
 
 
@@ -100,9 +92,7 @@ end
   # end
 
   # POST /resource
-=======
-  
->>>>>>> origin/user-registration-new
+
   # def create
     # if verify_recaptcha
     #   super
@@ -112,16 +102,17 @@ end
     # end
   # end
 
-  private
 
-  def check_captcha
-    unless verify_recaptcha
-      self.resource = resource_class.new sign_up_params
-      resource.validate # Look for any other validation errors besides Recaptcha
-      set_minimum_password_length
-      respond_with resource
-    end
-  end
- 
-end
+#   private
+
+#   def check_captcha
+#     unless verify_recaptcha
+#       self.resource = resource_class.new sign_up_params
+#       resource.validate # Look for any other validation errors besides Recaptcha
+#       set_minimum_password_length
+#       respond_with resource
+#     end
+#   end
+
+# end
 
