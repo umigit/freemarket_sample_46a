@@ -25,7 +25,7 @@
 /yarn-error.log
 
 /public/assets
-/public/uploads
+/public/uploads/*
 .byebug_history
 index.csv.ruby
 # Ignore master key for decrypting credentials and more.
@@ -33,3 +33,4 @@ index.csv.ruby
 gibo 2.1.2 by Simon Whitaker <sw@netcetera.org>
 https://github.com/simonwhitaker/gibo
 config/secrets.yml
+/.env

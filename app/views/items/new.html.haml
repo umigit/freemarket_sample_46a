@@ -56,7 +56,7 @@
                 ブランド
                 %span.gray 任意
               .sell-form__detail__select-box__wrap
-                = f.select :brand_id, @brands.map{|t| [t.name, t.id]}, prompt: "---"
+                = f.select :brand_id, Brand.all.map{|t| [t.name, t.id]}, prompt: "---"
                 %i.fas.fa-angle-down
             .sell-form__detail__select-box__condition
               %h5.mt-40
@@ -101,14 +101,15 @@
             = link_to "?", "/", class: "question"
           .sell-form__price__select-box
             .sell-form__price__select-box__price-wrap
-              .sell-form__price__select-box__price-wrap__left
-                %h5
-                  価格
-                  %span 必須
-                .sell-form__price__select-box__price-wrap__left__error
-              .sell-form__price__select-box__price-wrap__right
-                %p ¥
-                = f.text_field :price, id: "priceField", placeholder: "例）300"
+              .sell-form__price__select-box__price-wrap__input
+                .sell-form__price__select-box__price-wrap__input__left
+                  %h5
+                    価格
+                    %span 必須
+                .sell-form__price__select-box__price-wrap__input__right
+                  %p ¥
+                  = f.text_field :price, id: "priceField", placeholder: "例）300"
+              .sell-form__price__select-box__price-wrap__error
             .sell-form__price__select-box__charge-wrap
               .sell-form__price__select-box__charge-wrap__left
                 %p 販売手数料(10%)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_092036) do
+ActiveRecord::Schema.define(version: 2019_03_27_101645) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
@@ -158,7 +158,9 @@ ActiveRecord::Schema.define(version: 2019_03_24_092036) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["nickname"], name: "index_user_profiles_on_nickname", unique: true
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -185,4 +187,5 @@ ActiveRecord::Schema.define(version: 2019_03_24_092036) do
   add_foreign_key "money_transaction_records", "users"
   add_foreign_key "order_statuses", "items"
   add_foreign_key "sns_credentials", "users"
+  add_foreign_key "user_profiles", "users"
 end

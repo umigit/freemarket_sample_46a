@@ -126,14 +126,15 @@
             = link_to "?", "/", class: "question"
           .sell-form__price__select-box
             .sell-form__price__select-box__price-wrap
-              .sell-form__price__select-box__price-wrap__left
-                %h5
-                  価格
-                  %span 必須
-                .sell-form__price__select-box__price-wrap__left__error
-              .sell-form__price__select-box__price-wrap__right
-                %p ¥
-                = f.text_field :price, id: "priceField", placeholder: "例）300"
+              .sell-form__price__select-box__price-wrap__input
+                .sell-form__price__select-box__price-wrap__input__left
+                  %h5
+                    価格
+                    %span 必須
+                .sell-form__price__select-box__price-wrap__input__right
+                  %p ¥
+                  = f.text_field :price, id: "priceField", placeholder: "例）300"
+              .sell-form__price__select-box__price-wrap__error
             .sell-form__price__select-box__charge-wrap
               .sell-form__price__select-box__charge-wrap__left
                 %p 販売手数料(10%)
@@ -150,6 +151,6 @@
           %p また、出品をもちまして加盟店規約に同意したことになります。
           .sell-form__submit__button
             = image_tag "icon_loader.gif", class: "sell-form__submit__button__load", id: "loadIcon"
-            = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large", type: "button"
+            = f.submit "変更する", id: "newItemSubmitButton", class: "btn btn-large", type: "button"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
 = render "layouts/single-footer"

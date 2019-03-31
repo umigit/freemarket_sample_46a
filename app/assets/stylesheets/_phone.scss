@@ -1,0 +1,32 @@
+.l-container__phone {
+  width: 700px;
+  height: 500px;
+  background-color: #fff;
+}
+h2.l-container__phone-head{
+  font-size: 24px;
+  border-bottom: 1px solid #f5f5f5;
+  height: 50px;
+  margin-top: 20px;
+}
+.l-container__phone-contents{
+  margin: 0 auto;
+  width: 300px;
+  padding-top: 60px;
+}
+.l-container__phone-contents-content-label{
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-block;
+}
+
+p{
+  font-size: 13px;
+  padding-top: 15px;
+}
+.send_button{
+  margin-top: 100px;
+}
+.btn-default.btn-red{
+  margin-top: 50px;
+}
