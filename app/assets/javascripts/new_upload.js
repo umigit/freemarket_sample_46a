@@ -13,6 +13,7 @@ $(function () {
     $("#item_item_image_image").click();
   });
 
+  // 削除機能
   $(document).on('click', '.upload-item__container__button__delete', function () {
     const id = $(this).data('id');
 
@@ -35,9 +36,9 @@ $(function () {
       $("#storedItem-" + id).empty();
       $("#dropbox").css("display", "block");
     })
-
   });
 
+  // ドラッグ＆ドロップ
   $(document).on('dragover', '#dropbox', function (event) {
     event.stopPropagation();
     event.preventDefault();
