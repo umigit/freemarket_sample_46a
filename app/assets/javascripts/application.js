@@ -16,4 +16,5 @@
 //= require jquery3
 //= require jquery_ujs
 //= require jquery.slick
+//= require cropper
 //= require_tree .
