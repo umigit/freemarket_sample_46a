@@ -13,6 +13,11 @@ $(function () {
     $("#item_item_image_image").click();
   });
 
+  $(document).on('click', '.upload-item__container__button__edit', function () {
+    const id = $(this).data('id');
+    const image = imageList[id];
+  });
+
   // 削除機能
   $(document).on('click', '.upload-item__container__button__delete', function () {
     const id = $(this).data('id');
