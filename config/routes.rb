@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     get "users/sign_up/registration", to: "users/registrations#sns", as: "new_user_signup_registration"
+    get "users/sign_up/sms_confirmation", to: "users/registrations#phone", as: "new_user_signup_sms_confirmation"
+    get "users/sign_up/region_confirmation", to: "users/registrations#region", as: "new_user_signup_region_confirmation"
+    get "users/sign_up/credit_confirmation", to: "users/registrations#credit", as: "new_user_signup_credit_confirmation"
+    get "users/sign_up/complete", to: "users/registrations#complete", as: "new_user_signup_complete"
   end
   root "items#index"
   resources :items, only: [:new, :create] do
