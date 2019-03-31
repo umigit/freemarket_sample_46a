@@ -16,11 +16,26 @@ $(function () {
   $(document).on('click', '.upload-item__container__button__edit', function () {
     console.log('edit!');
     const id = $(this).data('id');
-    const image = $("#uploadImage-" + id);
+    const canvas = $("#canvas");
+
+    const image = $("#uploadImage-" + id).attr('src');
     console.log(image);
-    image.cropper({
+    canvas.attr('src', image);
+    canvas.cropper({
+      viewMode: 1,
+      dragMode: "move",
       aspectRatio: 1 / 1,
+      guides: false,
+      center: false,
+      background: false,
+      autoCropArea: 0.5,
+      cropBoxMovable: false,
+      cropBoxResizable: false,
+      minCropBoxWidth: 280,
+      minCropBoxHeight: 280,
     });
+
+    $("#croppingModal").css("display", "block");
   });
 
   // 削除機能
