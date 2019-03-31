@@ -43,16 +43,12 @@ class ItemsController < ApplicationController
   end
   def pay
     # @item = Item.find(params[:id])
-    if
       Payjp.api_key = 'sk_test_c28ae49cafa2c8609f211aea'
       charge = Payjp::Charge.create(
       :amount => 1000,
       :card => params['payjp-token'],
       :currency => 'jpy',)
-      redirect_to root_path,
-    else
-      redirect_to root_path,
-    end
+      redirect_to root_path
   end
 
       respond_to do |format|
