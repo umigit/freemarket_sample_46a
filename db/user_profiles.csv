@@ -1,0 +1,2 @@
+id,"last_name","first_name","last_name_kana","first_name_kana",birth_y,birth_m,birth_d,"nickname","avatar","comment","created_at","updated_at",user_id
+1,"太郎","手巣斗","タロウ","テスト",2000,1,1,"てっちゃん",NULL,NULL,"2019-01-01 00:00:00","2019-01-01 00:00:00",1

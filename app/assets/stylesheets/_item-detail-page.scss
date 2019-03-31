@@ -1,3 +1,5 @@
+@import "item-slider";
+
 .item-box-container {
   width: 700px;
   background: #fff;
@@ -6,12 +8,13 @@
   box-sizing: border-box;
   .item-main-content {
     margin: 16px 0 0;
-    height: 375px;
+    min-height: 375px;
     width: 620px;
     display: flex;
     justify-content: space-between;
     .item-photo{
       max-width: 300px;
+      max-height: 420px;
       font-size:0;
       .item-image {
         width: 100%;

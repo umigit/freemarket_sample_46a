@@ -1,0 +1,78 @@
+.parent-own-item-container {
+  box-sizing: border-box;
+  width: 700px;
+  height: auto;
+  background-color: white;
+  margin: 24px auto;
+  padding:20px 16px;
+  position: relative;
+
+  &__edit {
+    width: 100%;
+    background-color: #ea352d;
+    border: 1px solid #ea352d;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.8;
+      transition-duration: 0.6s;
+    }
+
+    &:visited {
+      color: white;
+    }
+  }
+  &__or {
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+  }
+  &__open {
+    width: 100%;
+    background-color: #ea352d;
+    border: 1px solid #ea352d;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    position: relative;
+  }
+  &__close {
+    width: 100%;
+    background-color: #ea352d;
+    border: 1px solid #ea352d;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    position: relative;
+  }
+  #good-to-delete {
+    display: none;
+  }
+  &__delete-btn {
+    width: 100%;
+    background-color: #aaa;
+    border: 1px solid #aaa;
+    color: white;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    margin-top: 15px;
+    position: relative;
+  }
+}

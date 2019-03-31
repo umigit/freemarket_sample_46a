@@ -1,0 +1,50 @@
+.slider {
+  margin: 0;
+  &__item {
+
+    img {
+      height: 300px;
+      width: 300px;
+      object-fit: contain;
+    }
+  }
+}
+
+.thumbnail {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 60px;
+  max-height: 120px;
+
+  &__item {
+    height: 100%;
+    max-width: 25%;
+    min-width: 20%;
+    flex:1 0 60px;
+    opacity: 0.4;
+
+    &__box {
+      height: 0;
+      padding-bottom: 100%;
+      position: relative;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__dummy {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.current {
+  opacity: 1;
+}

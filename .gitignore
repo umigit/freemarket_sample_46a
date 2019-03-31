@@ -33,3 +33,4 @@ index.csv.ruby
 gibo 2.1.2 by Simon Whitaker <sw@netcetera.org>
 https://github.com/simonwhitaker/gibo
 config/secrets.yml
+/.env

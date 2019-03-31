@@ -72,7 +72,7 @@ $(function () {
       return image != null;
     });
 
-    images.forEach(function (image, index) {
+    images.map(function (image, index) {
       formData.append(`item[item_images_attributes][${index}][image]`, image);
     });
 
@@ -89,9 +89,12 @@ $(function () {
       formData.append("item[category_id]", "");
     }
 
+    if ($("#item_brand_id").val()) {
+      formData.append("item[brand_id]", $("#item_brand_id").val());
+    }
+
     formData.append("item[name]", $("#nameField").val());
     formData.append("item[comment]", $("#commentField").val());
-    formData.append("item[brand_id]", $("#item_brand_id").val());
     formData.append("item[condition]", $("#item_condition").val());
     formData.append("item[shipping_fee]", $("#item_shipping_fee").val());
     formData.append("item[prefecture_id]", $("#item_prefecture_id").val());
@@ -115,8 +118,8 @@ $(function () {
         $("#newItemSubmitButton").css("background-color", "#ccc");
         $("#loadIcon").css("display", "block");
       },
-    }).done(function (response) {
-      location.href = "/";
+    }).done(function (data) {
+      location.href = "/items/" + data.id;
     }).fail(function (response) {
       showError();
     }).always(function () {

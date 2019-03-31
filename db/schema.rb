@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_03_30_095255) do
+=======
+ActiveRecord::Schema.define(version: 2019_03_27_101645) do
+>>>>>>> origin/user-registration-new
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
@@ -158,7 +162,11 @@ ActiveRecord::Schema.define(version: 2019_03_30_095255) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.bigint "user_id"
+=======
+    t.bigint "user_id", null: false
+>>>>>>> origin/user-registration-new
     t.index ["nickname"], name: "index_user_profiles_on_nickname", unique: true
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end

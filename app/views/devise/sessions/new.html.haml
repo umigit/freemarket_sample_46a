@@ -14,5 +14,8 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = f.email_field :email, class: 'email-box'
           = f.password_field :password, autocomplete: "off", class: 'password-box'
+          = recaptcha_tags
           = f.submit "ログイン", class: "login-submit btn-default btn-red"
+          = link_to 'パスワードをお忘れの方', "", class: "owasure"
   = render "layouts/single-footer"
+

@@ -29,9 +29,18 @@
 @import "menu";
 @import "category";
 @import "brand";
+@import "search";
 @import "item";
+<<<<<<< HEAD
 @import "registrations/sns";
 @import "registrations/phone";
 @import "registrations/region";
 @import "registrations/credit";
 @import "registrations/complete";
+=======
+@import "user/sns";
+@import "destroy";
+@import "phone";
+
+
+>>>>>>> origin/user-registration-new

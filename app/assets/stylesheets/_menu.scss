@@ -83,3 +83,21 @@
     }
   }
 }
+
+.todo-list, .note-list {
+  display: none;
+  width: 320px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+  li {
+    background-image: url(image_path("logo-gray-icon.svg"));
+    background-position: center 40px;
+    background-size: 78px 85px;
+    background-repeat: no-repeat;
+    padding: 160px 0 60px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #ccc;
+  }
+}
