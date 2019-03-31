@@ -35,10 +35,55 @@
     &__edit {
       width: 380px;
       margin: 0 auto;
+
       &__canvas {
         width: 380px;
         height: 380px;
       }
+
+      &__slider {
+        height: 20px;
+        width: 300px;
+        margin: 16px auto 0;
+      }
+    }
+
+    &__button {
+      box-sizing: border-box;
+      width: 380px;
+      margin: 24px auto 0;
+      padding:0 10px 40px;
+      display: flex;
+      justify-content: space-between;
+
+      &__back {
+        width: 45%;
+        background-color: #aaa;
+        font-size: 14px;
+      }
+
+      &__enter {
+        width: 45%;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.ui {
+  &-slider {
+    background-color: #ccc;
+    border: 1px solid #aaa;
+
+    &-handle {
+      background-color: white;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      margin-top: 2px;
+      padding: 0;
+      outline: none;
 
     }
   }

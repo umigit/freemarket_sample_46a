@@ -1,6 +1,7 @@
 $(function () {
   let imageCount = $(".sell-form__image").data('image_count');
   let imageList = [];
+  let cropper;
 
   $(document).on('change', '#item_item_image_image', function () {
     const files = $.extend(true, {}, $(this).prop('files'));
@@ -13,13 +14,13 @@ $(function () {
     $("#item_item_image_image").click();
   });
 
+  // cropper表示
   $(document).on('click', '.upload-item__container__button__edit', function () {
     console.log('edit!');
     const id = $(this).data('id');
     const canvas = $("#canvas");
-
     const image = $("#uploadImage-" + id).attr('src');
-    console.log(image);
+    console.log(canvas);
     canvas.attr('src', image);
     canvas.cropper({
       viewMode: 1,
@@ -33,9 +34,35 @@ $(function () {
       cropBoxResizable: false,
       minCropBoxWidth: 280,
       minCropBoxHeight: 280,
+      ready: function () {
+        const cropper = this.cropper;
+        cropper.zoomTo(0);
+
+        const imageData = cropper.getImageData();
+        console.log(imageData);
+        const minSliderZoom = imageData.width / imageData.naturalWidth;
+
+        $("#zoomSlider").slider("option", "max", 1);
+        $("#zoomSlider").slider("option", "min", minSliderZoom);
+        $("#zoomSlider").slider("value", minSliderZoom);
+      },
     });
 
+    cropper = canvas.data('cropper');
+
     $("#croppingModal").css("display", "block");
+  });
+
+  // ズームスライダー初期化
+  $("#zoomSlider").slider({
+    orientation: "horizontal",
+    max: 1,
+    min: 0,
+    value: 0,
+    step: 0.001,
+    slide: function () {
+      cropper.zoomTo($(this).slider('value'));
+    }
   });
 
   // 削除機能
@@ -182,8 +209,6 @@ $(function () {
       callback(canvas.toDataURL());
     };
     image.src = base64image;
-
-
   }
 
   function base64ToBlob(base64image){
