@@ -14,8 +14,13 @@ $(function () {
   });
 
   $(document).on('click', '.upload-item__container__button__edit', function () {
+    console.log('edit!');
     const id = $(this).data('id');
-    const image = imageList[id];
+    const image = $("#uploadImage-" + id);
+    console.log(image);
+    image.cropper({
+      aspectRatio: 1 / 1,
+    });
   });
 
   // 削除機能
@@ -138,16 +143,18 @@ $(function () {
     });
   });
 
-  function resizeImage(base64image, size) {
+  function resizeImage(base64image, size, callback) {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     let image = new Image();
-    // image.crossOrigin = "Anonymous";
+    // image.crossOrigin = "Anon;ymous";
     image.onload = function (event) {
-      let dstWidth, dstHeight;
+      let dstWidth = 0;
+      let dstHeight = 0;
+
       if (this.width > this.height) {
         dstWidth = size;
-        desHeight = this.height * size / this.width;
+        dstHeight = this.height * size / this.width;
       }
       else {
         dstHeight = size;
@@ -155,10 +162,13 @@ $(function () {
       }
       canvas.width = dstWidth;
       canvas.height = dstHeight;
+      console.log(canvas);
       ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, dstWidth, dstHeight);
-      canvas.toDataURL();
+      callback(canvas.toDataURL());
     };
-    return image.src = base64image;
+    image.src = base64image;
+
+
   }
 
   function base64ToBlob(base64image){
@@ -218,12 +228,11 @@ $(function () {
       const reader = new FileReader();
 
       reader.onload = function () {
-        const image = resizeImage(reader.result);
-        console.log(image);
-        imageList.push(image);
-        addPreviewToUploadField(image, imageList.length - 1);
+        resizeImage(reader.result, 600, function (image) {
+          imageList.push(image);
+          addPreviewToUploadField(image, imageList.length - 1);
+        });
       }
-
       reader.readAsDataURL(files[i]);
     }
   }
