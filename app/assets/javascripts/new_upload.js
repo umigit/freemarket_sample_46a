@@ -79,7 +79,9 @@ $(function () {
     });
 
     images.map(function (image, index) {
-      formData.append(`item[item_images_attributes][${index}][image]`, image);
+      const blob = base64ToBlob(image);
+      console.log(blob);
+      formData.append(`item[item_images_attributes][${index}][image]`, blob, "blob" + index + ".jpg");
     });
 
     if ($("#item_sub_sub_category_id").val()) {
@@ -136,6 +138,42 @@ $(function () {
     });
   });
 
+  function resizeImage(base64image, size) {
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+    let image = new Image();
+    // image.crossOrigin = "Anonymous";
+    image.onload = function (event) {
+      let dstWidth, dstHeight;
+      if (this.width > this.height) {
+        dstWidth = size;
+        desHeight = this.height * size / this.width;
+      }
+      else {
+        dstHeight = size;
+        dstWidth = this.width * size / this.height;
+      }
+      canvas.width = dstWidth;
+      canvas.height = dstHeight;
+      ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, dstWidth, dstHeight);
+      canvas.toDataURL();
+    };
+    return image.src = base64image;
+  }
+
+  function base64ToBlob(base64image){
+    const type = "image/jpeg";
+    const binary = atob(base64image.split(',')[1]);
+    let buffer = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++){
+      buffer[i] = binary.charCodeAt(i);
+    }
+
+    const blob = new Blob([buffer.buffer], { type: type });
+
+    return blob;
+  }
+
   function addPreviewToUploadField(image, index) {
     const html = `<div class="upload-item" id="uploadItem-${index}">
                     <div class="upload-item__container">
@@ -180,8 +218,10 @@ $(function () {
       const reader = new FileReader();
 
       reader.onload = function () {
-        imageList.push(files[i]);
-        addPreviewToUploadField(reader.result, imageList.length - 1);
+        const image = resizeImage(reader.result);
+        console.log(image);
+        imageList.push(image);
+        addPreviewToUploadField(image, imageList.length - 1);
       }
 
       reader.readAsDataURL(files[i]);
