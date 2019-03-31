@@ -1,0 +1,32 @@
+.form-group-font label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.form-group-font {
+  margin: 40px 0 0;
+}
+
+
+#form-arbitrary {
+  margin: 0 0 0 4px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  background: #ccc;
+}
+
+.space-top{
+  margin-top: 5px;
+}
+
+.icon-angle{
+  position: relative;
+  left: 284px;
+  text-align: right;
+  z-index: 2;
+  color: #888;
+  font-size: 31px;
+  transform: translate(0, -117%);
+}
