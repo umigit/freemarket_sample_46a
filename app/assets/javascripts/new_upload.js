@@ -51,6 +51,23 @@ $(function () {
     cropper = canvas.data('cropper');
 
     $("#croppingModal").css("display", "block");
+
+    // cropper戻るボタン
+    $(document).one('click', '.cropper__body__button__back', function () {
+      $("#croppingModal").css("display", "none");
+      $("#canvas").cropper("destroy");
+      $("#zoomSlider").slider("value", 0);
+    });
+
+    $(document).one('click', '.cropper__body__button__enter', function () {
+      const result = cropper.getCroppedCanvas({ maxWidth: 600, maxHeight: 600 });
+      const croppedImage = result.toDataURL('image/jpeg');
+      imageList[id] = croppedImage;
+      $("#uploadImage-" + id).attr('src', croppedImage);
+      $("#croppingModal").css("display", "none");
+      $("#canvas").cropper("destroy");
+      $("#zoomSlider").slider("value", 0);
+    });
   });
 
   // ズームスライダー初期化
@@ -65,11 +82,7 @@ $(function () {
     }
   });
 
-  $(document).on('click', '.cropper__body__button__back', function () {
-    $("#croppingModal").css("display", "none");
-    $("#canvas").cropper("destroy");
-    $("#zoomSlider").slider("value", 0);
-  });
+
 
   // 削除機能
   $(document).on('click', '.upload-item__container__button__delete', function () {
