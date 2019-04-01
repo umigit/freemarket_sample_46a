@@ -313,6 +313,12 @@
         height: 44px;
         margin: 0;
         color: $blue;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          opacity: 0.7;
+        }
       }
 
       &__delete {
