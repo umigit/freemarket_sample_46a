@@ -82,8 +82,6 @@ $(function () {
     }
   });
 
-
-
   // 削除機能
   $(document).on('click', '.upload-item__container__button__delete', function () {
     const id = $(this).data('id');
