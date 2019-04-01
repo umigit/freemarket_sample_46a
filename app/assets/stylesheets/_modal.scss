@@ -39,6 +39,7 @@
       &__canvas {
         width: 380px;
         height: 380px;
+        object-fit: contain;
       }
 
       &__slider {

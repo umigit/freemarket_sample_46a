@@ -18,7 +18,7 @@ $(function () {
   $(document).on('click', '.upload-item__container__button__edit', function () {
     console.log('edit!');
     const id = $(this).data('id');
-    const canvas = $("#canvas");
+    let canvas = $("#canvas");
     const image = $("#uploadImage-" + id).attr('src');
     console.log(canvas);
     canvas.attr('src', image);
@@ -53,7 +53,7 @@ $(function () {
     $("#croppingModal").css("display", "block");
   });
 
-  // ズームスライダー初期化s
+  // ズームスライダー初期化
   $("#zoomSlider").slider({
     orientation: "horizontal",
     max: 1,
@@ -63,6 +63,12 @@ $(function () {
     slide: function () {
       cropper.zoomTo($(this).slider('value'));
     }
+  });
+
+  $(document).on('click', '.cropper__body__button__back', function () {
+    $("#croppingModal").css("display", "none");
+    $("#canvas").cropper("destroy");
+    $("#zoomSlider").slider("value", 0);
   });
 
   // 削除機能
