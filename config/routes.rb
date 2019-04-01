@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :item_images, only: [:destroy]
+  resources :item_images, only: [:update, :destroy]
   resources :categories, only: [:show]
   resources :brands, only: [:show]
   resources :addresses, only: [:new, :create, :edit, :update]

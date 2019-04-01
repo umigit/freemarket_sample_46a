@@ -1,8 +1,16 @@
 class ItemImagesController < ApplicationController
   def update
-    item_image = Itemimage.find(params[:id])
-    item_image.update(item_image_params)
+    item_image = ItemImage.find(params[:id])
+    if item_image.update(item_image_params)
+      respond_to do |format|
+        format.html
+        format.json
+      end
+    else
+      render :edit
+    end
   end
+
   def destroy
     item_image = ItemImage.find(params[:id])
     item_image.destroy

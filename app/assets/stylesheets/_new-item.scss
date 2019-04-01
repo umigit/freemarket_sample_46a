@@ -293,11 +293,22 @@
       margin: 0;
       display: flex;
       align-items: center;
+      position: relative;
     }
     &__image {
       box-sizing: border-box;
       max-height: 100%;
       width: 100%;
+      object-fit: contain;
+    }
+
+    &__cropped-image {
+      height: 114px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
 
     &__button {

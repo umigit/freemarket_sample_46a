@@ -1,8 +1,9 @@
 .upload-item{:id => "uploadItem-\#{index}"}>
   .upload-item__container
-    %figure
+    %figures
       %img.upload-item__container__image{:id => "uploadImage-\#{index}", :src => "\#{image}"}/
-    .upload-item__container__button{:id => "upButton-\#{index}"}
+      %img.upload-item__container__cropped-image{id: "uploadCroppedImage-#{index}"}
+    .upload-item__container__button{id: "upButton-#{index}"}
       %a.upload-item__container__button__edit{"data-id" => "\#{index}"} 編集
       %a.upload-item__container__button__delete{"data-id" => "\#{index}"} 削除
 `
