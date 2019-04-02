@@ -46,8 +46,8 @@
                 .sell-form__detail__select-box__wrap
                   = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
                   %i.fas.fa-angle-down
-                .sell-form__detail__select-box__wrap#sell-form-sub_category{style: "display:none"}
-                  %select#item_sub_category_id{name: ""}
+                .sell-form__detail__select-box__wrap#sell-form-sub_category
+                  = f.select :sub_category_id, @item.category.children.map{|t| [t.name, t.id]}, prompt: "---"
                   %i.fas.fa-angle-down
                 .sell-form__detail__select-box__wrap#sell-form-sub_sub_category{style: "display:none"}
                   %select#item_sub_sub_category_id{name: ""}
@@ -60,8 +60,8 @@
                 .sell-form__detail__select-box__wrap#sell-form-sub_category
                   = f.select :sub_category_id, @item.category.parent.children.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
                   %i.fas.fa-angle-down
-                .sell-form__detail__select-box__wrap#sell-form-sub_sub_category{style: "display:none"}
-                  %select#item_sub_sub_category_id{name: ""}
+                .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
+                  = f.select :sub_sub_category_id, @item.category.children.map{|t| [t.name, t.id]}, prompt: "---"
                   %i.fas.fa-angle-down
                 .sell-form__detail__select-box__category__error
               - elsif !@item.category.parent.parent.parent
