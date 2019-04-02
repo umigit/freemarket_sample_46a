@@ -156,7 +156,6 @@ $(function () {
       });
 
       promise.then(function (result) {
-        console.log(result);
         const croppedImage = result.toDataURL('image/jpeg');
         $("#storedCroppedImage-" + id).attr('src', croppedImage);
         updateList.push({ id: id, image: croppedImage });
@@ -230,7 +229,6 @@ $(function () {
       .then(deleteProcess())
       .then(submitProcess())
       .catch(function (error) {
-        console.log(error);
       });
 
     function updateProcess() {
@@ -252,7 +250,6 @@ $(function () {
             processData: false,
             contentType: false,
           }).done(function () {
-            console.log('updated');
           });
         }
       });
@@ -267,7 +264,6 @@ $(function () {
             data: { id: id },
             dataType: "json",
           }).done(function () {
-            console.log('deleted');
           });
         });
       });
@@ -284,7 +280,6 @@ $(function () {
 
         images.map(function (image, index) {
           const blob = base64ToBlob(image);
-          console.log(blob);
           formData.append(`item[item_images_attributes][${index}][image]`, blob, "blob" + index + ".jpg");
         });
 
@@ -408,17 +403,22 @@ $(function () {
                   </div>`
 
     const dropbox = `<div class="sell-form__image__dropbox__wrapper dropbox-wrapper">
-                        <div class="sell-form__image__dropbox__inner" id="dropbox">
+                        <div class="sell-form__image__dropbox__wrapper__inner" id="dropbox">
                           <pre>
-                            ドラッグアンドドロップ
-                            またはクリックしてファイルをアップロード
+ドラッグアンドドロップ
+またはクリックしてファイルをアップロード
                           </pre>
                         </div>
                       </div>`
 
     $(".dropbox-wrapper").empty();
+    $(".dropbox-wrapper").css("display", "none");
     $("#uploadField").append(html);
     $("#uploadField").append(dropbox);
+    if (imageCount == 10) {
+      $("#dropbox").css("display", "none");
+    }
+
   }
 
 
@@ -448,25 +448,11 @@ $(function () {
 
     $(".sell-form__image__error").empty();
 
-    let tmpImageList = [];
+    readFiles();
 
-    // let promise = Promise.resolve();
-
-    // promise
-    //   .then(readImages())
-    //   .then(sortTmpImageList())
-    //   .then(addPreviews())
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
-    // Promise.all(files.map(async file => {
-    //   return await readImage(file);
-    // }));
     async function readFiles() {
       await readImages();
     }
-    readFiles();
 
     function readImage(file, i) {
       return new Promise(function (resolve) {
@@ -474,17 +460,14 @@ $(function () {
 
         reader.onload = function () {
           resizeImage(reader.result, 600, function (image) {
-              // tmpImageList.push({ id: i, image: image })
-              imageList.push(image);
-          addPreviewToUploadField(image, imageList.length - 1);
-            console.log(i);
+            imageList.push(image);
+            addPreviewToUploadField(image, imageList.length - 1);
             resolve();
           });
         }
         reader.readAsDataURL(file);
       });
     }
-
 
     async function readImages() {
       return new Promise(async function (resolve, reject) {
@@ -494,25 +477,6 @@ $(function () {
         }
 
         resolve();
-      });
-    }
-
-    function sortTmpImageList() {
-      return new Promise(function (resolve, reject) {
-        console.log('start sort');
-        tmpImageList.sort(function (a, b) { return a.id - b.id });
-        console.log(tmpImageList);
-        resolve();
-      });
-    }
-
-    function addPreviews() {
-      return new Promise(function (resolve, reject) {
-        for (let i = 0; i < tmpImageList.length; i++){
-          imageList.push(tmpImageList[i].image);
-          addPreviewToUploadField(tmpImageList[i].image, imageList.length - 1);
-          console.log(tmpImageList[i].image);
-        }
       });
     }
   }
