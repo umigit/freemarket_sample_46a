@@ -89,3 +89,4 @@ gem 'omniauth-facebook'
 gem 'payjp'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'
+gem 'jquery-ui-rails'
