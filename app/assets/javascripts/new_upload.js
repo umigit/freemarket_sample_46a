@@ -6,16 +6,7 @@ $(function () {
   let cropper;
 
   // ズームスライダー初期化
-  $("#zoomSlider").slider({
-    orientation: "horizontal",
-    max: 1,
-    min: 0,
-    value: 0,
-    step: 0.001,
-    slide: function () {
-      cropper.zoomTo($(this).slider('value'));
-    },
-  });
+  zoomSliderInitialize();
 
   $(document).on('change', '#item_item_image_image', function () {
     const files = $.extend(true, {}, $(this).prop('files'));
@@ -53,6 +44,7 @@ $(function () {
 
         let promise = new Promise(function (resolve, reject) {
           const imageData = cropper.getImageData();
+          zoomSliderInitialize();
           resolve(imageData);
         });
 
@@ -127,7 +119,7 @@ $(function () {
         cropper.zoomTo(0);
         let promice = new Promise(function (resolve) {
           const imageData = cropper.getImageData();
-
+          zoomSliderInitialize();
           resolve(imageData);
         });
 
@@ -349,6 +341,18 @@ $(function () {
     }
   });
 
+  function zoomSliderInitialize() {
+    $("#zoomSlider").slider({
+      orientation: "horizontal",
+      max: 1,
+      min: 0,
+      value: 0,
+      step: 0.001,
+      slide: function () {
+        cropper.zoomTo($(this).slider('value'));
+      },
+    });
+  }
   function resizeImage(base64image, size, callback) {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
