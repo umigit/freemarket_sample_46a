@@ -407,7 +407,18 @@ $(function () {
                     </div>
                   </div>`
 
+    const dropbox = `<div class="sell-form__image__dropbox__wrapper dropbox-wrapper">
+                        <div class="sell-form__image__dropbox__inner" id="dropbox">
+                          <pre>
+                            ドラッグアンドドロップ
+                            またはクリックしてファイルをアップロード
+                          </pre>
+                        </div>
+                      </div>`
+
+    $(".dropbox-wrapper").empty();
     $("#uploadField").append(html);
+    $("#uploadField").append(dropbox);
   }
 
 
