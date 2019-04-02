@@ -100,8 +100,7 @@
         // justify-content: space-between;
       &__thumbnail {
         box-sizing: border-box;
-        height: 160px;
-        display: flex;
+        display: inline-flex;
         flex-wrap: wrap;
       }
       &__inner {

@@ -206,6 +206,7 @@ $(function () {
   //送信機能
   $(document).on('click', '#newItemSubmitButton', function (event) {
     event.preventDefault();
+    const submitText = $("#newItemSubmitButton").val();
     $("#newItemSubmitButton").prop('disabled', true);
     $("#newItemSubmitButton").val("");
     $("#newItemSubmitButton").css("background-color", "#ccc");
@@ -332,7 +333,7 @@ $(function () {
         }).fail(function (response) {
           showError();
         }).always(function () {
-          $("#newItemSubmitButton").val("変更する");
+          $("#newItemSubmitButton").val(submitText);
           $("#newItemSubmitButton").css("background-color", "#e62017");
           $("#loadIcon").css("display", "none");
           $("#newItemSubmitButton").prop('disabled', false);
@@ -357,7 +358,7 @@ $(function () {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     let image = new Image();
-    // image.crossOrigin = "Anon;ymous";
+
     image.onload = function (event) {
       let dstWidth = 0;
       let dstHeight = 0;
@@ -372,10 +373,10 @@ $(function () {
       }
       canvas.width = dstWidth;
       canvas.height = dstHeight;
-      console.log(canvas);
       ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, dstWidth, dstHeight);
       callback(canvas.toDataURL());
     };
+
     image.src = base64image;
   }
 
@@ -406,8 +407,9 @@ $(function () {
                     </div>
                   </div>`
 
-    $("#uploadField").prepend(html);
+    $("#uploadField").append(html);
   }
+
 
   function manageFiles(files) {
     const fileLength = files.length;
@@ -435,16 +437,72 @@ $(function () {
 
     $(".sell-form__image__error").empty();
 
-    for (let i = 0; i < fileLength; i++){
-      const reader = new FileReader();
+    let tmpImageList = [];
 
-      reader.onload = function () {
-        resizeImage(reader.result, 600, function (image) {
-          imageList.push(image);
+    // let promise = Promise.resolve();
+
+    // promise
+    //   .then(readImages())
+    //   .then(sortTmpImageList())
+    //   .then(addPreviews())
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+
+    // Promise.all(files.map(async file => {
+    //   return await readImage(file);
+    // }));
+    async function readFiles() {
+      await readImages();
+    }
+    readFiles();
+
+    function readImage(file, i) {
+      return new Promise(function (resolve) {
+        const reader = new FileReader();
+
+        reader.onload = function () {
+          resizeImage(reader.result, 600, function (image) {
+              // tmpImageList.push({ id: i, image: image })
+              imageList.push(image);
           addPreviewToUploadField(image, imageList.length - 1);
-        });
-      }
-      reader.readAsDataURL(files[i]);
+            console.log(i);
+            resolve();
+          });
+        }
+        reader.readAsDataURL(file);
+      });
+    }
+
+
+    async function readImages() {
+      return new Promise(async function (resolve, reject) {
+
+        for (let i = 0; i < fileLength; i++){
+          await readImage(files[i], i);
+        }
+
+        resolve();
+      });
+    }
+
+    function sortTmpImageList() {
+      return new Promise(function (resolve, reject) {
+        console.log('start sort');
+        tmpImageList.sort(function (a, b) { return a.id - b.id });
+        console.log(tmpImageList);
+        resolve();
+      });
+    }
+
+    function addPreviews() {
+      return new Promise(function (resolve, reject) {
+        for (let i = 0; i < tmpImageList.length; i++){
+          imageList.push(tmpImageList[i].image);
+          addPreviewToUploadField(tmpImageList[i].image, imageList.length - 1);
+          console.log(tmpImageList[i].image);
+        }
+      });
     }
   }
 
