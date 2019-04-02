@@ -17,10 +17,17 @@
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
               = render @item.item_images
-              .sell-form__image__dropbox__inner#dropbox
-                %pre
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
+              .sell-form__image__dropbox__wrapper.dropbox-wrapper
+                - if @item.item_images.length == 10
+                  .sell-form__image__dropbox__wrapper__inner#dropbox{style: "display:none"}
+                    %pre
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
+                - else
+                  .sell-form__image__dropbox__wrapper__inner#dropbox
+                    %pre
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
             .sell-form__image__error
         .sell-form__summary
           .sell-form__summary__name
