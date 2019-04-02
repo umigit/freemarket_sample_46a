@@ -11,22 +11,16 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get :category
-
+      get :search
       post 'pay/:id' => 'items#pay', as: 'pay'
     end
-
     member do
       get :buy
-    end
-  end
-
-      get :search
     end
   end
   resources :item_images, only: [:destroy]
   resources :categories, only: [:show]
   resources :brands, only: [:show]
-
   resources :addresses, only: [:new, :create, :edit, :update]
   resources :users  do
     collection do
