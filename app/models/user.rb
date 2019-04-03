@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :email,                  format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'のフォーマットが不適切です' }
   has_many :sns_credentials
   has_one :user_profile
+  has_many :comments
 
   def self.from_omniauth(auth)
     credential = SnsCredential.where(provider: auth.provider, uid: auth.uid).first

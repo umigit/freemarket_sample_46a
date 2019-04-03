@@ -15,6 +15,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @categories = Category.ransack(parent_id_null: true).result
     @janel = Item.ransack(brand_id_eq: 1).result.limit(3)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def new
