@@ -10,20 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2019_03_27_101645) do
+ActiveRecord::Schema.define(version: 2019_04_03_134310) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
     t.string "city", null: false
     t.string "block", null: false
     t.string "building"
-    t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["region_id"], name: "index_addresses_on_region_id"
+    t.integer "prefecture_id", null: false
+    t.string "relative_last_name", null: false
+    t.string "relative_first_name", null: false
+    t.string "relative_last_name_kana", null: false
+    t.string "relative_first_name_kana", null: false
+    t.string "home_phone"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -161,7 +163,11 @@ ActiveRecord::Schema.define(version: 2019_03_27_101645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-
+    t.string "movile_phone", null: false
+    t.string "card_number"
+    t.string "expiration_month"
+    t.string "expiration_year"
+    t.string "security_code"
     t.index ["nickname"], name: "index_user_profiles_on_nickname", unique: true
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
