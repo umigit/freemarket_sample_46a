@@ -54,9 +54,7 @@
   margin-top: 9px;
 }
 
-.right-continer__inner {
-  padding: 64px;
-}
+
 
 .form-group{
   margin: 40px 0 0;
@@ -70,6 +68,7 @@ text-align: right;
 .right-continer__inner {
   background-color: #FFFFFF;
   border-top: 1px solid #f5f5f5;
+  padding: 64px;
 }
 
 .font-size-small {
@@ -89,6 +88,289 @@ text-align: right;
 #user_user_profile_attributes_birth_d {
   width: 44%;
 }
+
+
+
+
+
+
+.space-message {
+  margin-top: 8px;
+}
+
+#font-small-submit {
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+#font-change {
+  font-weight: 10px;
+}
+
+.form-group__first-font label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+
+.form-group-font label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.form-group-font {
+  margin: 40px 0 0;
+}
+
+
+#form-arbitrary {
+  margin: 0 0 0 4px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  background: #ccc;
+}
+
+.space-top{
+  margin-top: 5px;
+}
+
+.icon-angle{
+  position: relative;
+  left: 284px;
+  text-align: right;
+  z-index: 2;
+  color: #888;
+  font-size: 31px;
+  transform: translate(0, -117%);
+}
+
+
+
+
+
+
+
+.select-wrap-birthday {
+  width: 100%;
+  display: inline-block;
+}
+
+#card_y{
+  width: 120px;
+}
+
+#card_m{
+  width: 120px;
+}
+
+#deadline {
+  font-size: 23px;
+  left: 610px;
+  position: absolute;
+  margin-top: 14px;
+}
+
+
+
+
+
+
+
+.costom {
+  box-sizing: border-box;
+  background: white;
+  width: 100%;
+  padding: 9px 8px 9px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+#user_user_profile_attributes_expiration_year {
+  width: 44%;
+}
+
+#user_user_profile_attributes_expiration_month {
+  width: 44%;
+}
+
+
+
+
+.signup-container{
+  padding:0 0 250px;
+  background-color: whitesmoke;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  color: #333333;
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+  line-height: 1;
+  .signup-header{
+    text-align: center;
+    height: 128px;
+    position: relative;
+    h1{
+      display: inline-block;
+      margin: 40px 0 0;
+      a{
+        display: inline-block;
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+        img{
+          width: 185px;
+          height: 49px;
+        }
+      }
+    }
+  }
+}
+
+
+
+.progress{
+  width: 510px;
+  &__item{
+    display: inline-block;
+  }
+  &__title{
+    width: 90px;
+    font-size: 12px;
+    color: #888888;
+  }
+  &__dot{
+    margin-top: 10px;
+    font-size: 12px;
+    position: relative;
+    color: #CCCCCC;
+  }
+  &__line{
+    border-top: 2px solid;
+    width: 85px;
+    position: absolute;
+    top: 5px;
+    left: 50px;
+    color: #CCCCCC;
+  }
+  &--done{
+    color: #D84638;
+  }
+}
+
+
+
+
+.right-continer__inner__main {
+  background-color: #FFFFFF;
+  border-top: 1px solid #f5f5f5;
+  padding: 64px;
+}
+
+.right-continer__inner__phone {
+  background-color: #FFFFFF;
+  border-top: 1px solid #f5f5f5;
+  padding: 64px;
+}
+
+.right-continer__inner__address {
+  background-color: #FFFFFF;
+  border-top: 1px solid #f5f5f5;
+  padding: 64px;
+}
+
+.right-continer__inner__pay {
+  background-color: #FFFFFF;
+  border-top: 1px solid #f5f5f5;
+  padding: 64px;
+}
+
+
+.single-main-container__head__main{
+  margin: 0 auto;
+  padding: 32px 16px;
+  font-size: 22px;
+  background-color: white;
+  text-align: center;
+}
+
+.single-main-container__head__phone{
+  margin: 0 auto;
+  padding: 32px 16px;
+  font-size: 22px;
+  background-color: white;
+  text-align: center;
+}
+.single-main-container__head__address{
+  margin: 0 auto;
+  padding: 32px 16px;
+  font-size: 22px;
+  background-color: white;
+  text-align: center;
+}
+.single-main-container__head__pay {
+  margin: 0 auto;
+  padding: 32px 16px;
+  font-size: 22px;
+  background-color: white;
+  text-align: center;
+}
+
+
+
+.costom__main{
+  text-align: center;
+}
+.costom__phone{
+  text-align: center;
+}
+.costom__address{
+  text-align: center;
+}
+.costom__pay{
+  text-align: center;
+}
+
+.signup_input{
+  padding: 0 10px;
+  width: 330px;
+  height: 50px;
+  border-radius: 5px;
+  border:  1px solid #CCCCCC;
+}
+
+
+.error {
+  margin: 8px 0 0;
+  color: #ea352d;
+  font-size: 14px;
+}
+
+.self-form__prefecture__nil {
+  padding-bottom: 35px;
+  margin-top: -26px;
+}
+
+.hidden{
+  display: none;
+}
+
+.active{
+  display: block;
+}
+
+
+
+
+
+
+
+
 
 
 
