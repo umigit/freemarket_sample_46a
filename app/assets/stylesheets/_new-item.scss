@@ -100,32 +100,39 @@
         // justify-content: space-between;
       &__thumbnail {
         box-sizing: border-box;
-        height: 160px;
-        display: flex;
+        display: inline-flex;
         flex-wrap: wrap;
       }
-      &__inner {
-        box-sizing: border-box;
-        background-color: #f5f5f5;
-        border: 1px dashed #ccc;
-        max-width: 100%;
-        min-width: 112px;
-        height: 160px;
-        padding: 40px;
-        text-align: center;
-        font-size: 14px;
-        cursor: pointer;
+      &__wrapper {
         flex: 1;
-        position: relative;
-        pre {
-          white-space: pre-wrap;
-          word-wrap: break-word;
-          margin: 0;
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: calc(50% - 24px);
+        width: 100%;
+        &-before{
+          width: 100%;
+        }
 
+        &__inner {
+          box-sizing: border-box;
+          background-color: #f5f5f5;
+          border: 1px dashed #ccc;
+          max-width: 100%;
+          min-width: 112px;
+          height: 160px;
+          padding: 40px;
+          text-align: center;
+          font-size: 14px;
+          cursor: pointer;
+          position: relative;
+          pre {
+            text-align: center;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            position: absolute;
+            left: 50%;
+
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
         }
       }
     }
@@ -293,11 +300,22 @@
       margin: 0;
       display: flex;
       align-items: center;
+      position: relative;
     }
     &__image {
       box-sizing: border-box;
       max-height: 100%;
       width: 100%;
+      object-fit: contain;
+    }
+
+    &__cropped-image {
+      height: 114px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
 
     &__button {
@@ -313,6 +331,12 @@
         height: 44px;
         margin: 0;
         color: $blue;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          opacity: 0.7;
+        }
       }
 
       &__delete {

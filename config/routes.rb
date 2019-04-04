@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root "items#index"
   resources :items, only: [:new, :create] do
     member do
-      get :buy
+
     end
   end
   resources :user_profiles, only: [:edit,:update]
@@ -25,10 +25,18 @@ Rails.application.routes.draw do
     collection do
       get :category
       get :search
+      post 'pay/:id' => 'items#pay', as: 'pay'
+    end
+    member do
+      get :buy
     end
   end
 
+
   resources :item_images, only: [:destroy]
+
+  resources :item_images, only: [:update, :destroy]
+
   resources :categories, only: [:show]
   resources :brands, only: [:show]
   resources :users  do

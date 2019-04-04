@@ -9,7 +9,6 @@
           = image_tag "https://static.mercdn.net/thumb/photos/m92947360317_1.jpg?1552570575", alt: "写真", class:"item_photo"
         %p.items__buy_cf__container__main__content__inner__item_name
           = "新品 チェックワイドパンツ"
-        = form_with model: @item, method: 'post', class: "items__buy_cf__container__main__content__inner__buy_form", local: true do |f|
           %p.items__buy_cf__container__main__content__inner__buy_form__item_price
             = "¥ " + "999"
             %span.items__buy_cf__container__main__content__inner__buy_form__item_price__shipping_fee
@@ -17,21 +16,14 @@
             .items__buy_cf__container__main__content__inner__buy_form__accordion
               .items__buy_cf__container__main__content__inner__buy_form__accordion_toggle
                 ポイントはありません
-
             .payment
               .payment_text
                 支払い金額
               .payment_price
                 = '¥ ' + "999"
-          = f.fields_for :order_statuses do |status_f|
-            = status_f.hidden_field :status, value: "0"
-            = status_f.hidden_field :purchaser_id, value: current_user.id
-            = status_f.hidden_field :seller_id, value: 1
-            = status_f.hidden_field :item_id, value: 1
-          = f.hidden_field :price, value: 666
-          = f.hidden_field :buyer_id, value: current_user.id
-          = f.submit'購入する', class: "btn_default"
-
+      .payment_form
+        = form_tag(action: :pay, method: :post) do
+          %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_33d180c3147e00a55623bdf4"}
 
     .buy_user_info
       .buy_user_info_container
