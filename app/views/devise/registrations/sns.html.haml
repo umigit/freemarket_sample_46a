@@ -3,26 +3,36 @@
   .single-main
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     .single-main-container
-      %h2.single-main-container__head 会員情報入力
+      %h2.single-main-container__head__main.hidden.active 会員情報入力
+      %h2.single-main-container__head__phone.hidden 電話番号の確認
+      %h2.single-main-container__head__address.hidden 発送元・お届け先住所入力
+      %h2.single-main-container__head__pay.hidden 支払い方法
       = f.fields_for :user_profile do |p|
-        .right-continer__inner
+        .right-continer__inner__main.hidden.active
           .form-groups
             .form-group__first
               %label{for: "nickname"} ニックネーム
               %span 必須
               = p.text_field :nickname, class: "input-default", placeholder: "例) メルカリ太郎"
+              .self-form__nickname__nil.error.hidden ニックネームを入力してください
             .form-group
               %label{for: "email"} メールアドレス
               %span 必須
               = f.email_field :email, class: "input-default", placeholder: "例) PC・携帯どちらでも可"
+              .self-form__email__nil.error.hidden メールアドレスを入力してください
+              .self-form__email__format.error.hidden フォーマットが不適切です
             .form-group
               %label{for: "password"} パスワード
               %span 必須
               = f.password_field :password, class: "input-default", placeholder: "例) 6文字以上"
+              .self-form__password__nil.error.hidden パスワードを入力してください
+              .self-form__password__format.error.hidden パスワードは6文字以上の英数字で入力してください
             .form-group
               %label{for: "confirmation password"} パスワード(確認)
               %span 必須
               = f.password_field :confilmation_password, class: "input-default", placeholder: "例) 6文字以上"
+              .self-form__confilmation-password__nil.error.hidden パスワード(確認)を入力してください
+              .self-form__confilmation-password__match.error.hidden パスワードとパスワード (確認) が一致しません
             .form-group
               %label{for: "identification"} 本人確認
               %p.font-size-small
@@ -31,18 +41,24 @@
               %label{for: "last_name"} 姓 (全角)
               %span 必須
               = p.text_field :last_name, class: "input-default", placeholder: "例) 山田"
+              .self-form__last-name__nil.error.hidden 姓を入力してください
             .form-group
               %label{for: "first_name"} 名 (全角)
               %span 必須
               = p.text_field :first_name, class: "input-default", placeholder: "例) 彩"
+              .self-form__first-name__nil.error.hidden 名を入力してください
             .form-group
               %label{for: "last_name_kana"} 姓カナ (全角)
               %span 必須
               = p.text_field :last_name_kana, class: "input-default", placeholder: "例) ヤマダ"
+              .self-form__last-name-kana__nil.error.hidden 姓(カナ)を入力してください
+              .self-form__last-name-kana__kana.error.hidden 姓(カナ)はカナ文字を入力してください
             .form-group
               %label{for: "first_name_kana"} 名カナ (全角)
               %span 必須
               = p.text_field :first_name_kana, class: "input-default", placeholder: "例) アヤ"
+              .self-form__first-name-kana__nil.error.hidden 名(カナ)を入力してください
+              .self-form__first-name-kana__kana.error.hidden 名(カナ)はカナ文字を入力してください
             .form-group-year
               %label{for: "birthday"} 生年月日
               %span 必須
@@ -58,6 +74,7 @@
                 = p.select :birth_d, Brand.days.keys, prompt: "--"
                 %i.fas.fa-angle-down.font-color-gray#birthday
                 %p.birthday.font-size-small 日
+              .self-form__birthday__nil.error.hidden 生年月日を入力してください
             %p.font-color-gray.font-size-small
               ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
             .form-group
@@ -65,11 +82,114 @@
                 「次へ進む」のボタンを押すことにより、
                 = link_to "利用規約", "/", id: "font-color-blue"
                 に同意したものとみなします
-            = f.submit "次へ進む", class: "btn-default button-red"
+            %input{type: "button",class: "btn-default button-red costom__main", value: "次へ進む"}
             .form-group.text-right
               = link_to 'https://www.mercari.com/jp/help_center/article/423/', id: "font-color-blue", target: "_blank" do
                 本人確認書類の登録について
                 %i.fa.fa-chevron-right
+
+      = f.fields_for :user_profile do |p|
+        .right-continer__inner__phone.hidden
+          .form-groups
+            .form-group__first-font
+              %label{for: "phone"} 携帯電話の番号
+              = p.text_field :movile_phone, class: "input-default", placeholder: "携帯電話の番号を入力"
+              .self-form__phone__nil.error.hidden 電話番号を入力してください
+              .self-form__phone__format.error.hidden 電話番号が正しくありません
+            %p.font-size-small.space-message
+              本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+            %input{type: "button", id: "font-small-submit",class: "btn-default button-red costom__phone", value: "SMSを送信する"}
+            %p.font-size-small.space-message
+              ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+            .form-group.text-right
+              = link_to '/', id: "font-color-blue", target: "_blank" do
+                電話番号の確認が必要な理由
+                %i.fa.fa-chevron-right
+
+      = f.fields_for :address do |a|
+        .right-continer__inner__address.hidden
+          .form-groups
+            .form-group__first-font
+              %label{for: "relative_name"} お名前
+              %span 必須
+              = a.text_field :relative_last_name, class: "input-default", placeholder: "例) 碇"
+              .self-form__relative__last_name__nil.error.hidden 姓を入力してください
+              %br/
+              = a.text_field :relative_first_name, class: "input-default space-top", placeholder: "例) 慎二"
+              .self-form__relative__first_name__nil.error.hidden 名を入力してください
+            .form-group-font
+              %label{for: "relative_name_kana"} お名前カナ
+              %span 必須
+              = a.text_field :relative_last_name_kana, class: "input-default", placeholder: "例) イカリ"
+              .self-form__relative__last_name_kana__nil.error.hidden 姓(カナ)を入力してください
+              .self-form__relative__last_name_kana__format.error.hidden 姓(カナ)はカナ文字を入力してください
+              %br/
+              = a.text_field :relative_first_name_kana, class: "input-default space-top", placeholder: "例) シンジ"
+              .self-form__relative__first_name_kana__nil.error.hidden 名(カナ)を入力してください
+              .self-form__relative__first_name_kana__format.error.hidden 名(カナ)はカナ文字を入力してください
+            .form-group-font
+              %label{for: "postal_code"} 郵便番号
+              %span 必須
+              = a.text_field :postal_code, class: "input-default", placeholder: "例) PC・携帯どちらでも可"
+              .self-form__postal_code__nil.error.hidden 郵便番号を入力してください
+              .self-form__postal_code__format.error.hidden 郵便番号を数字(例：123-4567)で入力してください
+            .form-group-font
+              %label{for: "prefecture"} 都道府県
+              %span 必須
+              .select-wrap
+                = a.select :prefecture_id, Prefecture.all.map{|t| [t.name, t.id]}, prompt: "---"
+                %i.fas.fa-angle-down.font-color-gray.icon-angle
+                .self-form__prefecture__nil.error.hidden 住所を選択してください
+            .form-group__first-font
+              %label{for: "city"} 市区町村
+              %span 必須
+              = a.text_field :city, class: "input-default", placeholder: "例) 第三新東京市"
+              .self-form__city__nil.error.hidden 市区町村を入力してください
+            .form-group-font
+              %label{for: "block"} 番地
+              %span 必須
+              = a.text_field :block, class: "input-default", placeholder: "例) 青山1-1-1"
+              .self-form__block__nil.error.hidden 番地を入力してください
+            .form-group-font
+              %label{for: "building"} 建物名
+              %span#form-arbitrary 任意
+              = a.text_field :building, class: "input-default", placeholder: "例) 柳ビル103"
+            .form-group-font
+              %label{for: "home_phone"} 電話
+              %span#form-arbitrary 任意
+              = a.text_field :home_phone, class: "input-default", placeholder: "例) 09019951002"
+              .self-form__home_phone__format.error.hidden 電話番号が正しくありません
+            %input{type: "button", id: "font-small-submit",class: "btn-default button-red costom__address", value: "次へ進む"}
+
+      = f.fields_for :user_profile do |p|
+        .right-continer__inner__pay.hidden
+          .form-groups
+            .form-group__first-font
+              %label{for: "credit"} カード番号
+              %span#form-arbitrary 任意
+              = p.text_field :card_number, class: "input-default", placeholder: "半角数字のみ"
+            .form-group-font
+              %label{for: "deadline"} 有効期限
+              %span#form-arbitrary 任意
+              .select-wrap-birthday.select-wrap
+                = p.select :expiration_month, User.months.keys, prompt: "--"
+                %i.fas.fa-angle-down.font-color-gray#deadline
+                %p.birthday.font-size-small 月
+              .select-wrap-birthday.select-wrap
+                = p.select :expiration_year, Address.years.keys, prompt: "--"
+                %i.fas.fa-angle-down.font-color-gray#deadline
+                %p.birthday.font-size-small 年
+            .form-groups
+              .form-group-font
+                %label{for: "secrity"} セキュリティーコード
+                %span#form-arbitrary 任意
+                = p.text_field :security_code, class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号"
+            .form-group.text-right
+              = link_to 'https://www.mercari.com/jp/help_center/article/423/', id: "font-color-blue", target: "_blank" do
+                %i.fas.fa-question-circle
+                カード裏面の番号とは？
+
+            = f.submit "次へ進む", class: "btn-default button-red"
 
 
   = render 'layouts/single-footer'
