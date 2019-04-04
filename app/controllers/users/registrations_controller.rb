@@ -22,8 +22,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
       birth_m: session[:birth_m],
       birth_d: session[:birth_d]
       )
+    @user.build_address(
+      relative_last_name: session[:relative_last_name],
+      relative_first_name: session[:relative_first_name],
+      relative_last_name_kana: session[:relative_last_name_kana],
+      relative_first_name_kana: session[:relative_first_name_kana],
+      postal_code: session[:postal_code],
+      city: session[:city],
+      block: session[:block],
+      building: session[:building],
+      prefecture_id: session[:prefecture_id],
+      home_phone: session[:home_phone]
+      )
   end
 
+
+
+  def create
+    @user = User.new(sign_up_params)
+    if @user.save
+
+    else
+      redirect_to new_user_signup_registration_path
+    end
+  end
 
 
 
@@ -34,9 +56,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
 
-  def region
+  def address
+    @address = Address.new(
+      relative_last_name: session[:relative_last_name],
+      relative_first_name: session[:relative_first_name],
+      relative_last_name_kana: session[:relative_last_name_kana],
+      relative_first_name_kana: session[:relative_first_name_kana],
+      postal_code: session[:postal_code],
+      city: session[:city],
+      block: session[:block],
+      building: session[:building],
+      prefecture_id: session[:prefecture_id],
+      home_phone: session[:home_phone]
+      )
   end
-
 
 
 
@@ -50,14 +83,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 
-  def create
-    @user = User.new(sign_up_params)
-    if @user.save
-      redirect_to root_path
-    else
-      render 'sns'
-    end
-  end
+
+
 
 
 
@@ -66,18 +93,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up) do |params|
       params.permit(:email, :password, :password_confirmation,
-                    user_profile_attributes: [:user_id, :nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_y, :birth_m, :birth_d])
+                    user_profile_attributes: [:user_id, :nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_y, :birth_m, :birth_d, :movile_phone, :card_number, :expiration_month, :expiration_year, :security_code],
+                    address_attributes: [:postal_code, :city, :block, :building, :user_id, :prefecture_id, :relative_last_name, :relative_first_name, :relative_last_name_kana, :relative_first_name_kana, :home_phone]
+                    )
 
     end
   end
+
+  def address_params
+    params.require(:address).permit(:postal_code, :city, :block, :building, :user_id, :prefecture_id, :relative_last_name, :relative_first_name, :relative_last_name_kana, :relative_first_name_kana, :home_phone)
+  end
 end
-
-
-
-
-
-
-
 
 
 
