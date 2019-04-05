@@ -1,0 +1,68 @@
+.single-container
+  = render "layouts/single-header"
+  .single-main
+  = form_with model: @phone, local: true do |f|
+    .single-main-container
+      %h2.single-main-container__head 電話番号の確認
+      .right-continer__inner
+        .form-groups
+          .form-group__first-font
+            %label{for: "phone"} 携帯電話の番号
+            = f.text_field :nickname, class: "input-default", placeholder: "携帯電話の番号を入力"
+          %p.font-size-small.space-message
+            本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          = f.submit "SMSを送信する", id: "font-small-submit", class: "btn-default button-red"
+          %p.font-size-small.space-message
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          .form-group.text-right
+            = link_to '/', id: "font-color-blue", target: "_blank" do
+              電話番号の確認が必要な理由
+              %i.fa.fa-chevron-right
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  = render 'layouts/single-footer'
+  %script{src: "https://apis.google.com/js/platform.js?onload=renderButton", async: "defer"}

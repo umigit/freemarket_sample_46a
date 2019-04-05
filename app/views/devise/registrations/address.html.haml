@@ -1,0 +1,52 @@
+.single-container
+  = render "layouts/single-header"
+  .single-main
+  = form_with model: @address, url: "/users", local: true do |f|
+    .single-main-container
+      %h2.single-main-container__head 発送元・お届け先住所入力
+      .right-continer__inner
+        .form-groups
+          .form-group__first-font
+            %label{for: "relative_name"} お名前
+            %span 必須
+            = f.text_field :relative_last_name, class: "input-default", placeholder: "例) 山田"
+            = f.text_field :relative_first_name, class: "input-default space-top", placeholder: "例) 彩"
+          .form-group-font
+            %label{for: "relative_name_kana"} お名前カナ
+            %span 必須
+            = f.text_field :relative_last_name_kana, class: "input-default", placeholder: "例) ヤマダ"
+            = f.text_field :relative_first_name_kana, class: "input-default space-top", placeholder: "例) アヤ"
+          .form-group-font
+            %label{for: "postal_code"} 郵便番号
+            %span 必須
+            = f.text_field :postal_code, class: "input-default", placeholder: "例) PC・携帯どちらでも可"
+          .form-group-font
+            %label{for: "prefecture"} 都道府県
+            %span 必須
+            .select-wrap
+              = f.select :prefecture_id, Prefecture.all.map{|t| [t.name, t.id]}, prompt: "---"
+              %i.fas.fa-angle-down.font-color-gray.icon-angle
+          .form-group__first-font
+            %label{for: "city"} 市区町村
+            %span 必須
+            = f.text_field :city, class: "input-default", placeholder: "例) 第三新東京市"
+          .form-group-font
+            %label{for: "block"} 番地
+            %span 必須
+            = f.text_field :block, class: "input-default", placeholder: "例) 青山1-1-1"
+          .form-group-font
+            %label{for: "building"} 建物名
+            %span#form-arbitrary 任意
+            = f.text_field :building, class: "input-default", placeholder: "例) 柳ビル103"
+          .form-group-font
+            %label{for: "home_phone"} 電話
+            %span#form-arbitrary 任意
+            = f.text_field :home_phone, class: "input-default", placeholder: "例) 09019951002"
+
+          = f.submit "次へ進む", id: "font-small-submit", class: "btn-default button-red"
+
+  = render 'layouts/single-footer'
+  %script{src: "https://apis.google.com/js/platform.js?onload=renderButton", async: "defer"}
+
+
+

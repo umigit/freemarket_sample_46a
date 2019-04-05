@@ -1,0 +1,36 @@
+.single-container
+  = render "layouts/single-header"
+  .single-main
+  = form_with model: @phone, local: true do |f|
+    .single-main-container
+      %h2.single-main-container__head 支払い方法
+      .right-continer__inner
+        .form-groups
+          .form-group__first-font
+            %label{for: "credit"} カード番号
+            %span#form-arbitrary 任意
+            = f.text_field :card_number, class: "input-default", placeholder: "半角数字のみ"
+          .form-group-font
+            %label{for: "deadline"} 有効期限
+            %span#form-arbitrary 任意
+            .select-wrap-birthday.select-wrap
+              = f.select :card_m, User.months.keys, prompt: "--"
+              %i.fas.fa-angle-down.font-color-gray#deadline
+              %p.birthday.font-size-small 月
+            .select-wrap-birthday.select-wrap
+              = f.select :card_y, Address.years.keys, prompt: "--"
+              %i.fas.fa-angle-down.font-color-gray#deadline
+              %p.birthday.font-size-small 年
+          .form-groups
+            .form-group-font
+              %label{for: "secrity"} セキュリティーコード
+              %span#form-arbitrary 任意
+              = f.text_field :secrity_number, class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号"
+          .form-group.text-right
+            = link_to 'https://www.mercari.com/jp/help_center/article/423/', id: "font-color-blue", target: "_blank" do
+              %i.fas.fa-question-circle
+              カード裏面の番号とは？
+          %input{type: "submit", value: "次へ進む", class: "btn-default button-red"}
+
+  = render 'layouts/single-footer'
+  %script{src: "https://apis.google.com/js/platform.js?onload=renderButton", async: "defer"}
