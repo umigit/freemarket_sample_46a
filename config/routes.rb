@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-
+  resources :addresses
   resources :item_images, only: [:destroy]
   resources :categories, only: [:show]
   resources :brands, only: [:show]
