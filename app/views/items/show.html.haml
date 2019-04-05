@@ -154,73 +154,24 @@
               .message-body-continer
                 %p.user-name-string
                   aaaa
-                .message-body
-                  .message-body__text 出品者がコメントを削除しました
-                  .message-icons
-                    .message-icon-left
-                      %i.far.fa-clock
-                      %span.days-ago 141日前
-                    .message-icon-right
-                      = link_to "" do
-                        %i.far.fa-flag
-            %li.message-item
-              .message-user
-                %figure
-                  .message-user-unknown
-                    = image_tag("user-icon.svg")
-              .message-body-continer
-                %p.user-name-string
-                  aaaa
-                .message-body
-                  .message-body__text 出品者がコメントを削除しました
-                  .message-icons
-                    .message-icon-left
-                      %i.far.fa-clock
-                      %span.days-ago 141日前
-                    .message-icon-right
-                      = link_to "" do
-                        %i.far.fa-flag
-            %li.message-item
-              .message-user
-                %figure
-                  .message-user-unknown
-                    = image_tag("user-icon.svg")
-              .message-body-continer
-                %p.user-name-string
-                  aaaa
-                .message-body
-                  .message-body__text 出品者がコメントを削除しました
-                  .message-icons
-                    .message-icon-left
-                      %i.far.fa-clock
-                      %span.days-ago 141日前
-                    .message-icon-right
-                      = link_to "" do
-                        %i.far.fa-flag
-            %li.message-item
-              .message-user
-                %figure.user-profile-image
-                  = link_to image_tag("member_photo_noimage.png"), "/", class: "message-user-image"
-              .message-body-continer
-                %p.user-name-string
-                  碇 シンジ
-                .message-body
-                  .message-body__text 出品者がコメントを削除しました
-                  .message-icons
-                    .message-icon-left
-                      %i.far.fa-clock
-                      %span.days-ago 141日前
-                    .message-icon-right
-                      = link_to "" do
-                        %i.far.fa-flag
+                  - @comments.each do |comment|
+                    .message-body
+                      %p
+                      = comment.content
+                      .message-body__text
+                      .message-icons
+                        .message-icon-left
+                          %i.far.fa-clock
+                          %span.days-ago 141日前
+                        .message-icon-right
+                          = link_to "" do
+                            %i.far.fa-flag
 
         .message-content
-          %form{action: "https://www.mercari.com/jp/comment/add/", method: "POST", class: "message-form"}
+          = form_for @comment, url: item_comments_path(@item), html: {class: "message-form"} do |f|
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %textarea{type: "text", name: "body", class: "textarea-default"}
-            %buttton{type: "submit", class: "message-submit button-default"}
-              %span.message-submit__button コメントする
-
+            = f.text_area :content, class: "textarea-default"
+            = f.submit "コメントする", class: "message-submit button-default"
     .item-social-media-box
       .text-center
       %ul.social-media-box
