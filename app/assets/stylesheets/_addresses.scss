@@ -70,7 +70,18 @@
   border-radius: 0px;
 }
 
+
 .form-groups{
   max-width: 320px;
   margin: 0 auto;
+
+#payjp_checkout_box
+input[type=button]{
+  border: initial !important;
+  background-image: initial !important;
+  background-color: #ea352d !important;
+  margin: 20px 0 0 !important;
+  padding: 15px 130px !important;
+  font-size: 15px !important;
+
 }

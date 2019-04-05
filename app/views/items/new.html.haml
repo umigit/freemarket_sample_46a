@@ -16,10 +16,11 @@
             = ff.file_field :image , class: "sell-form__image__input", accept: ".jpg, .jpeg, .png", multiple: true
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
-              .sell-form__image__dropbox__inner#dropbox
-                %pre
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
+              .sell-form__image__dropbox__wrapper-before.dropbox-wrapper
+                .sell-form__image__dropbox__wrapper__inner#dropbox
+                  %pre
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
             .sell-form__image__error
         .sell-form__summary
           .sell-form__summary__name
@@ -129,3 +130,4 @@
             = f.submit "出品する", id: "newItemSubmitButton", class: "btn btn-large", type: "button"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray"
 = render "layouts/single-footer"
+= render "layouts/cropping-modal"

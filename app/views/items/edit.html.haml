@@ -17,10 +17,17 @@
             .sell-form__image__dropbox#uploadField
               .sell-form__image__dropbox__thumbnail#thumbnailBox
               = render @item.item_images
-              .sell-form__image__dropbox__inner#dropbox
-                %pre
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
+              .sell-form__image__dropbox__wrapper.dropbox-wrapper
+                - if @item.item_images.length == 10
+                  .sell-form__image__dropbox__wrapper__inner#dropbox{style: "display:none"}
+                    %pre
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
+                - else
+                  .sell-form__image__dropbox__wrapper__inner#dropbox
+                    %pre
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
             .sell-form__image__error
         .sell-form__summary
           .sell-form__summary__name
@@ -46,8 +53,8 @@
                 .sell-form__detail__select-box__wrap
                   = f.select :category_id, @categories.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
                   %i.fas.fa-angle-down
-                .sell-form__detail__select-box__wrap#sell-form-sub_category{style: "display:none"}
-                  %select#item_sub_category_id{name: ""}
+                .sell-form__detail__select-box__wrap#sell-form-sub_category
+                  = f.select :sub_category_id, @item.category.children.map{|t| [t.name, t.id]}, prompt: "---"
                   %i.fas.fa-angle-down
                 .sell-form__detail__select-box__wrap#sell-form-sub_sub_category{style: "display:none"}
                   %select#item_sub_sub_category_id{name: ""}
@@ -60,8 +67,8 @@
                 .sell-form__detail__select-box__wrap#sell-form-sub_category
                   = f.select :sub_category_id, @item.category.parent.children.map{|t| [t.name, t.id]}, prompt: "---", selected: @item.category_id
                   %i.fas.fa-angle-down
-                .sell-form__detail__select-box__wrap#sell-form-sub_sub_category{style: "display:none"}
-                  %select#item_sub_sub_category_id{name: ""}
+                .sell-form__detail__select-box__wrap#sell-form-sub_sub_category
+                  = f.select :sub_sub_category_id, @item.category.children.map{|t| [t.name, t.id]}, prompt: "---"
                   %i.fas.fa-angle-down
                 .sell-form__detail__select-box__category__error
               - elsif !@item.category.parent.parent.parent
@@ -154,3 +161,4 @@
             = f.submit "変更する", id: "newItemSubmitButton", class: "btn btn-large", type: "button"
           = link_to "もどる", "/", class: "sell-form__submit__back btn btn-gray "
 = render "layouts/single-footer"
+= render "layouts/cropping-modal"

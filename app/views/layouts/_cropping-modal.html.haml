@@ -1,0 +1,13 @@
+.modal#croppingModal
+  .modal__overlay
+    .cropper
+      .cropper__body
+        .cropper__body__header
+          %h3 写真を切り取る
+        .cropper__body__edit
+          %img#canvas.cropper__body__edit__canvas
+          .cropper__body__edit__slider
+            #zoomSlider
+        .cropper__body__button
+          %button.cropper__body__button__back.btn#cropperBack キャンセル
+          %button.cropper__body__button__enter.btn#cropperEnter{"data-action": controller.action_name} 完了
