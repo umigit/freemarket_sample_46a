@@ -201,17 +201,7 @@ text-align: right;
 
 
 
-.signup-header{
-  justify-content: space-between;
-}
 
-.progress__title {
-  display: inline-block;
-}
-
-.progress__line {
-  display: inline-block;
-}
 
 
 
@@ -297,6 +287,137 @@ text-align: right;
 }
 
 
+.signup-container{
+  margin-left: 90px;
+}
+.signup-header{
+
+}
+#signup-header__logo {
+
+}
+
+.signup-header__progress{
+
+}
+.progress{
+  display: flex;
+  text-align: center;
+  font-size: 14px;
+  &__node {
+
+  }
+  &__title {
+    color: #888;
+    margin-right: 70px;
+  }
+  .progress__node {
+
+  }
+  #progress--first {
+    margin-right: -20px;
+  }
+  #progress--second {
+    margin-right: 32px;
+  }
+  #progress--thired {
+    margin-right: 87px;
+  }
+  #progress--fourth {
+    margin-left: -75px;
+  }
+  #last-title {
+    margin-left: -50px;
+  }
+  &__dot {
+    color: #ccc;
+  }
+  &__line {
+    border: 1px solid ;
+    width: 110px;
+    transform: translateX(0%);
+  }
+  #first-line {
+    left: 65px;
+  }
+  #second-line {
+    left: 39px;
+  }
+  #thired-line {
+    left: 13px;
+  }
+  #fourth-line {
+    left: -41px;
+    width: 67px;
+  }
+  .progress__user {
+
+  }
+
+  .progress__phone {
+
+  }
+  .progress__address {
+
+  }
+  .progress__pay{
+
+  }
+  .progress__line {
+    display: inline-block;
+    position: relative;
+    bottom: 3px;
+    left: 12px;
+  }
+  .fa-circle{
+    position: absolute;
+    font-size: 11px;
+  }
+
+  .circle-first {
+    display: inline-block;
+    position: relative;
+    left: 69px;
+  }
+  #circle-second {
+    display: inline-block;
+    position: relative;
+    right: -43px;
+  }
+  #circle-thired {
+    display: inline-block;
+    position: relative;
+    right: -17px;
+  }
+  #circle-fourth {
+    display: inline-block;
+    position: relative;
+    right: 37px;
+  }
+  .circle-last {
+    display: inline-block;
+    position: relative;
+    right: 61px;
+  }
+}
+
+.signup-header{
+  justify-content: space-between;
+}
+
+.progress__title {
+  display: inline-block;
+}
+
+
+
+
+.email-conflict {
+  margin: 0 0 40px;
+  color: red;
+  font-size: 14px;
+}
+
 .error {
   margin: 8px 0 0;
   color: #ea352d;
@@ -317,13 +438,9 @@ text-align: right;
 }
 
 
-
-
-
-
-
-
-
+.red {
+  color: red;
+}
 
 
 

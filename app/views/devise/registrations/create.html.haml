@@ -1,5 +1,34 @@
 .single-container
-  = render "layouts/single-header"
+  .single-header
+    = link_to image_tag("logo.svg"), "/"
+    .signup-container.signup-container__user
+      %header.signup-header
+        .signup-header__progress
+          .progress
+            .progress__node
+              .progress__title#progress--first.red 会員情報
+              .progress__dot
+                .fas.fa-circle.circle-first.red
+                .progress__line#first-line.progress-twe.red
+            .progress__node
+              .progress__title#progress--second.progress-twe.red 電話番号確証
+              .progress__dot
+                .fas.fa-circle#circle-second.progress-twe.red
+                .progress__line#second-line.progress-three.red
+            .progress__node
+              .progress__title#progress--thired.progress-three.red 住所入力
+              .progress__dot
+                .fas.fa-circle#circle-thired.progress-three.red
+                .progress__line#thired-line.progress-four.red
+            .progress__node
+              .progress__title#progress--fourth.progress-four.red 支払い方法
+              .progress__dot
+                .fas.fa-circle#circle-fourth.progress-four.red
+                .progress__line#fourth-line.progress-five.red
+            .progress__node
+              .progress__title#last-title.progress-five.red 完了
+              .progress__dot
+                .fas.fa-circle.circle-last.progress-five.red
   .single-main
     .single-main-container
       %h2.single-main-container__head 会員登録完了
