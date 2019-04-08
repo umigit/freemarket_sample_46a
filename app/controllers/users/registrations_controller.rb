@@ -43,7 +43,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
 
     else
-      redirect_to new_user_signup_registration_path
+      render :sns
+      flash[:notice] = "メールアドレスに誤りがあります。ご確認いただき、正しく変更してください。"
     end
   end
 

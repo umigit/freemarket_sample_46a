@@ -73,6 +73,7 @@ $(function() {
       $('.single-main-container__head__phone').addClass('active');
       $('.right-continer__inner__phone').addClass('active');
       document.documentElement.scrollTop = 0;
+      $('.progress-twe').css('color','red');
     }
     else {
       document.documentElement.scrollTop = 0;
@@ -98,6 +99,7 @@ $(function() {
       $('.single-main-container__head__address').addClass('active');
       $('.right-continer__inner__address').addClass('active');
       document.documentElement.scrollTop = 0;
+      $('.progress-three').css('color','red');
     }
     else {
       document.documentElement.scrollTop = 0;
@@ -150,6 +152,7 @@ $(function() {
       $('.single-main-container__head__pay').addClass('active');
       $('.right-continer__inner__pay').addClass('active');
       document.documentElement.scrollTop = 0;
+      $('.progress-four').css('color','red');
     }
     else {
       document.documentElement.scrollTop = 0;
