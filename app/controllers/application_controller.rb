@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_paramaters, if: :devise_controller?
+  before_action :basic_auth
 
   private
 
@@ -9,5 +10,11 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:sigin_up, keys: [address_attributes: [:postal_code, :city, :block, :building, :user_id, :prefecture_id, :relative_last_name, :relative_first_name, :relative_last_name_kana, :relative_first_name_kana, :home_phone]])
 
+  end
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'admin' && password == '2222'
+    end
   end
 end

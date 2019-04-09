@@ -131,7 +131,7 @@
           = link_to 'https://www.mercari.com/jp/safe/description/', target: "_blank", class: "safe-description" do
             %i.fas.fa-lock.clock-font
             あんしん・あんぜんへの取り組み
-    - if current_user.id == @item.user_id
+    - if user_signed_in? && current_user.id == @item.user_id
       .parent-own-item-container
         = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
         .parent-own-item-container__or
