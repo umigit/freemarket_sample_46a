@@ -43,8 +43,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
 
     else
-      render :sns
       flash[:notice] = "メールアドレスに誤りがあります。ご確認いただき、正しく変更してください。"
+      render :sns
     end
   end
 
