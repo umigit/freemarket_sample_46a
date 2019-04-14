@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :user
   belongs_to :category
+  has_one :order_status, dependent: :destroy
   belongs_to :brand, optional: true
   has_many :item_images, dependent: :destroy
   has_many :comments

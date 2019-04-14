@@ -53,5 +53,6 @@ class Prefecture < ActiveHash::Base
   ]
 
   has_many :items
+  has_many :addresses
 end
 
