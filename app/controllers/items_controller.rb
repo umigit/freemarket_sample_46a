@@ -2,13 +2,13 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
 
   def index
-    @ladies = Item.ransack(by_category_id: 1.0).result.limit(4)
-    @mens = Item.ransack(by_category_id: 2).result.limit(4)
-    @kids = Item.ransack(by_category_id: 3).result.limit(4)
-    @janel = Item.ransack(brand_id_eq: 1).result.limit(4)
-    @biton = Item.ransack(brand_id_eq: 3).result.limit(4)
-    @shrimp = Item.ransack(brand_id_eq: 4).result.limit(4)
-    @mike = Item.ransack(brand_id_eq: 2).result.limit(4)
+    @ladies = Item.ransack(by_category_id: 1.0).result.order(created_at: "DESC").limit(4)
+    @mens = Item.ransack(by_category_id: 2).result.order(created_at: "DESC").limit(4)
+    @kids = Item.ransack(by_category_id: 3).result.order(created_at: "DESC").limit(4)
+    @janel = Item.ransack(brand_id_eq: 1).result.order(created_at: "DESC").limit(4)
+    @biton = Item.ransack(brand_id_eq: 3).result.order(created_at: "DESC").limit(4)
+    @shrimp = Item.ransack(brand_id_eq: 4).result.order(created_at: "DESC").limit(4)
+    @mike = Item.ransack(brand_id_eq: 2).result.order(created_at: "DESC").limit(4)
   end
 
   def show
