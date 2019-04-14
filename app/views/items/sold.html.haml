@@ -1,0 +1,58 @@
+= render "layouts/single-header"
+%section.l-signup-container
+  .waiting-header
+    .waiting-header__icon
+      .far.fa-clock#clock-custom
+    .waiting-header__title 発送をお待ちください
+    .waiting__messege 出品者からの発送通知をお待ちください
+.items__buy_cf__container
+  .items__buy_cf__container__main
+    %h2.items__buy_cf__container__main__header
+      購入完了しました
+    .items__buy_cf__container__main__content
+      .items__buy_cf__container__main__content__inner
+        .items__buy_cf__container__main__content__inner__item_image_container
+          = image_tag @item.item_images[0].image.url, class: "item_photo"
+        %p.items__buy_cf__container__main__content__inner__item_name
+          = @item.name
+          %p.items__buy_cf__container__main__content__inner__buy_form__item_price
+            = "¥ " + "#{@item.price}"
+            %span.items__buy_cf__container__main__content__inner__buy_form__item_price__shipping_fee
+              - if @item.shipping_fee == "送料込み(出品者負担)"
+                送料込み
+              - else
+                着払い              
+            .payment
+              .payment_text
+                支払い金額
+              .payment_price
+                = '¥ ' + "#{@item.price}"
+      = link_to "/", id: "buy-home-button" do
+        .buy-home
+          トップページに戻る
+    .buy_user_info
+      .buy_user_info_container
+        %h3
+          配送先
+        %address
+          .buy_user_info_container_text
+            = "〒#{@user.address.postal_code}"
+            %br
+            = "#{@user.address.prefecture.name} #{@user.address.city} #{@user.address.block} #{@user.address.building}"
+            %br
+            = "#{@user.user_profile.last_name} #{@user.user_profile.first_name}"
+= render "layouts/single-footer"
+= render "layouts/sell-button"
+
+
+
+
+
+
+
+
+
+
+
+
+
