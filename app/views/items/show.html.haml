@@ -119,7 +119,7 @@
           - else
             着払い
 
-      - unless @item.user
+      - unless @item.user == current_user
         - unless @item.sales_condition
           - if current_user       
             = link_to "/items/#{@item.id}/buy" do
