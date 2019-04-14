@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_182403) do
+ActiveRecord::Schema.define(version: 2019_04_14_165349) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_182403) do
   create_table "order_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "purchaser_id", null: false
     t.integer "seller_id", null: false
-    t.integer "status", null: false
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "item_id", null: false
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_182403) do
     t.integer "birth_m", null: false
     t.integer "birth_d", null: false
     t.string "nickname", null: false
-    t.text "avatar"
+    t.string "avatar"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
