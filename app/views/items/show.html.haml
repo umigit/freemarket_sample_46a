@@ -165,30 +165,31 @@
         .message-content
           %ul.message-items
             %li.message-item
-              - @comments.each do |comment|
-                .message-user
-                  %figure
-                    .message-user-unknown
-                      - if comment.user.user_profile.avatar.present?
-                        = comment.user.user_profile.avatar
-                      - else
-                        = image_tag("user-icon.svg")
-                    
-                  .message-body-continer
-                    %p.user-name-string-nickname
-                      = comment.user.user_profile.nickname
-                      .message-body
-                        %p
-                        = comment.content
-                        .message-body__text
-                        .message-icons
-                          .message-icon-left
-                            %i.far.fa-clock
-                            %span.days-ago
-                              = comment.created_at.strftime("%Y/%m/%d %H:%M")
-                          .message-icon-right
-                            = link_to "" do
-                              %i.far.fa-flag
+              - if @item.comment
+                - @comments.each do |comment|
+                  .message-user
+                    %figure
+                      .message-user-unknown
+                        - if comment.user.user_profile.avatar.present?
+                          = comment.user.user_profile.avatar
+                        - else
+                          = image_tag("user-icon.svg")
+                      
+                    .message-body-continer
+                      %p.user-name-string-nickname
+                        = comment.user.user_profile.nickname
+                        .message-body
+                          %p
+                          = comment.content
+                          .message-body__text
+                          .message-icons
+                            .message-icon-left
+                              %i.far.fa-clock
+                              %span.days-ago
+                                = comment.created_at.strftime("%Y/%m/%d %H:%M")
+                            .message-icon-right
+                              = link_to "" do
+                                %i.far.fa-flag
 
         .message-content
           = form_for @comment, url: item_comments_path(@item), html: {class: "message-form"} do |f|
