@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :pay, :buy, :sold]
+  before_action :current_user_not_buy, only: [:buy]
   before_action :buy_not_sold, only: [:sold]
   before_action :buy_sold, only: [:buy]
-
+  
 
   def index
     @ladies = Item.ransack(by_category_id: 1.0).result.limit(4)
@@ -62,7 +63,7 @@ class ItemsController < ApplicationController
     if charge.present?
       redirect_to "/items/#{item.id}/sold"
     else
-      redirect_to root_path
+      redirect_to  "/items/#{item.id}"
     end
   end
 
@@ -132,6 +133,13 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     if item.sales_condition == true
       redirect_to "/items/#{item.id}/sold"
+    end
+  end
+
+  def current_user_not_buy
+    item = Item.find(params[:id])
+    if current_user.id == item.user.id
+      redirect_to "/items/#{item.id}"
     end
   end
 
