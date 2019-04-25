@@ -15,7 +15,7 @@
               - if @item.shipping_fee=="送料込み(出品者負担)"
                 送料込み
               - else
-                着払い              
+                着払い
             .items__buy_cf__container__main__content__inner__buy_form__accordion
               .items__buy_cf__container__main__content__inner__buy_form__accordion_toggle
                 ポイントはありません
@@ -34,9 +34,9 @@
           配送先
         %address
           .buy_user_info_container_text
-            = "〒#{@user.address.postal_code}"
+            = "〒#{current_user.address.postal_code}"
             %br
-            = "#{@user.address.prefecture.name} #{@user.address.city} #{@user.address.block} #{@user.address.building}"
+            = "#{current_user.address.prefecture.name} #{current_user.address.city} #{current_user.address.block} #{t_user.address.building}"
         .buy_user_info_container__angle_right
           =link_to "#", class: "angle-right" do
             変更する

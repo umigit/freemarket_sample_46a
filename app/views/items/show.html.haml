@@ -121,7 +121,7 @@
 
       - unless @item.user == current_user
         - unless @item.sales_condition
-          - if current_user       
+          - if user_signed_in?
             = link_to "/items/#{@item.id}/buy" do
               .item-buy-btn 購入画面に進む
           - else
@@ -174,7 +174,7 @@
                           = comment.user.user_profile.avatar
                         - else
                           = image_tag("user-icon.svg")
-                      
+
                     .message-body-continer
                       %p.user-name-string-nickname
                         = comment.user.user_profile.nickname

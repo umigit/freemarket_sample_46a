@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :current_user_not_buy, only: [:buy]
   before_action :buy_not_sold, only: [:sold]
   before_action :buy_sold, only: [:buy]
-  
+
 
   def index
     @ladies = Item.ransack(by_category_id: 1.0).result.order(created_at: "DESC").limit(4)
@@ -109,12 +109,11 @@ class ItemsController < ApplicationController
 
   def buy
     @item = Item.find(params[:id])
-    @user = User.find(params[:id])
   end
 
   def sold
     @item = Item.find(params[:id])
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
 
