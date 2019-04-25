@@ -122,7 +122,7 @@
       - unless @item.user == current_user
         - unless @item.sales_condition
           - if user_signed_in?
-            = link_to "/items/#{@item.id}/buy" do
+            = link_to "/items/#{@item.id}/buy", data: { turbolinks: false} do
               .item-buy-btn 購入画面に進む
           - else
             = link_to "/users/sign_in" do
