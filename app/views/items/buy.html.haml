@@ -36,7 +36,7 @@
           .buy_user_info_container_text
             = "〒#{current_user.address.postal_code}"
             %br
-            = "#{current_user.address.prefecture.name} #{current_user.address.city} #{current_user.address.block} #{t_user.address.building}"
+            = "#{current_user.address.prefecture.name} #{current_user.address.city} #{current_user.address.block} #{current_user.address.building}"
         .buy_user_info_container__angle_right
           =link_to "#", class: "angle-right" do
             変更する

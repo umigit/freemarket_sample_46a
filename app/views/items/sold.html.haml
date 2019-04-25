@@ -21,7 +21,7 @@
               - if @item.shipping_fee == "送料込み(出品者負担)"
                 送料込み
               - else
-                着払い              
+                着払い
             .payment
               .payment_text
                 支払い金額
@@ -36,11 +36,11 @@
           配送先
         %address
           .buy_user_info_container_text
-            = "〒#{@user.address.postal_code}"
+            = "〒#{current_user.address.postal_code}"
             %br
-            = "#{@user.address.prefecture.name} #{@user.address.city} #{@user.address.block} #{@user.address.building}"
+            = "#{current_user.address.prefecture.name} #{current_user.address.city} #{current_user.address.block} #{current_user.address.building}"
             %br
-            = "#{@user.user_profile.last_name} #{@user.user_profile.first_name}"
+            = "#{current_user.user_profile.last_name} #{current_user.user_profile.first_name}"
 = render "layouts/single-footer"
 = render "layouts/sell-button"
 
