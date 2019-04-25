@@ -1,8 +1,14 @@
 = render "layouts/single-header"
+%section.l-signup-container
+  .waiting-header
+    .waiting-header__icon
+      .far.fa-clock#clock-custom
+    .waiting-header__title 発送をお待ちください
+    .waiting__messege 出品者からの発送通知をお待ちください
 .items__buy_cf__container
   .items__buy_cf__container__main
     %h2.items__buy_cf__container__main__header
-      購入を確定しますか?
+      購入完了しました
     .items__buy_cf__container__main__content
       .items__buy_cf__container__main__content__inner
         .items__buy_cf__container__main__content__inner__item_image_container
@@ -12,22 +18,18 @@
           %p.items__buy_cf__container__main__content__inner__buy_form__item_price
             = "¥ " + "#{@item.price}"
             %span.items__buy_cf__container__main__content__inner__buy_form__item_price__shipping_fee
-              - if @item.shipping_fee=="送料込み(出品者負担)"
+              - if @item.shipping_fee == "送料込み(出品者負担)"
                 送料込み
               - else
                 着払い              
-            .items__buy_cf__container__main__content__inner__buy_form__accordion
-              .items__buy_cf__container__main__content__inner__buy_form__accordion_toggle
-                ポイントはありません
             .payment
               .payment_text
                 支払い金額
               .payment_price
                 = '¥ ' + "#{@item.price}"
-      .payment_form
-        = form_tag(action: :pay, method: :post) do
-          %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_33d180c3147e00a55623bdf4", }
-
+      = link_to "/", id: "buy-home-button" do
+        .buy-home
+          トップページに戻る
     .buy_user_info
       .buy_user_info_container
         %h3
@@ -37,25 +39,20 @@
             = "〒#{@user.address.postal_code}"
             %br
             = "#{@user.address.prefecture.name} #{@user.address.city} #{@user.address.block} #{@user.address.building}"
-        .buy_user_info_container__angle_right
-          =link_to "#", class: "angle-right" do
-            変更する
-            %i.fab-fa-angle-right
-    .buy_user_info
-      .buy_user_info_container
-        %h3
-          支払い方法
-        .buy_user_info_container_text
-          ************4242
-          %br
-          11 / 22
-        .buy_user_info_container_visa
-          = image_tag "https://i1.wp.com/creditcard-site.com/images/visa_shin_logo2.png?w=1170&ssl=1", size: "49x15", alt: "写真"
-        .buy_user_info_container__angle_right
-          =link_to "#", class: "angle-right" do
-            変更する
-            %i.fab.fa-sangle-right
+            %br
+            = "#{@user.user_profile.last_name} #{@user.user_profile.first_name}"
 = render "layouts/single-footer"
 = render "layouts/sell-button"
+
+
+
+
+
+
+
+
+
+
+
 
 

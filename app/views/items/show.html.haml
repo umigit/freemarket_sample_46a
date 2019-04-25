@@ -13,6 +13,12 @@
             - @item.item_images.each do |item_image|
               .slider__item
                 = image_tag item_image.image.url
+                - unless @item.sales_condition
+                  .none-sold
+                - else
+                  .item-tag-sold-out-top
+                    .sold-out-text-top SOLD
+
           .thumbnail
             - @item.item_images.each.with_index do |item_image, index|
               - if index == 0
@@ -113,8 +119,19 @@
           - else
             着払い
 
-      = link_to "/items/#{@item.id}/buy" do
-        .item-buy-btn 購入画面に進む
+      - unless @item.user == current_user
+        - unless @item.sales_condition
+          - if current_user       
+            = link_to "/items/#{@item.id}/buy" do
+              .item-buy-btn 購入画面に進む
+          - else
+            = link_to "/users/sign_in" do
+              .item-buy-btn 購入画面に進む
+        -else
+          .item-buy-btn-sold 売り切れました
+
+
+
       .item-description
         %p.item-description__inner
           = @item.comment
@@ -123,7 +140,7 @@
           %button{type: "button", name: "like!", class: "item-button"}
             %i.far.fa-heart
             %span.fade-in-down いいね!
-            %span.fade-in-down 7
+            %span.fade-in-down 0
           = link_to "", class: "item-button__report" do
             %i.far.fa-flag
             不適切な商品の報告
@@ -133,13 +150,14 @@
             あんしん・あんぜんへの取り組み
     - if user_signed_in? && current_user.id == @item.user_id
       .parent-own-item-container
-        = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
-        .parent-own-item-container__or
-          or
-        - unless @item.sales_condition == 0
-          = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
-        - else
-          = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
+        - unless @item.sales_condition
+          = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
+          .parent-own-item-container__or
+            or
+          - unless @item.sales_condition == 0
+            = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
+          - else
+            = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
         = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
 
     .item-detail-message
@@ -147,31 +165,40 @@
         .message-content
           %ul.message-items
             %li.message-item
-              .message-user
-                %figure
-                  .message-user-unknown
-                    = image_tag("user-icon.svg")
-              .message-body-continer
-                %p.user-name-string
-                  aaaa
-                  - @comments.each do |comment|
-                    .message-body
-                      %p
-                      = comment.content
-                      .message-body__text
-                      .message-icons
-                        .message-icon-left
-                          %i.far.fa-clock
-                          %span.days-ago 141日前
-                        .message-icon-right
-                          = link_to "" do
-                            %i.far.fa-flag
+              - if @item.comment
+                - @comments.each do |comment|
+                  .message-user
+                    %figure
+                      .message-user-unknown
+                        - if comment.user.user_profile.avatar.present?
+                          = comment.user.user_profile.avatar
+                        - else
+                          = image_tag("user-icon.svg")
+                      
+                    .message-body-continer
+                      %p.user-name-string-nickname
+                        = comment.user.user_profile.nickname
+                        .message-body
+                          %p
+                          = comment.content
+                          .message-body__text
+                          .message-icons
+                            .message-icon-left
+                              %i.far.fa-clock
+                              %span.days-ago
+                                = comment.created_at.strftime("%Y/%m/%d %H:%M")
+                            .message-icon-right
+                              = link_to "" do
+                                %i.far.fa-flag
 
         .message-content
           = form_for @comment, url: item_comments_path(@item), html: {class: "message-form"} do |f|
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = f.text_area :content, class: "textarea-default"
-            = f.submit "コメントする", class: "message-submit button-default"
+            - unless @item.sales_condition
+              = f.submit "コメントする", class: "message-submit button-default"
+            -else
+              .message-submit.button-default.sold-button-comment 売り切れのためコメントできません
     .item-social-media-box
       .text-center
       %ul.social-media-box

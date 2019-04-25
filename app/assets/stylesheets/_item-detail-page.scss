@@ -217,7 +217,6 @@
         display: flex;
       }
       .message-item {
-        display: flex;
         justify-content: space-between;
         margin: 20px 0 0;
       }
@@ -254,7 +253,7 @@
       }
 
       .message-body {
-        margin: 6px 0 0 0px;
+        margin: 6px 0 0 50px;
         padding: 16px;
         background: #eef0f4;
         border-radius: 15px;
@@ -432,5 +431,84 @@
 .item-box__images {
   box-sizing: border-box;
   width: 100%;
+}
 
+.item-box__image {
+  position: relative;
+}
+
+.item-buy-btn-sold {
+  background: #888;
+  cursor: not-allowed;
+  margin: 16px 0 0;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.sold-button-comment {
+  cursor: not-allowed;
+}
+
+.item-tag-sold-out-top{
+  z-index: 1;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0px;
+  border-style: solid;
+  border-width: 130px 130px 0 0;
+  border-color: #ea352d transparent;
+
+  .sold-out-text-top{
+    color: #fff;
+    transform: rotate(-45deg);
+    position: absolute;
+    top:-100px;
+    left: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    font-size: 22px;
+  }
+}
+
+.item-tag-sold-out-top-page {
+  z-index: 1;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 55px;
+  border-style: solid;
+  border-width: 130px 130px 0 0;
+  border-color: #ea352d transparent;
+
+  .sold-out-text-top-page{
+    color: #fff;
+    transform: rotate(-45deg);
+    position: absolute;
+    top:-100px;
+    left: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    font-size: 22px;
+  }
+}
+
+
+.user-name-string-nickname {
+  display: inline-block;
+  margin-left: 60px;
+  font-weight: 800;
+}
+
+.message-user-unknown{
+  position: absolute;
+  display: inline-block;
+}
+
+.item-menu-top {
+  position: relative;
 }
